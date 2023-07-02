@@ -6,13 +6,15 @@ function HomePage() {
   return (
     <>
       <div className='viewport'>
-        <Header />
-        <div className='contents'>
-          <div className='sidebar'>sidebar</div>
-          <div className='main'>
-            <div className='searchbar'>searchbar</div>
-            <div className='navbar'>navbar</div>
-            <div classname='maincontents'>maincontents</div>
+        <div class='contents'>
+          <Header />
+          <div className='body'>
+            <div className='sidebar'>sidebar</div>
+            <div className='main'>
+              <div className='searchbar'>searchbar</div>
+              <div className='navbar'>navbar</div>
+              <div classname='maincontents'>maincontents</div>
+            </div>
           </div>
         </div>
       </div>
