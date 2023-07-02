@@ -1,0 +1,7 @@
+.viewport {
+  display: flex;
+  flex-direction: column;
+}
+.contents {
+  display: flex;
+}
