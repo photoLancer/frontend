@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  height: 16vh;
+  height: 20vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,12 +11,11 @@
   height: 40px;
 }
 
-.logout-btn {
+.logout_btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 112px;
-  height: 40px;
+  padding: 8px 32px;
 
   font-family: Pretendard;
   font-size: 16px;
