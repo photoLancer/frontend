@@ -1,16 +1,19 @@
 import React from 'react';
-import './homePage.css';
+import styles from './homePage.module.css';
 import Header from '../components/Header';
+import Sidebar from '../components/Sidebar/Sidebar';
 
 function HomePage() {
   return (
     <>
-      <div className='viewport'>
-        <div class='contents'>
+      <div className={styles.viewport}>
+        <div class={styles.contents}>
           <Header />
-          <div className='body'>
-            <div className='sidebar'>sidebar</div>
-            <div className='main'>
+          <div className='flex flex-row'>
+            <div className='sidebar basis-1/4'>
+              <Sidebar />
+            </div>
+            <div className='main basis-3/4'>
               <div className='searchbar'>searchbar</div>
               <div className='navbar'>navbar</div>
               <div classname='maincontents'>maincontents</div>

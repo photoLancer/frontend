@@ -1,5 +1,5 @@
 import React from 'react';
-import './header.css';
+import styles from './header.module.css';
 import logo from '../logo/logo_symbol.png';
 
 function Header(props) {
@@ -10,12 +10,12 @@ function Header(props) {
 
   return (
     <>
-      <div className='header'>
+      <div className={styles.header}>
         <a href='/'>
-          <img src={logo} alt='logo' className='logo' />
+          <img src={logo} alt='logo' className={styles.logo} />
         </a>
 
-        <button className='logout-btn' onClick={onLogoutHandle}>
+        <button className={styles.logout_btn} onClick={onLogoutHandle}>
           Log out
         </button>
       </div>
