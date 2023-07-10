@@ -10,7 +10,7 @@ function HomePage() {
         <div class={styles.contents}>
           <Header />
           <div className='flex flex-row'>
-            <div className='sidebar basis-1/4'>
+            <div className='sidebar basis-1/4 flex flex-row justify-center border border-solid border-blackd'>
               <Sidebar />
             </div>
             <div className='main basis-3/4'>
