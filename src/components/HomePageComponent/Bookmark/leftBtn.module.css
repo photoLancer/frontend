@@ -1,0 +1,24 @@
+.tag_btn {
+  padding: 6px 16px;
+  border-radius: 18px;
+  border: 1px solid #c2c2c2;
+  gap: 10px;
+
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-right: 10px;
+  color: #c2c2c2;
+}
+.tag_btn:hover {
+  background: #ff8b00;
+  color: #fff;
+}
+
+.clicked {
+  background: #ff8b00;
+  color: #fff;
+}

@@ -1,0 +1,12 @@
+.photo {
+  border-radius: 32px;
+  overflow: hidden;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+}
+.photo_img:hover {
+  transform: scale(1.05);
+  transition: 0.5s;
+  cursor: pointer;
+}
