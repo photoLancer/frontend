@@ -1,0 +1,251 @@
+
+.header{
+    width: 226.09px;
+    height: 42.82px;
+    text-align: center;
+    
+}
+.header div{
+    display: inline-block;
+}
+.profile{
+    width: 108px;
+    height: 38px;
+    background-color: #D9D9D9;
+    font-weight: 400;
+    font-style: rationale;
+    font-size: 20px;
+    border: 1px solid black;
+    margin-left: -7px;
+    border-radius: 15px 0 0;
+    text-align: center;
+}
+.album{
+    width: 108px;
+    height: 38px;
+    background-color: #D9D9D9;
+    font-weight: 400;
+    font-style: rationale;
+    font-size: 20px;
+    border: 1px solid black;
+    margin-left: -5px;
+    border-radius: 0  15px 0 0;
+}
+.mainBox{
+    margin-top: -4px;
+    width: 1103px;
+    height: 1180.18px;
+    background-color: #D9D9D9;
+    border: 1px solid black;
+}
+.user{
+    width:794px;
+    height: 304px;
+    margin-left: 154.5px;
+    margin-top: 75px;
+    border-radius: 35px;
+    border: 3px solid black;
+    text-align: center;
+    box-sizing: border-box;
+    
+}
+.user div{
+    display: inline-block;
+    
+}
+.userinfo1{
+    width: 200px;
+    height: 280px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin:20px;
+}
+.userinfo1 div{
+    border: 1px solid black;
+}
+.myLevel{
+    width: 170px;
+    height: 30px;
+    box-sizing: border-box;
+    margin: 3px;
+    text-align: center;
+}
+.myImg{
+    width: 170px;
+    height: 170px;
+    box-sizing: border-box;
+    margin: 3px;
+}
+.myName{
+    width:170px;
+    height:30px;
+    box-sizing: border-box;
+    margin: 10px;
+    text-align: center;
+}
+.userinfo2{
+    width: 480px;
+    height: 280px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin: 10px;
+}
+.numbering{
+    width: 400px;
+    height: 90px;
+    border: 1px solid black;
+    margin: 10px;
+}
+.box{
+   width: 80px;
+   height: 90px;
+   border: 1px solid black; 
+}
+.box span{
+    display: block;
+    border: 1px solid black;
+    height: 40px;
+}
+.tag{
+    width: 400px;
+    height: 40px;
+    border: 1px solid black;
+}
+.tag span{
+    border: 1px solid black;
+    border-radius:20px;
+    
+}
+.infotext{
+    width: 400px;
+    height: 110px;
+    border: 1px solid black;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+.contents{
+    text-align: center;
+    margin: 30px;
+}
+.contents div{
+    display: inline-block;
+}
+.level{
+    width:410px;
+    height: 663px;
+    margin-right: 50px;
+    border: 3px solid black;
+    border-radius: 35px;
+    box-sizing: border-box;
+    background-color: white;
+}
+.level div{
+    border: 1px solid black;
+}
+.levelcheck{
+    width: 380px;
+    height: 120px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+.levelup{
+    width: 360px;
+    height: 70px;
+    margin: 5px;
+    box-sizing: border-box;
+}
+.titlecheck{
+    width: 380px;
+    height: 130px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+.title{
+    width: 360px;
+    height: 80px;
+    margin: 5px;
+    box-sizing: border-box;
+    background-color: #FFEF9B;
+    border-radius: 80px;
+}
+.achievecheck{
+    width: 380px;
+    height: 320px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+.achievement{
+    width: 360px;
+    height: 280px;
+    margin: 5px;
+    box-sizing: border-box;
+}
+.achievement div{
+    display: block;
+    margin: 10px;
+
+}
+.achievecontents{
+    width: 300px;
+    height: 30px;
+    background-color: gray;
+}
+.nonachievecontents{
+    width: 300px;
+    height: 30px;
+    background-color: #D9D9D9;
+}
+.point{
+    width:410px;
+    height: 663px;
+    border: 3px solid black;
+    border-radius: 35px;
+    box-sizing: border-box;
+    background-color: white;
+}
+.point div{
+    border: 1px solid black;
+}
+.pointcheck{
+    width: 380px;
+    height: 120px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+.mypoint{
+    width: 360px;
+    height: 70px;
+    margin: 5px;
+    box-sizing: border-box;
+    background-color: #D9D9D9;
+    border-radius: 40px;
+}
+.chargingBox{
+    width: 380px;
+    height: 500px;
+    background-color: #D9D9D9;
+}
+.option{
+    width: 360px;
+    height: 60px;
+    margin: 10px;
+    border: 1px solid black;
+}
+.select{
+    border: 1px solid black;
+    margin: 20px;
+    background-color: white;
+}
+.tradeLogcheck{
+    width: 360px;
+    height: 360px;
+}
+.tradeLog{
+    width:340px;
+    height: 320px;
+    background-color: white;
+    border: 1px solid black;
+    margin: 10px;
+    box-sizing: border-box;
+}
