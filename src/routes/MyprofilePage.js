@@ -9,13 +9,16 @@ import "../components/profile.css";
 function MyprofilePage() {
   return(
     <>
-    <div>프로필</div>
     {/*<Header />  
     <Sidebar />*/}
+    <div className='bigboxing'>
     <ProfileFrame />
     <UserInfo />
+    <div className='smallboxing'>
     <UserLevel />
     <UserPoint />
+    </div>
+    </div>
     </>
   );
 }

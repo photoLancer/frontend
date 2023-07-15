@@ -4,8 +4,8 @@ const ProfileFrame=()=>{
     return(
         <>
     <nav className="headchoice">
-        <a className="profile" href="#">Profile</a>
-        <a className="album" href="#">Album</a>
+        <a href=""><div className="profile">Profile</div></a>
+        <a href=""><div className="album">Album</div></a>
     </nav>
     <div className="mainbox"></div>
         </>

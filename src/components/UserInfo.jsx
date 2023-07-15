@@ -4,22 +4,23 @@ const UserInfo=()=>{
     return(
         <>
         <div className="user">
+            <div className="editprofile">Edit Profile</div>
             <div className="userinfo1">
                 <div className="userinfo1wrap">
                 <div className="myTitle">Beginner</div>  
                 <div className="myImg"><img /></div>
                 <div className="numbering">
                     <div className="box" value="post">
-                        <div>?</div>
-                        <div>Posts</div>
+                        <div className="num">?</div>
+                        <div className="value">Posts</div>
                     </div>
                     <div className="box" value="follower">
-                        <div>?</div>
-                        <div>Followers</div>
+                        <div className="num">?</div>
+                        <div className="value">Followers</div>
                     </div>
                     <div className="box" value="following">
-                        <div>?</div>
-                        <div>Following</div>
+                        <div className="num">?</div>
+                        <div className="value">Following</div>
                     </div>
                 </div>
                 </div>
