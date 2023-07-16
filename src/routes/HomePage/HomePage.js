@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styles from './homePage.module.css';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar/Sidebar';
-import Searchbar from '../components/Searchbar/Searchbar';
-import Explore from '../components/HomePageComponent/Explore/Explore';
-import Bookmark from '../components/HomePageComponent/Bookmark/Bookmark';
-import Following from '../components/HomePageComponent/Following/Following';
-import Notice from '../components/HomePageComponent/Notice/Notice';
+import Header from '../../components/Header/Header';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import Searchbar from '../../components/Searchbar/Searchbar';
+import Explore from '../../components/HomePageComponent/Explore/Explore';
+import Bookmark from '../../components/HomePageComponent/Bookmark/Bookmark';
+import Following from '../../components/HomePageComponent/Following/Following';
+import Notice from '../../components/HomePageComponent/Notice/Notice';
 
 function HomePage() {
   const [homeContent, setHomeContent] = useState(4);

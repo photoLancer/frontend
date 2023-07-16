@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './header.module.css';
-import logo from '../logo/logo_symbol.png';
+import logo from '../../logo/logo_symbol.png';
 
 function Header(props) {
   const onLogoutHandle = (e) => {
