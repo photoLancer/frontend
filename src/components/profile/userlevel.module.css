@@ -1,0 +1,110 @@
+
+.level{
+    width: 640px;
+    height: 1300px;
+    border-top: 2px solid #ededed;
+    border-right: 2px solid #ededed;
+    display: inline-block;
+}
+.levelcheck{
+    width: 640px;
+    height: 159px;
+    border-bottom: 2px solid #ededed;
+}
+
+.titlecheck{
+    width: 640px;
+    height: 136px;
+    border-bottom: 2px solid #ededed;
+}
+.achievecheck{
+    width: 640px;
+    height: 495px;
+    
+}
+.levelhead{
+    font-size:xx-large;
+    font-weight: 600;
+    
+}
+.levelup{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.myLevel{
+    display: inline-block;
+    font-weight: 700;
+    font-size: x-large;
+}
+.levelpercent{
+    height: 30px;
+    margin-left: 30px;
+    border-radius: 15px;
+    background-color: lightgrey;
+    color: white;
+    display: inline-block;
+}
+.levelcheckwrap{
+    margin: 30px;
+}
+.titlecheckwrap{
+    margin: 30px;
+}
+.titlehead{
+    font-size:xx-large;
+    font-weight: 600; 
+}
+.title{
+    margin-top: 20px;
+    display: flex;
+}
+.myTitle2{
+    border-radius: 18px;
+    width: 180px;
+    height: 40px;
+    background-color: #FF8B00;
+    font-size: x-large;
+    color: white;
+    text-align: center;
+    display: inline-block;
+}
+.editTitle{
+    display: inline-block;
+    margin-left: 30px;
+}
+.achievecheckwrap{
+    margin: 30px;
+}
+.achievehead{
+    font-size:xx-large;
+    font-weight: 600;
+}
+.achieve{
+    margin-top: 20px;
+    border-top: 1px solid black;
+    width: 555px;
+}
+.achievecontents{
+    width: 555px;
+    height: 58px;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nonachievecontents{
+    width: 555px;
+    height: 58px;
+    border-bottom: 2px solid #ededed;
+    display: flex;
+    color: lightgrey;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+}
+.achievement{
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+}

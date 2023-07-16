@@ -3,7 +3,7 @@ import ProfileFrame from '../components/profile/ProfileFrame';
 import UserInfo from '../components/profile/UserInfo';
 import UserLevel from '../components/profile/UserLevel';
 import UserPoint from '../components/profile/UserPoint';
-import "../components/profile/profile.css";
+import styles from './myprofilepage.module.css';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
 
@@ -13,10 +13,10 @@ function MyprofilePage() {
     <>
     <Header />  
     <Sidebar />
-    <div className='bigboxing'>
+    <div className={styles.bigboxing}>
     <ProfileFrame />
     <UserInfo />
-    <div className='smallboxing'>
+    <div className={styles.smallboxing}>
     <UserLevel />
     <UserPoint />
     </div>
