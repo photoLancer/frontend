@@ -1,0 +1,21 @@
+.smallboxing {
+  display: flex;
+  margin-top: 30px;
+}
+.bigboxing {
+  /* width: 1280px; */
+  /* height: 1800px; */
+  position: relative;
+  /* margin-top: 130px; */
+  /* margin-left: 200px; */
+}
+
+.viewport {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contents {
+  width: 90vw;
+}
