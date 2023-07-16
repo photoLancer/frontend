@@ -1,0 +1,94 @@
+
+.user{
+    width: 890px;
+    height: 380px;
+    display: flex;
+    margin-left: 200px;
+    margin-top: 50px;
+}
+.editprofile{
+    width: 148px;
+    height: 36px;
+    border-radius: 18px;
+    border: 1px solid black;
+    margin-top: -30px;
+    font-size: smaller;
+    float: right;
+}
+.userinfo1{
+    width: 300px;
+    display: inline-block;
+    margin-top: 10px;
+    align-items: center;
+}
+.myTitle{
+    border-radius: 18px;
+    width: 120px;
+    height: 36px;
+    background-color: #FF8B00;
+    color: white;
+    text-align: center;
+    margin-left: 55px;
+}
+.myImg{
+    border: 1px solid black;
+    width: 194px;
+    height: 194px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 100px;
+    justify-content: center;
+}
+.numbering{
+    display: flex;
+    justify-content: center;
+}
+.box{
+    display: inline-block;
+    border: 1px solid black;
+    margin: 5px;
+    
+}
+.num{
+    text-align: center;
+    font-size: medium;
+    font-weight: 500;
+}
+.value{
+    text-align: center;
+    font-size: small;
+    font-weight: 500;
+    color: gray;
+}
+.userinfo2{
+    width: 594px;
+    display: inline-block;
+    margin: 20px;
+    margin-top: 80px;
+}
+.myName{
+    font-weight:700;
+    font-size: x-large;
+}
+.infotext{
+    border: 1px solid black;
+    width: 450px;
+    height: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.tagging{
+    width:500px;
+}
+.tag{
+    border-radius: 20px;
+    border: 1px solid black;
+
+}
+.userinfo1wrap{
+    margin: 30px;
+}
+.userinfo2wrap{
+    margin:30px;
+}
