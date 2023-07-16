@@ -1,15 +1,13 @@
 import React from 'react';
 import styles from './following.module.css';
+import Contents from './Contents';
 
 function Following() {
   return(
     <>
-    <HeadInfo />
-    <PhotoCard />
-    <HeadInfo />
-    <PhotoCard />
-    <HeadInfo />
-    <PhotoCard />
+    <Contents />
+    <Contents />
+    <Contents />
     </>
   );
 }

@@ -1,3 +1,6 @@
+.frame{
+    width: 1280px;
+}
 .headframe{
     width: inherit;
     height: 80px;
@@ -14,4 +17,13 @@
     height: inherit;
     border: 1px solid black;
     display: inline-block;
+}
+.contentsframe{
+    display: flex;
+}
+.content{
+    display: inline-block;
+    width: 410px;
+    height: 602px;
+    border-radius: 32px;
 }
