@@ -1,0 +1,9 @@
+.contentsframe{
+    display: flex;
+}
+.content{
+    display: inline-block;
+    width: 410px;
+    height: 602px;
+    border-radius: 32px;
+}

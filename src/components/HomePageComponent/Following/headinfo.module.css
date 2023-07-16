@@ -1,0 +1,17 @@
+.headframe{
+    width: inherit;
+    height: 80px;
+    border: 1px solid black;
+    display: flex;
+}
+.smallimg{
+    border-radius: 50px;
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+}
+.headframe img,div{
+    height: inherit;
+    border: 1px solid black;
+    display: inline-block;
+}
