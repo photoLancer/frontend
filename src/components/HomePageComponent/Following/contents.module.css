@@ -1,0 +1,31 @@
+.headframe{
+    width: 100%;
+    height: 70px;
+    display: flex;
+}
+.headframe img,p{
+    width: 5%;
+    height: auto;
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+img{
+    border-radius: 50px;
+    border: 1px solid black;
+}
+.contentsframe{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+.content{
+    width: 30%;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 32px;
+    display: inline-block;
+}
