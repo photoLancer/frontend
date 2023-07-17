@@ -4,7 +4,8 @@ const UserInfo=()=>{
     return(
         <>
         <div className={styles.user}>
-            <div className={styles.editprofile}>Edit Profile</div>
+            <button className={styles.editprofile} onClick={''}>Edit Profile</button>
+            <div className={styles.info}>
             <div className={styles.userinfo1}>
                 <div className={styles.userinfo1wrap}>
                 <div className={styles.myTitle}>Beginner</div>  
@@ -27,7 +28,7 @@ const UserInfo=()=>{
             </div>
             <div className={styles.userinfo2}>
                 <div className={styles.userinfo2wrap}>
-                <div className={styles.myName}>Tokemoo</div>
+                <div className={styles.myName}>Nickname</div>
                 <div className={styles.infotext}></div>
                 <div className={styles.tagging}>
                     <span className={styles.tag}>##</span>
@@ -35,7 +36,9 @@ const UserInfo=()=>{
                 </div>
             </div>
             </div>
+            </div>
         </div>
+
         </>
     );
 

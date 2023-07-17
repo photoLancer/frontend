@@ -73,10 +73,10 @@ const UserPoint=()=>{
                     </table>
                 </div>
                 <div className={styles.pagenum}>
-                    <div>1</div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
                 </div>
             </div>
             </div>
