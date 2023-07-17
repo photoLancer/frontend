@@ -19,7 +19,7 @@ const UserLevel =()=>{
                 <div className={styles.titlehead}>Your title</div>
                 <div className={styles.title}>
                 <div className={styles.myTitle2}>Beginner</div> 
-                <div className={styles.editTitle}>edit title</div>
+                <button className={styles.editTitle}>edit title</button>
                 </div>
                 </div>
             </div>

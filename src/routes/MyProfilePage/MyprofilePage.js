@@ -18,14 +18,12 @@ function MyprofilePage() {
               <Sidebar />
             </div>
             <div className='main basis-3/4 border border-solid border-black'>
-              <div className={styles.bigboxing}>
                 <ProfileFrame />
                 <UserInfo />
                 <div className={styles.smallboxing}>
                   <UserLevel />
                   <UserPoint />
                 </div>
-              </div>
             </div>
           </div>
         </div>
