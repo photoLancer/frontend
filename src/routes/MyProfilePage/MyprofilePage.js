@@ -15,15 +15,15 @@ function MyprofilePage() {
           <Header />
           <div className='flex flex-row'>
             <div className='sidebar basis-1/4 flex flex-row justify-center border border-solid border-black'>
-              <Sidebar />
+              <Sidebar current_page={2} />
             </div>
             <div className='main basis-3/4 border border-solid border-black'>
-                <ProfileFrame />
-                <UserInfo />
-                <div className={styles.smallboxing}>
-                  <UserLevel />
-                  <UserPoint />
-                </div>
+              <ProfileFrame />
+              <UserInfo />
+              <div className={styles.smallboxing}>
+                <UserLevel />
+                <UserPoint />
+              </div>
             </div>
           </div>
         </div>
