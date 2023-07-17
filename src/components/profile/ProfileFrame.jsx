@@ -3,11 +3,13 @@ import styles from './profileframe.module.css';
 const ProfileFrame=()=>{
     return(
         <>
-    <nav className={styles.headchoice}>
+    <div className={styles.headchoice}>
+        <nav>
         <a href=""><div className={styles.profile}>Profile</div></a>
         <a href=""><div className={styles.album}>Album</div></a>
-    </nav>
-    <div className={styles.mainbox}></div>
+        </nav>
+    </div>
+    
         </>
     );
 }
