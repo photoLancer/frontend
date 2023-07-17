@@ -7,8 +7,8 @@ function Contents(){
       
         <div className={styles.headframe}>
           <img className={styles.smallimg}></img>
-          <p className={styles.nickname}>?</p>
-          <p className={styles.icon}>-</p>
+          <p className={styles.nickname}>nickname</p>
+          <p className={styles.icon}>~</p>
         </div>
         <div className={styles.contentsframe}>
           <img className={styles.content}></img>
