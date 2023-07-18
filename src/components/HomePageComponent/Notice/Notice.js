@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Notice.module.css';
+import styles from './notice.module.css';
 
 function Notice() {
   return (
