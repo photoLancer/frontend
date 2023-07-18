@@ -22,7 +22,7 @@ function Notice() {
             </select>
           </div>
         </div>
-        {/*본문*/}
+        {/*컨텐츠*/}
         <div className={styles.no_content}>
           <hr className={styles.hr1}></hr>
           <div className={styles.contents}>
