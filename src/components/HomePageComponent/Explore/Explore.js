@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styles from './explore.module.css';
 import Hotphoto from './Hotphoto';
 import RecentlyPhoto from './RecentlyPhoto';
+import Contest from './Contest';
+import Clickcontest from './Clickcontest';
 
 function Explore() {
   useEffect(() => {
@@ -28,13 +30,32 @@ function Explore() {
     { id: 3, img: maltipoo },
   ]);
 
-  const [contestPhotos, setContestPhtos] = useState([
+  const [contestInfos, setContestInfos] = useState([
     { id: 1, ranking: '1st', img: maltipoo },
     { id: 2, ranking: '2nd', img: maltipoo2 },
     { id: 3, ranking: '3rd', img: gym },
+    {
+      contest_id: 1,
+      constest_title: '이달의 일반인 인기모델',
+      contest_desc: 'abcd',
+    },
   ]);
 
   const [contestBtnClicked, setConstestBtnClicked] = useState(false);
+
+  const contestBtnHandler = () => {
+    setConstestBtnClicked(!contestBtnClicked);
+  };
+
+  const contestSelectUpBtnHandler = () => {
+    console.log('up');
+  };
+  const contestSelectDownBtnHandler = () => {
+    console.log('down');
+  };
+  const contestSelectCheckHandler = () => {
+    console.log('check');
+  };
 
   return (
     <>
@@ -65,16 +86,52 @@ function Explore() {
 
         <div className='mb-16'>
           <h1 className={styles.title}>
-            <button>{`PHOTO AWARDS >`}</button>
+            <button onClick={contestBtnHandler}>
+              {contestBtnClicked ? `PHOTO AWARDS v` : `PHOTO AWARDS >`}
+            </button>
           </h1>
-          <div className='flex flex-row'>
-            <div className='basis-1/3'>1st</div>
-            <div className='basis-1/3'>
-              <div className='h-2/4'>2</div>
-              <div className='h-2/4'>3</div>
+
+          {contestBtnClicked ? (
+            <div className='mt-8'>
+              <div className='select flex flex-row h-12 items-center mb-12'>
+                <h2 className={`basis-1/12 ${styles.contest_h2}`}>Contest</h2>
+                <div className='basis-10/12 flex flex-row justify-center h-full'>
+                  <div className={`flex flex-row ${styles.contest_select}`}>
+                    <div className='flex justify-center items-center basis-11/12'>
+                      <p className={styles.contest_title}>
+                        {contestInfos[3].constest_title}
+                      </p>
+                    </div>
+                    <div
+                      className={`flex flex-col basis-1/12 ${styles.contest_select_btns}`}
+                    >
+                      <button
+                        className='h-3/6'
+                        onClick={contestSelectUpBtnHandler}
+                      >
+                        ▲
+                      </button>
+                      <button
+                        className='h-3/6'
+                        onClick={contestSelectDownBtnHandler}
+                      >
+                        ▼
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  className={`basis-1/12 ${styles.contest_check_btn}`}
+                  onClick={contestSelectCheckHandler}
+                >
+                  check
+                </button>
+              </div>
+              <Clickcontest info={contestInfos} />
             </div>
-            <div className='basis-1/3'>contest info</div>
-          </div>
+          ) : (
+            <Contest info={contestInfos} />
+          )}
         </div>
       </div>
     </>
