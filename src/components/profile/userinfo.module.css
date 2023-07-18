@@ -1,0 +1,103 @@
+.user{
+    width: 100%;
+    height: 450px;
+    display: grid;
+    position: relative;
+}
+.editprofile{
+    grid-row: 1;
+    width: 10%;
+    height: 40px;
+    border-radius: 18px;
+    border: 1px solid black;
+    font-size: medium;
+    position: absolute;
+    right: 0;
+    margin-top: 20px;
+    margin-right: 20px;
+    text-align: center;
+}
+.info{
+    width: 100%;
+    height: 100%;
+    grid-row: 2;
+    margin-left: 150px;
+}
+.userinfo1{
+    width: 30%;
+    height: 100%;
+    display: inline-block;
+}
+.userinfo2{
+    width: 50%;
+    height: 70%;
+    display: inline-block;
+}
+
+.myTitle{
+    border-radius: 18px;
+    width: 50%;
+    height: 36px;
+    background-color: #FF8B00;
+    color: white;
+    text-align: center;
+    margin-left: 55px;
+    margin-bottom: 20px;
+    padding-top: 8px;
+}
+.myImg{
+    border: 1px solid black;
+    width: 70%;
+    height: 194px;
+    margin-left: 40px;
+    border-radius: 100px;
+    justify-content: center;
+}
+.numbering{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.box{
+    display: inline-block;
+    margin: 5px;
+    
+}
+.num{
+    text-align: center;
+    font-size: x-large;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.value{
+    text-align: center;
+    font-size: large;
+    font-weight: 500;
+    color: gray;
+}
+
+.myName{
+    font-weight:700;
+    font-size: x-large;
+}
+.infotext{
+    border: 1px solid black;
+    width: 100%;
+    height: 150px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.tagging{
+    width:100%;
+}
+.tag{
+    border-radius: 20px;
+    border: 1px solid black;
+    margin-right: 5px;
+}
+.userinfo1wrap{
+    margin: 30px;
+}
+.userinfo2wrap{
+    margin:30px;
+}

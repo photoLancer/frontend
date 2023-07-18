@@ -1,7 +1,9 @@
 import { React, useEffect, useState } from 'react';
 import styles from './sidebar.module.css';
 
-function Sidebar() {
+function Sidebar(props) {
+  const { current_page } = props;
+
   const user_image_url =
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSC8LH9YxLxyznRum-miHeKOtlHHIXzq-KAA&usqp=CAU';
 
@@ -40,37 +42,49 @@ function Sidebar() {
           <a href='/' className={styles.nav_contents_home}>
             <div className='w-10/12 flex flex-row'>
               <div className='w-5 h-5 bg-slate-300 mr-2'></div>
-              <p className='font-semibold'>홈</p>
+              <p className={`${current_page === 1 ? 'font-semibold' : ''}`}>
+                홈
+              </p>
             </div>
           </a>
           <a href='/profile' className={styles.nav_contents}>
             <div className='w-10/12 flex flex-row'>
               <div className='w-5 h-5 bg-slate-300 mr-2'></div>
-              <p>나의 프로필</p>
+              <p className={`${current_page === 2 ? 'font-semibold' : ''}`}>
+                나의 프로필
+              </p>
             </div>
           </a>
           <a href='/' className={styles.nav_contents}>
             <div className='w-10/12 flex flex-row'>
               <div className='w-5 h-5 bg-slate-300 mr-2'></div>
-              <p>알람</p>
+              <p className={`${current_page === 3 ? 'font-semibold' : ''}`}>
+                알람
+              </p>
             </div>
           </a>
           <a href='/' className={styles.nav_contents}>
             <div className='w-10/12 flex flex-row'>
               <div className='w-5 h-5 bg-slate-300 mr-2'></div>
-              <p>채팅</p>
+              <p className={`${current_page === 4 ? 'font-semibold' : ''}`}>
+                채팅
+              </p>
             </div>
           </a>
           <a href='/' className={styles.nav_contents}>
             <div className='w-10/12 flex flex-row'>
               <div className='w-5 h-5 bg-slate-300 mr-2'></div>
-              <p>사진 올리기</p>
+              <p className={`${current_page === 5 ? 'font-semibold' : ''}`}>
+                사진 올리기
+              </p>
             </div>
           </a>
           <a href='/' className={styles.nav_contents}>
             <div className='w-10/12 flex flex-row'>
               <div className='w-5 h-5 bg-slate-300 mr-2'></div>
-              <p>설정</p>
+              <p className={`${current_page === 6 ? 'font-semibold' : ''}`}>
+                설정
+              </p>
             </div>
           </a>
         </nav>

@@ -1,41 +1,44 @@
-import "./profile.css";
+import styles from './userinfo.module.css';
 
 const UserInfo=()=>{
     return(
         <>
-        <div className="user">
-            <div className="editprofile">Edit Profile</div>
-            <div className="userinfo1">
-                <div className="userinfo1wrap">
-                <div className="myTitle">Beginner</div>  
-                <div className="myImg"><img /></div>
-                <div className="numbering">
-                    <div className="box" value="post">
-                        <div className="num">?</div>
-                        <div className="value">Posts</div>
+        <div className={styles.user}>
+            <button className={styles.editprofile} onClick={''}>Edit Profile</button>
+            <div className={styles.info}>
+            <div className={styles.userinfo1}>
+                <div className={styles.userinfo1wrap}>
+                <div className={styles.myTitle}>Beginner</div>  
+                <div className={styles.myImg}><img /></div>
+                <div className={styles.numbering}>
+                    <div className={styles.box} value="post">
+                        <div className={styles.num}>?</div>
+                        <div className={styles.value}>Posts</div>
                     </div>
-                    <div className="box" value="follower">
-                        <div className="num">?</div>
-                        <div className="value">Followers</div>
+                    <div className={styles.box} value="follower">
+                        <div className={styles.num}>?</div>
+                        <div className={styles.value}>Followers</div>
                     </div>
-                    <div className="box" value="following">
-                        <div className="num">?</div>
-                        <div className="value">Following</div>
+                    <div className={styles.box} value="following">
+                        <div className={styles.num}>?</div>
+                        <div className={styles.value}>Following</div>
                     </div>
                 </div>
                 </div>
             </div>
-            <div className="userinfo2">
-                <div className="userinfo2wrap">
-                <div className="myName">Tokemoo</div>
-                <div className="infotext"></div>
-                <div className="tagging">
-                    <span className="tag">##</span>
-                    <span className="tag">##</span>
+            <div className={styles.userinfo2}>
+                <div className={styles.userinfo2wrap}>
+                <div className={styles.myName}>Nickname</div>
+                <div className={styles.infotext}></div>
+                <div className={styles.tagging}>
+                    <span className={styles.tag}>##</span>
+                    <span className={styles.tag}>##</span>
                 </div>
+            </div>
             </div>
             </div>
         </div>
+
         </>
     );
 

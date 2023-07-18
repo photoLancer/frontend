@@ -31,7 +31,7 @@ function HomePage() {
           <Header />
           <div className='flex flex-row'>
             <div className='sidebar basis-1/4 flex flex-row justify-center border border-solid border-black'>
-              <Sidebar />
+              <Sidebar current_page={1} />
             </div>
             <div className='main basis-3/4 border border-solid border-black'>
               <div className='searchbar'>

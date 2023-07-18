@@ -1,13 +1,15 @@
-import "./profile.css";
+import styles from './profileframe.module.css';
 
 const ProfileFrame=()=>{
     return(
         <>
-    <nav className="headchoice">
-        <a href=""><div className="profile">Profile</div></a>
-        <a href=""><div className="album">Album</div></a>
-    </nav>
-    <div className="mainbox"></div>
+    <div className={styles.headchoice}>
+        <nav>
+        <a href=""><div className={styles.profile}>Profile</div></a>
+        <a href=""><div className={styles.album}>Album</div></a>
+        </nav>
+    </div>
+    
         </>
     );
 }
