@@ -1,0 +1,92 @@
+.a{
+  width: 100%;
+  height: 20px;
+  position: relative;
+  margin-top: 30px;  
+}
+.chargepoint{
+    height: 100%;
+    color: gray;
+    position: absolute;
+    right: 0;
+    
+}
+.box1{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.text1{
+    display: inline-block;
+    font-size: medium;
+    font-weight: 600;
+    padding-top: 5px;
+}
+.entermoney{
+    width: 70%;
+    display: inline-block;
+    border: 1px solid grey;
+    padding: 5px;
+}
+.b{
+    width: 100%;
+    height: 20px;
+    position: relative;
+
+}
+.afterpoint{
+    height: 100%;
+    position: absolute;
+    right: 0;
+    font-weight: 600;
+}
+.box2{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.text2{
+    display: inline-block;
+    font-size: medium;
+    font-weight: 600;
+    padding-top: 5px;
+}
+.enterbankname{
+    width:70%;
+    display: inline-block;
+    border: 1px solid grey;
+    padding: 5px;
+}
+.c{
+    width: 100%;
+    height: 20px;
+    position: relative;
+}
+.addbank{
+    height: 100%;
+    margin-top: 30px;
+    color: #FF8B00;
+    position: absolute;
+    right: 0;
+    font-weight: 600;
+    font-size: small;
+
+}
+.footer{
+    width: 100%;
+    position: relative;
+}
+.chargebtn{
+    width: 30%;
+    height: 32px;
+    color: white;
+    background-color: black;
+    border-radius: 8px;
+    position: absolute;
+    right: 0;
+    font-weight: 500;
+}
