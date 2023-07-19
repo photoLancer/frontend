@@ -4,7 +4,7 @@
     display: grid;
     position: relative;
 }
-.editprofile{
+.editprofilebtn{
     grid-row: 1;
     width: 10%;
     height: 40px;
@@ -17,8 +17,8 @@
     margin-right: 20px;
     text-align: center;
 }
-.editprofile:hover{
-    background-color: lightgray;
+.editprofilebtn:hover{
+    background-color: red;
 }
 .info{
     width: 100%;
