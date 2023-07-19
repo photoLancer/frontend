@@ -1,4 +1,3 @@
-import ProfileFrame from "../ProfileFrame";
 import NavPost from "./NavPost";
 import EditPhoto from "./EditPhoto";
 import UserPhoto from "./UserPhoto";
@@ -14,3 +13,4 @@ function Album() {
         </>
     );
 }
+export default Album;

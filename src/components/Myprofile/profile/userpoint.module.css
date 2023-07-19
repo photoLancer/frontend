@@ -26,61 +26,19 @@
     height: 600px;
     
 }
-.option{
-    display: flex;
-    width: 100%;
-}
-.exchange, .charge{
-    margin-right: 30px;
-    color: gray;
-    display: inline-block;
-    font-weight: 500;
-}
-.tradelog{
-    color: #000000;
-    display: inline-block;
-    font-weight: 500;
-    border-bottom: 2px solid black;
-}
-.tradeLogcheck{
-    margin-top: 20px;
-}
-table{
-    border-collapse: collapse;
-    border-top: 2px solid gray;
-    align-items: center;
-    border-left: none;
-    border-right: none;
-    justify-content: space-between;
-    width: 100%;
-}
-th{
-    border-bottom: 2px solid gray;
-}
-td{
-    border-bottom: 2px solid #ededed;
-    text-align: center;
-}
 
-td,th{
-    width: 30%;
-    height: 58px;
-    border-left: none;
-    border-right: none;
-    justify-content: space-between;
-    padding-top: 20px;
-}
-.pagenum{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-.pagenum button{
-    width: 5%;
-    height: 20px;
-    display: inline-block;
-    margin-right: 30px;
-    border: 1px solid black;
-    border-radius: 50px;
-    text-align: center;
-}
+.navbar_button {
+    font-family: Pretendard;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    padding: 2px 10px;
+    border-radius: 10px 10px 0px 0px;
+    color: #c2c2c2;
+    margin-right: 6px;
+  }
+  .navbar_button:hover {
+    color: #000;
+  }

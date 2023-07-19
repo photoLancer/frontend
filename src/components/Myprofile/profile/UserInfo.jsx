@@ -1,10 +1,12 @@
+import { useState } from 'react';
 import styles from './userinfo.module.css';
 
 const UserInfo=()=>{
+
     return(
         <>
         <div className={styles.user}>
-            <button className={styles.editprofile} onClick={''}>Edit Profile</button>
+            <button className={styles.editprofile} onClick={editprofileHandler}>Edit Profile</button>
             <div className={styles.info}>
             <div className={styles.userinfo1}>
                 <div className={styles.userinfo1wrap}>

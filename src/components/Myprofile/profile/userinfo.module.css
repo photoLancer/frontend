@@ -17,6 +17,9 @@
     margin-right: 20px;
     text-align: center;
 }
+.editprofile:hover{
+    background-color: lightgray;
+}
 .info{
     width: 100%;
     height: 100%;

@@ -7,4 +7,25 @@
 .contents {
   width: 90vw;
 }
-
+.navbar_hr {
+  height: 2px;
+  color: #000;
+  background-color: #000;
+  border-top-width: 0;
+}
+.navbar_button {
+  font-family: Pretendard;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding: 2px 10px;
+  border-radius: 10px 10px 0px 0px;
+  color: #c2c2c2;
+  margin-right: 6px;
+}
+.navbar_button:hover {
+  background-color: #000;
+  color: #fff;
+}

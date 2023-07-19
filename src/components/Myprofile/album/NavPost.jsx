@@ -1,4 +1,4 @@
-import styles from './navpst.module.css';
+import styles from './navpost.module.css';
 
 const NavPost=()=>{
     return(
