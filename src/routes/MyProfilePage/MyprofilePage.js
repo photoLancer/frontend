@@ -1,8 +1,5 @@
 import React from 'react';
-import ProfileFrame from '../../components/profile/ProfileFrame';
-import UserInfo from '../../components/profile/UserInfo';
-import UserLevel from '../../components/profile/UserLevel';
-import UserPoint from '../../components/profile/UserPoint';
+import Profile from '../../components/Myprofile/profile/Profile';
 import Header from '../../components/Header/Header';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import styles from './myprofile.module.css';
@@ -17,14 +14,7 @@ function MyprofilePage() {
             <div className='sidebar basis-1/4 flex flex-row justify-center border border-solid border-black'>
               <Sidebar current_page={2} />
             </div>
-            <div className='main basis-3/4 border border-solid border-black'>
-              <ProfileFrame />
-              <UserInfo />
-              <div className={styles.smallboxing}>
-                <UserLevel />
-                <UserPoint />
-              </div>
-            </div>
+            <Profile />
           </div>
         </div>
       </div>
