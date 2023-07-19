@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './notice.module.css';
+import styles from './Notice.module.css';
 
 function Notice() {
   return (
@@ -14,11 +14,11 @@ function Notice() {
             <button className={styles.btn}>Service</button>
           </div>
           <div className={styles.types2}>
-            <select className={styles.type_select} name="types">
-              <option value="All">All</option>
-              <option value="System">System</option>
-              <option value="Event">Event</option>
-              <option value="Service">Service</option>
+            <select className={styles.type_select} name='types'>
+              <option value='All'>All</option>
+              <option value='System'>System</option>
+              <option value='Event'>Event</option>
+              <option value='Service'>Service</option>
             </select>
           </div>
         </div>
@@ -89,7 +89,7 @@ function Notice() {
           <hr className={styles.hr2} />
         </div>
         {/*하단*/}
-        <div className="flex flex-row justify-center">
+        <div className='flex flex-row justify-center'>
           <div className={styles.no_footer}>
             <div>{'<'}</div>
             <div>1</div>
