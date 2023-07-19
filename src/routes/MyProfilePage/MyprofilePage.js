@@ -1,13 +1,21 @@
-import React from 'react';
-import ProfileFrame from '../../components/profile/ProfileFrame';
-import UserInfo from '../../components/profile/UserInfo';
-import UserLevel from '../../components/profile/UserLevel';
-import UserPoint from '../../components/profile/UserPoint';
+import React, { useState } from 'react';
+import Profile from '../../components/Myprofile/profile/Profile';
 import Header from '../../components/Header/Header';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import styles from './myprofile.module.css';
+import Album from '../../components/Myprofile/album/Album';
+import EditProfile from '../../components/Myprofile/profile/edit/EditProfile';
 
 function MyprofilePage() {
+  const [profileContent,setProfileContent]=useState(1);
+
+  const profileHandler=()=>{
+    setProfileContent(1);
+  };
+  const albumHandler=()=>{
+    setProfileContent(2);
+  };
+
   return (
     <>
       <div className={styles.viewport}>
@@ -18,11 +26,27 @@ function MyprofilePage() {
               <Sidebar current_page={2} />
             </div>
             <div className='main basis-3/4 border border-solid border-black'>
-              <ProfileFrame />
-              <UserInfo />
-              <div className={styles.smallboxing}>
-                <UserLevel />
-                <UserPoint />
+              <div className='navbar mb-8'>
+                <div className='flex flex-row'>
+                  <button
+                    className={styles.navbar_button}
+                    onClick={profileHandler}
+                  >
+                    Profile
+                  </button>
+                  <button
+                    className={styles.navbar_button}
+                    onClick={albumHandler}
+                  >
+                    Album
+                  </button>
+                </div>
+                <hr className={styles.navbar_hr} />
+              </div>
+              <div className='maincontents border border-solid border-red-500'>
+                {profileContent === 1 ? <Profile /> : ''}
+                {profileContent === 2 ? <Album /> : ''}
+                {profileContent === 3 ? <EditProfile /> : ''}
               </div>
             </div>
           </div>
