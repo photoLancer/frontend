@@ -1,0 +1,41 @@
+.title {
+  font-family: Pretendard;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.contest_info {
+  background-color: #f2f2f2;
+  border-radius: 32px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contest_photo {
+  border: 1px solid #000;
+  border-radius: 32px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.first_photo {
+  height: 336px;
+  margin-right: 12px;
+}
+.second_photo {
+  height: 160px;
+}
+
+.contest_photo_img:hover {
+  transform: scale(1.05);
+  transition: 0.5s;
+  cursor: pointer;
+}

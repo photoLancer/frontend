@@ -1,0 +1,21 @@
+.contest_photo {
+  border: 1px solid #000;
+  border-radius: 32px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.contest_photo_img:hover {
+  transform: scale(1.05);
+  transition: 0.5s;
+  cursor: pointer;
+}
+.contest_info {
+  border-radius: 32px;
+  background-color: #ededed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

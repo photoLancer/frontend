@@ -9,7 +9,7 @@ import Following from '../../components/HomePageComponent/Following/Following';
 import Notice from '../../components/HomePageComponent/Notice/Notice';
 
 function HomePage() {
-  const [homeContent, setHomeContent] = useState(4);
+  const [homeContent, setHomeContent] = useState(1);
 
   const exploreHandler = () => {
     setHomeContent(1);

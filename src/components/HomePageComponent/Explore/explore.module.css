@@ -1,0 +1,46 @@
+.title {
+  font-family: neurimbo Gothic;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.contest_h2 {
+  font-family: Pretendard;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.contest_select {
+  background-color: #f2f2f2;
+  width: 90%;
+  border-radius: 18px;
+}
+.contest_title {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.contest_select_btns {
+  background-color: #c8c8c8;
+  color: #a4a4a4;
+  overflow: hidden;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+
+.contest_check_btn {
+  height: 100%;
+  background-color: #000;
+  color: #fff;
+  border-radius: 18px;
+}
