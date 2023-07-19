@@ -8,17 +8,17 @@ function Notice() {
         {/*헤더*/}
         <div className={styles.no_head}>
           <div className={styles.types}>
-            <button>All</button>
-            <button>System</button>
-            <button>Event</button>
-            <button>Service</button>
+            <button className={styles.btn}>All</button>
+            <button className={styles.btn}>System</button>
+            <button className={styles.btn}>Event</button>
+            <button className={styles.btn}>Service</button>
           </div>
           <div className={styles.types2}>
-            <select name='types'>
-              <option value='All'>All</option>
-              <option value='System'>System</option>
-              <option value='Event'>Event</option>
-              <option value='Service'>Service</option>
+            <select className={styles.type_select} name="types">
+              <option value="All">All</option>
+              <option value="System">System</option>
+              <option value="Event">Event</option>
+              <option value="Service">Service</option>
             </select>
           </div>
         </div>
@@ -89,7 +89,7 @@ function Notice() {
           <hr className={styles.hr2} />
         </div>
         {/*하단*/}
-        <div className='flex flex-row justify-center'>
+        <div className="flex flex-row justify-center">
           <div className={styles.no_footer}>
             <div>{'<'}</div>
             <div>1</div>
