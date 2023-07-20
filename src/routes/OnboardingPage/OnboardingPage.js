@@ -1,15 +1,24 @@
 import React from 'react';
 import styles from './Onboarding.module.css';
-import Header from '../../components/Header/Header';
+import logo1 from '../../logo/logo_symbol.png';
+import LoginPage from '../LoginPage/LoginPage';
+import { Link, useNavigate } from 'react-router-dom';
 function OnboardingPage() {
+  const navigate = useNavigate();
+  const loginHandler = () => {
+    navigate('/LoginPage');
+  };
   return (
-    <div className={styles.viewport}>
-      <div class={styles.contents}>
-        <Header></Header>
-        <div className={styles.Onboarding}>
-          <div className={styles.ob_2}>반응형 이미지</div>
+    <div className={styles.Onboarding}>
+      <div className={styles.ob_1}>
+        <div>
+          <img src={logo1} className={styles.symbol} alt="logo1" />
         </div>
+        <Link to="/LoginPage" onClick={loginHandler}>
+          <button>Log in</button>
+        </Link>
       </div>
+      <div className={styles.ob_2}>반응형 이미지</div>
     </div>
   );
 }
