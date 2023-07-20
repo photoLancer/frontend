@@ -1,0 +1,7 @@
+LoginPage {
+  display: flex;
+  flex-direction: row;
+}
+img {
+  height: 100%;
+}
