@@ -1,0 +1,32 @@
+.boxing{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+}
+.editphotobox{
+    position: relative;
+    width: 100%;
+  }
+  .editphotobtn{
+    background-color: #FF8B00;
+    border-radius: 7px;
+    position: absolute;
+    right: 0;
+    width: 10%;
+    height: 25px;
+
+  }
+.photobox{
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 50px;
+}
+.myimage{
+    width: 30%;
+    height: 500px;
+    border-radius: 32px;
+    border: 1px solid black;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    
+}

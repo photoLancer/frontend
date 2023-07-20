@@ -1,9 +1,10 @@
+
 .navbar{
     display: flex;
     flex-direction: row;
     position: absolute;
     right: 0;
-    width: 100%;
+    width: 30%;
     height: 30px;
 }
 .navbar_button {
@@ -22,15 +23,4 @@
   }
   .navbar_button:hover {
     color: #000;
-  }
-  .editphotobox{
-    position: relative;
-    width: 100%;
-  }
-  .editphotobtn{
-    background-color: #FF8B00;
-    position: absolute;
-    right: 0;
-    width: 10%;
-    height: 25px;
   }

@@ -20,7 +20,7 @@ function Album() {
     
     return (
         <>
-        <div className='main basis-3/4 border border-solid border-black relative'>
+        <div className='main basis-3/4 border border-solid border-black'>
                 <div className={styles.navbar}>
                   <button
                     className={styles.navbar_button}
@@ -41,8 +41,6 @@ function Album() {
                     Bought Photo
                   </button>
                 </div>
-
-              <div className={styles.editphotobox}><button className={styles.editphotobtn}>Edit Photo</button></div>
 
               <div className='maincontents border border-solid border-red-500'>
                 {albumContent === 1 ? <MyPost /> : ''}
