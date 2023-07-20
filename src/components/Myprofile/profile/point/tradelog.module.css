@@ -1,47 +1,4 @@
 
-.point{
-    width: 50%;
-    height: 1200px;
-    border-top: 2px solid #ededed;
-    display: inline-block;
-}
-.pointcheckwrap{
-    margin: 30px;
-}
-.pointcheck{
-    width: 100%;
-    height: 140px;
-}
-.pointhead{
-    font-size:xx-large;
-    font-weight: 600;
-}
-.myPoint{
-    font-size:large;
-    font-weight: 600;
-    margin: 10px;
-}
-.chargingBox{
-    width: 90%;
-    height: 600px;
-    
-}
-.option{
-    display: flex;
-    width: 100%;
-}
-.exchange, .charge{
-    margin-right: 30px;
-    color: gray;
-    display: inline-block;
-    font-weight: 500;
-}
-.tradelog{
-    color: #000000;
-    display: inline-block;
-    font-weight: 500;
-    border-bottom: 2px solid black;
-}
 .tradeLogcheck{
     margin-top: 20px;
 }

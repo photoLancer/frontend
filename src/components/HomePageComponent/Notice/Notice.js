@@ -8,17 +8,25 @@ function Notice() {
         {/*헤더*/}
         <div className={styles.no_head}>
           <div className={styles.types}>
-            <button>All</button>
-            <button>System</button>
-            <button>Event</button>
-            <button>Service</button>
+            <button className={styles.btn}>All</button>
+            <button className={styles.btn}>System</button>
+            <button className={styles.btn}>Event</button>
+            <button className={styles.btn}>Service</button>
           </div>
           <div className={styles.types2}>
+<<<<<<< HEAD
             <select name="types">
               <option value="All">All</option>
               <option value="System">System</option>
               <option value="Event">Event</option>
               <option value="Service">Service</option>
+=======
+            <select className={styles.type_select} name='types'>
+              <option value='All'>All</option>
+              <option value='System'>System</option>
+              <option value='Event'>Event</option>
+              <option value='Service'>Service</option>
+>>>>>>> bd686bb7afaaaa52a6c9123d3f526e3807bebec3
             </select>
           </div>
         </div>
