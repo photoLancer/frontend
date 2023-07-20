@@ -14,19 +14,11 @@ function Notice() {
             <button className={styles.btn}>Service</button>
           </div>
           <div className={styles.types2}>
-<<<<<<< HEAD
-            <select name="types">
+            <select className={styles.type_select} name="types">
               <option value="All">All</option>
               <option value="System">System</option>
               <option value="Event">Event</option>
               <option value="Service">Service</option>
-=======
-            <select className={styles.type_select} name='types'>
-              <option value='All'>All</option>
-              <option value='System'>System</option>
-              <option value='Event'>Event</option>
-              <option value='Service'>Service</option>
->>>>>>> bd686bb7afaaaa52a6c9123d3f526e3807bebec3
             </select>
           </div>
         </div>
