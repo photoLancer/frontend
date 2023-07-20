@@ -1,21 +1,9 @@
-import styles from './userpoint.module.css';
+import styles from './tradelog.module.css';
 
-const UserPoint=()=>{
+const TradeLog=()=>{
     return(
-    <>
-    <div className={styles.point}>
-        <div className={styles.pointcheckwrap}>
-            <div className={styles.pointcheck}>
-                <div className={styles.pointhead}>Your Point</div>
-                <div className={styles.myPoint}>$ 55,000</div>
-            </div>
-            <div className={styles.chargingBox}>
-                <nav className={styles.option}>
-                    <a href=""><div className={styles.exchange}>Exchange</div></a>
-                    <a href=""><div className={styles.charge}>Charge</div></a>
-                    <a href=""><div className={styles.tradelog}>Trade log</div></a>
-                </nav>
-                <div class={styles.tradeLogcheck}>
+        <>
+        <div class={styles.tradeLogcheck}>
                     <table border={1}>
                         <th>포인트</th>
                         <th>적립 구분</th>
@@ -78,10 +66,8 @@ const UserPoint=()=>{
                     <button>3</button>
                     <button>4</button>
                 </div>
-            </div>
-            </div>
-    </div>
-    </>
+        </>
     );
+
 }
-export default UserPoint;
+export default TradeLog;
