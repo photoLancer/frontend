@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, createContext, useReducer } from 'react';
 import styles from './homePage.module.css';
 import Header from '../../components/Header/Header';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -8,8 +8,32 @@ import Bookmark from '../../components/HomePageComponent/Bookmark/Bookmark';
 import Following from '../../components/HomePageComponent/Following/Following';
 import Notice from '../../components/HomePageComponent/Notice/Notice';
 
+export const PhotoContext = createContext();
+export const PhotoDispatchContext = createContext();
+
+const initialPhotoState = {
+  photoClicked: false,
+  photo_id: 0,
+};
+const photoReducer = (state, action) => {
+  switch (action.type) {
+    case 'PHOTO_CLICK':
+      return {
+        ...state,
+        photoClicked: true,
+        photo_id: action.id,
+      };
+    default:
+      throw new Error('Unhandled action');
+  }
+};
+
 function HomePage() {
   const [homeContent, setHomeContent] = useState(1);
+  const [photoState, photoDispatch] = useReducer(
+    photoReducer,
+    initialPhotoState
+  );
 
   const exploreHandler = () => {
     setHomeContent(1);
@@ -26,6 +50,8 @@ function HomePage() {
 
   return (
     <>
+      <p>{photoState.photoClicked ? 'true' : 'false'}</p>
+      <p>{photoState.photo_id}</p>
       <div className={styles.viewport}>
         <div class={styles.contents}>
           <Header />
@@ -67,12 +93,16 @@ function HomePage() {
                 <hr className={styles.navbar_hr} />
               </div>
 
-              <div className='maincontents border border-solid border-red-500'>
-                {homeContent === 1 ? <Explore /> : ''}
-                {homeContent === 2 ? <Bookmark /> : ''}
-                {homeContent === 3 ? <Following /> : ''}
-                {homeContent === 4 ? <Notice /> : ''}
-              </div>
+              <PhotoContext.Provider value={photoState}>
+                <PhotoDispatchContext.Provider value={photoDispatch}>
+                  <div className='maincontents border border-solid border-red-500'>
+                    {homeContent === 1 ? <Explore /> : ''}
+                    {homeContent === 2 ? <Bookmark /> : ''}
+                    {homeContent === 3 ? <Following /> : ''}
+                    {homeContent === 4 ? <Notice /> : ''}
+                  </div>
+                </PhotoDispatchContext.Provider>
+              </PhotoContext.Provider>
             </div>
           </div>
         </div>

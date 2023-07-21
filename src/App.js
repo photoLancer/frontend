@@ -5,6 +5,7 @@ import HomePage from './routes/HomePage/HomePage';
 import LoginPage from './routes/LoginPage/LoginPage';
 import OnboardingPage from './routes/OnboardingPage/OnboardingPage';
 import MyprofilePage from './routes/MyProfilePage/MyprofilePage';
+import SettingPage from './routes/SettingPage/SettingPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path='/login' element={LoginPage()} />
         <Route exact path='/Onboarding' element={OnboardingPage()} />
         <Route exact path='/profile' element={MyprofilePage()} />
+        <Route exact path='/setting' element={SettingPage()} />
       </Routes>
     </div>
   );

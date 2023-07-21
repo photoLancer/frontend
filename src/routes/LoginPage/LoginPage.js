@@ -8,6 +8,8 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import styles from './LoginPage.module.css';
 import Login from './Login.JPG';
+import React from 'react';
+import styles from './LoginPage.module.css';
 
 function LoginPage() {
   return (
@@ -87,6 +89,12 @@ function LoginPage() {
           <Grid container>Using Photo Lancer on mobile</Grid>
         </Box>
       </Container>
+      <img src="./LogIn_background.JPG"></img>
+      <div className={styles.Login_contents}>
+        <input name="id"></input>
+        <input name="pwd"></input>
+        <input type="submit" value="Sign in" name="sign in"></input>
+      </div>
     </div>
   );
 }
