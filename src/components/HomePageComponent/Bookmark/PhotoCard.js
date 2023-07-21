@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './photocard.module.css';
 import { Col } from 'antd';
+import { PhotoDispatchContext } from '../../../routes/HomePage/HomePage';
 
 function PhotoCard(props) {
+  const photoDispatch = useContext(PhotoDispatchContext);
+
   const { id, image } = props;
   const photoClickHandler = () => {
-    console.log('a');
+    photoDispatch({ type: 'PHOTO_CLICK', id: id });
   };
   return (
     <Col lg={8} md={12} xs={24}>
