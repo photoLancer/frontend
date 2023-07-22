@@ -8,18 +8,24 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import styles from './LoginPage.module.css';
 import Login from './Login.JPG';
-import React from 'react';
-import styles from './LoginPage.module.css';
 
 function LoginPage() {
   return (
     <div className={styles.LoginPage}>
-      <img className={styles.L_img} src={Login} alt="login_camera" />
-      <Container component="main">
-        <Box sx={{ marginTop: '168px', display: 'flex', flexDirection: 'column', marginLeft: '250px', width: '35%' }}>
+      <img className={styles.L_img} src={Login} alt='login_camera' />
+      <Container component='main'>
+        <Box
+          sx={{
+            marginTop: '168px',
+            display: 'flex',
+            flexDirection: 'column',
+            marginLeft: '250px',
+            width: '35%',
+          }}
+        >
           <Typography
-            component="h1"
-            variant="h5"
+            component='h1'
+            variant='h5'
             selected
             sx={{
               fontFamily: 'neurimbo Gothic',
@@ -31,10 +37,10 @@ function LoginPage() {
             Log in
           </Typography>
           <TextField
-            label="ID"
-            name="ID"
+            label='ID'
+            name='ID'
             required
-            margin="normal"
+            margin='normal'
             autoFocus
             sx={{
               background: 'rgba(237, 237, 237, 1)',
@@ -45,8 +51,8 @@ function LoginPage() {
             }}
           ></TextField>
           <TextField
-            label="Password"
-            name="pwd"
+            label='Password'
+            name='pwd'
             sx={{
               mt: 2,
               background: 'rgba(237, 237, 237, 1)',
@@ -55,12 +61,12 @@ function LoginPage() {
               border: 'none',
               borderRadius: '16px',
             }}
-            margin="normal"
+            margin='normal'
             required
           ></TextField>
           <Button
-            type="submit"
-            variant="contained"
+            type='submit'
+            variant='contained'
             sx={{
               mt: 2,
               mb: 2,
@@ -79,7 +85,13 @@ function LoginPage() {
             Sign in
           </Button>
 
-          <Grid container spacing={2} direction="row" justifyContent="center" alignItems="center">
+          <Grid
+            container
+            spacing={2}
+            direction='row'
+            justifyContent='center'
+            alignItems='center'
+          >
             <Grid item md={5}>
               Find <Link>ID or Password</Link>
             </Grid>
@@ -89,11 +101,11 @@ function LoginPage() {
           <Grid container>Using Photo Lancer on mobile</Grid>
         </Box>
       </Container>
-      <img src="./LogIn_background.JPG"></img>
+      <img src='./LogIn_background.JPG'></img>
       <div className={styles.Login_contents}>
-        <input name="id"></input>
-        <input name="pwd"></input>
-        <input type="submit" value="Sign in" name="sign in"></input>
+        <input name='id'></input>
+        <input name='pwd'></input>
+        <input type='submit' value='Sign in' name='sign in'></input>
       </div>
     </div>
   );
