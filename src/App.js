@@ -34,6 +34,27 @@ const uploadReducer = (state, action) => {
   }
 };
 
+// const initialUserState = {
+//   userId: 10,
+// };
+
+// const userReducer = (state, action) => {
+//   switch (action.type) {
+//     case 'LOGIN':
+//       return {
+//         ...state,
+//         userId: action.id,
+//       };
+//     case 'LOGOUT':
+//       return {
+//         ...state,
+//         userId: -1,
+//       };
+//     default:
+//       throw new Error('Unhandled action');
+//   }
+// };
+
 function App() {
   const [uploadingState, uploadingDispatch] = useReducer(
     uploadReducer,

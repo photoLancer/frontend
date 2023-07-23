@@ -5,12 +5,15 @@ import './index.css';
 import './reset.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { UserContext, UserProvider } from './contexts/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <UserProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </UserProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

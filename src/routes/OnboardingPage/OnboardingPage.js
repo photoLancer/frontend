@@ -1,20 +1,19 @@
 import React from 'react';
 import styles from './Onboarding.module.css';
 import logo1 from '../../logo/logo_symbol.png';
-import LoginPage from '../LoginPage/LoginPage';
 import { Link, useNavigate } from 'react-router-dom';
 function OnboardingPage() {
   const navigate = useNavigate();
   const loginHandler = () => {
-    navigate('/LoginPage');
+    navigate('/login');
   };
   return (
     <div className={styles.Onboarding}>
       <div className={styles.ob_1}>
         <div>
-          <img src={logo1} className={styles.symbol} alt="logo1" />
+          <img src={logo1} className={styles.symbol} alt='logo1' />
         </div>
-        <Link to="/LoginPage" onClick={loginHandler}>
+        <Link to='/login' onClick={loginHandler}>
           <button>Log in</button>
         </Link>
       </div>
