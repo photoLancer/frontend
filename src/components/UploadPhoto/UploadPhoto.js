@@ -10,7 +10,9 @@ function UploadPhoto() {
   return (
     <>
       <div className={styles.screen} onClick={screenClickHandler}>
-        <div className={styles.uploadScreen}></div>
+        <div className={styles.uploadScreen}>
+          {/* 이 부분에 작업하시면 됩니다 */}
+        </div>
       </div>
     </>
   );

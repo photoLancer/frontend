@@ -13,7 +13,9 @@ function ChatPage() {
             <div className='sidebar basis-1/4 flex flex-row justify-center border border-solid border-black'>
               <Sidebar current_page={4} />
             </div>
-            <div className='main basis-3/4 border border-solid border-black'></div>
+            <div className='main basis-3/4 border border-solid border-black'>
+              {/* 이 부분에 작업하시면 됩니다 */}
+            </div>
           </div>
         </div>
       </div>
