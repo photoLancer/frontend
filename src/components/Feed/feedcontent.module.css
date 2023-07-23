@@ -1,6 +1,5 @@
 .content {
   background-color: #fff;
-  height: 68vh;
   border: 1px solid #000;
   border-radius: 24px;
 }
@@ -43,10 +42,17 @@
   border-radius: 8px;
   margin-right: 4px;
 }
+.btn:hover {
+  background-color: #0089ec;
+}
+
+.btn_like_active {
+  color: red;
+}
 
 .photo_img {
   width: 100%;
-  height: 70%;
+  height: 45vh;
   display: flex;
   justify-content: center;
   align-items: center;
