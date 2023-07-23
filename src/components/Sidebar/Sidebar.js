@@ -63,7 +63,7 @@ function Sidebar(props) {
               </p>
             </div>
           </a>
-          <a href='/' className={styles.nav_contents}>
+          <a href='/chat' className={styles.nav_contents}>
             <div className='w-10/12 flex flex-row'>
               <div className='w-5 h-5 bg-slate-300 mr-2'></div>
               <p className={`${current_page === 4 ? 'font-semibold' : ''}`}>

@@ -6,6 +6,7 @@ import LoginPage from './routes/LoginPage/LoginPage';
 import OnboardingPage from './routes/OnboardingPage/OnboardingPage';
 import MyprofilePage from './routes/MyProfilePage/MyprofilePage';
 import SettingPage from './routes/SettingPage/SettingPage';
+import ChatPage from './routes/ChatPage/ChatPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path='/login' element={LoginPage()} />
         <Route exact path='/Onboarding' element={OnboardingPage()} />
         <Route exact path='/profile' element={MyprofilePage()} />
+        <Route exact path='/chat' element={ChatPage()} />
         <Route exact path='/setting' element={SettingPage()} />
       </Routes>
     </div>
