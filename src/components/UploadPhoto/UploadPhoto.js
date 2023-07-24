@@ -7,6 +7,9 @@ function UploadPhoto() {
   const screenClickHandler = () => {
     uploadDispatch({ type: 'SCREEN_CLICK' });
   };
+  const uploadScreenClickHandler = (e) => {
+    e.stopPropagation();
+  };
   return (
     <>
       <div className={styles.screen} onClick={screenClickHandler}>
