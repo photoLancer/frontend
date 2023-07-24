@@ -7,6 +7,7 @@ import Explore from '../../components/HomePageComponent/Explore/Explore';
 import Bookmark from '../../components/HomePageComponent/Bookmark/Bookmark';
 import Following from '../../components/HomePageComponent/Following/Following';
 import Notice from '../../components/HomePageComponent/Notice/Notice';
+import Feed from '../../components/Feed/Feed';
 
 export const PhotoContext = createContext();
 export const PhotoDispatchContext = createContext();
@@ -22,6 +23,12 @@ const photoReducer = (state, action) => {
         ...state,
         photoClicked: true,
         photo_id: action.id,
+      };
+    case 'SCREEEN_CLICK':
+      return {
+        ...state,
+        photoClicked: false,
+        photo_id: 0,
       };
     default:
       throw new Error('Unhandled action');
@@ -50,9 +57,17 @@ function HomePage() {
 
   return (
     <>
-      <p>{photoState.photoClicked ? 'true' : 'false'}</p>
-      <p>{photoState.photo_id}</p>
       <div className={styles.viewport}>
+        {/* <p>{photoState.photo_id}</p> */}
+        {photoState.photoClicked ? (
+          <PhotoContext.Provider value={photoState}>
+            <PhotoDispatchContext.Provider value={photoDispatch}>
+              <Feed />
+            </PhotoDispatchContext.Provider>
+          </PhotoContext.Provider>
+        ) : (
+          ''
+        )}
         <div class={styles.contents}>
           <Header />
           <div className='flex flex-row'>
@@ -93,16 +108,14 @@ function HomePage() {
                 <hr className={styles.navbar_hr} />
               </div>
 
-              <PhotoContext.Provider value={photoState}>
-                <PhotoDispatchContext.Provider value={photoDispatch}>
-                  <div className='maincontents border border-solid border-red-500'>
-                    {homeContent === 1 ? <Explore /> : ''}
-                    {homeContent === 2 ? <Bookmark /> : ''}
-                    {homeContent === 3 ? <Following /> : ''}
-                    {homeContent === 4 ? <Notice /> : ''}
-                  </div>
-                </PhotoDispatchContext.Provider>
-              </PhotoContext.Provider>
+              <PhotoDispatchContext.Provider value={photoDispatch}>
+                <div className='maincontents border border-solid border-red-500'>
+                  {homeContent === 1 ? <Explore /> : ''}
+                  {homeContent === 2 ? <Bookmark /> : ''}
+                  {homeContent === 3 ? <Following /> : ''}
+                  {homeContent === 4 ? <Notice /> : ''}
+                </div>
+              </PhotoDispatchContext.Provider>
             </div>
           </div>
         </div>

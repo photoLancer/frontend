@@ -1,0 +1,133 @@
+.header{
+    width: 100%;
+    height: 80px;
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.contents{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid lightgray;
+}
+.editimg{
+    width: 20%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+}
+.imgage{
+    width: 75%;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 100px;
+    margin-bottom: 20px;
+
+}
+.editbtn{
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+
+}
+.editinfo{
+    width: 40%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid lightgray;
+    border-left: 2px solid lightgray;
+}
+.nicknamewrap{
+    width: 100%;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+.nicknamehead{
+    font-weight: 600;
+    font-size: large;
+}
+.nickname{
+    border: 1px solid lightgray;
+    width: 80%;
+    height: 35px;
+    margin-top: 10px;
+    background-color: aliceblue;
+}
+.infotextwrap{
+    width: 100%;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+.infohead{
+    font-weight: 600;
+    font-size: large;
+}
+.infotext{
+    border: 1px solid lightgray;
+    width: 80%;
+    height: 140px;
+    margin-top: 10px;
+    background-color: aliceblue;
+}
+.bookmark{
+    width: 40%;
+}
+.bookmarkwrap{
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.bookmarkhead{
+    font-weight: 600;
+    font-size: large;
+}
+.search{
+    width: 90%;
+    height: 35px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.tagbox{
+    width: 90%;
+    height: 120px;
+    border: 1px solid lightgray;
+    margin-top: 15px;
+}
+.tag{
+    border: 1px solid lightgray;
+    margin-left: 10px;
+    
+}
+.footer{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    position: relative;
+}
+.apply{
+    position: absolute;
+    right: 0;
+    width: 8%;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 40px;
+    margin-right: 120px;
+    margin-top: 30px;
+
+}
+.cancel{
+    position: absolute;
+    right: 0;
+    width: 8%;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 40px;
+    margin-top: 30px;
+}

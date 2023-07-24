@@ -1,17 +1,11 @@
-import { useState } from 'react';
+
 import styles from './userinfo.module.css';
 
 const UserInfo=()=>{
-    const [profileContent,setProfileContent]=useState(1);
-
-    const editprofileHandler=()=>{
-        setProfileContent(3);
-      };
 
     return(
         <>
         <div className={styles.user}>
-            <button className={styles.editprofilebtn} onClick={editprofileHandler}>Edit Profile</button>
             <div className={styles.info}>
             <div className={styles.userinfo1}>
                 <div className={styles.userinfo1wrap}>

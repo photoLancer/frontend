@@ -1,13 +1,20 @@
-import { React, useEffect, useState } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import styles from './sidebar.module.css';
+import { UploadDispatchContext } from '../../App';
 
 function Sidebar(props) {
+  const uploadDispatch = useContext(UploadDispatchContext);
   const { current_page } = props;
 
   const user_image_url =
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSC8LH9YxLxyznRum-miHeKOtlHHIXzq-KAA&usqp=CAU';
 
   const [lv, setLv] = useState(92.4);
+
+  const uploadHandler = (e) => {
+    e.preventDefault();
+    uploadDispatch({ type: 'UPLOAD_CLICK' });
+  };
 
   return (
     <>
@@ -63,7 +70,7 @@ function Sidebar(props) {
               </p>
             </div>
           </a>
-          <a href='/' className={styles.nav_contents}>
+          <a href='/chat' className={styles.nav_contents}>
             <div className='w-10/12 flex flex-row'>
               <div className='w-5 h-5 bg-slate-300 mr-2'></div>
               <p className={`${current_page === 4 ? 'font-semibold' : ''}`}>
@@ -71,7 +78,7 @@ function Sidebar(props) {
               </p>
             </div>
           </a>
-          <a href='/' className={styles.nav_contents}>
+          <a href='/' className={styles.nav_contents} onClick={uploadHandler}>
             <div className='w-10/12 flex flex-row'>
               <div className='w-5 h-5 bg-slate-300 mr-2'></div>
               <p className={`${current_page === 5 ? 'font-semibold' : ''}`}>
