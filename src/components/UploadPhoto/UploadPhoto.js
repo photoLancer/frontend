@@ -12,8 +12,12 @@ function UploadPhoto() {
       <div className={styles.screen} onClick={screenClickHandler}>
         <div className={styles.uploadScreen}>
           <div className={styles.uploadwrap}>
-          <p className={styles.text}>사진 올리기</p>
-          <form action='/target' className={styles.dropzone} id='myDropzone'></form>
+          <p className={styles.head}>사진 올리기</p>
+          <form action='/target' className={styles.dropzone} id='myDropzone'>
+            <p className={styles.text1}>파일을 이곳에 끌어 놓아주세요</p><br />
+            <p className={styles.text2}>한 번에 1장까지만 업로드 가능</p>
+            <button className={styles.selectbtn}>컴퓨터에서 선택</button>
+          </form>
           <button className={styles.nextbtn}>다음</button>
           </div>
         </div>
