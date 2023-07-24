@@ -6,10 +6,10 @@ import EditProfile from './edit/EditProfile';
 import styles from './profile.module.css';
 
 const Profile=()=>{
-  const [isEditing,setIsEditing]=useState(true);
+  const [isEditing,setIsEditing]=useState(false);
 
   const editprofileHandler=()=>{
-      setIsEditing(false);
+      setIsEditing(true);
   };
 
     return(
