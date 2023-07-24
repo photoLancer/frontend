@@ -11,7 +11,11 @@ function UploadPhoto() {
     <>
       <div className={styles.screen} onClick={screenClickHandler}>
         <div className={styles.uploadScreen}>
-          {/* 이 부분에 작업하시면 됩니다 */}
+          <div className={styles.uploadwrap}>
+          <p className={styles.text}>사진 올리기</p>
+          <form action='/target' className={styles.dropzone} id='myDropzone'></form>
+          <button className={styles.nextbtn}>다음</button>
+          </div>
         </div>
       </div>
     </>
