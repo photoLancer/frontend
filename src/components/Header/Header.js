@@ -4,17 +4,17 @@ import logo from '../../logo/logo_symbol.png';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../_actions/user_action';
+import { logout } from '../../_actions/user_action';
 
 function Header(props) {
   const userState = useSelector((state) => state.user); // 전체 상태 가져옴
   const dispatch = useDispatch();
   const onLogoutHandle = (e) => {
     e.preventDefault();
-    localStorage.setItem('userId', 0);
+    dispatch(logout());
   };
 
   const loginHandler = () => {
-    localStorage.setItem('userId', 12);
     dispatch(login(2));
   };
 
@@ -25,7 +25,6 @@ function Header(props) {
           <img src={logo} alt='logo' className={styles.logo} />
         </a>
         <p>{userState.userId}</p>
-        <p>{localStorage.getItem('userId')}</p>
         <button onClick={loginHandler}>login</button>
 
         <button className={styles.logout_btn} onClick={onLogoutHandle}>

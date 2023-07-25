@@ -10,15 +10,31 @@ import { applyMiddleware, createStore } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
 import Reducer from './_reducers';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-const createStoreWithMiddleware = applyMiddleware(
-  promiseMiddleware,
-  ReduxThunk
-)(createStore);
+// Redux Persist 구성
+const persistConfig = {
+  key: 'root',
+  storage,
+};
+const persistedReducer = persistReducer(persistConfig, Reducer);
+const store = createStore(
+  persistedReducer,
+  applyMiddleware(promiseMiddleware, ReduxThunk)
+);
+const persistor = persistStore(store);
 
+//
+// const createStoreWithMiddleware = applyMiddleware(
+//   promiseMiddleware,
+//   ReduxThunk
+// )(createStore);
+
+//createStoreWithMiddleware(Reducer)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={createStoreWithMiddleware(Reducer)}>
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
