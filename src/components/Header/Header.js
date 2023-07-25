@@ -1,19 +1,22 @@
 import React, { useContext } from 'react';
 import styles from './header.module.css';
 import logo from '../../logo/logo_symbol.png';
-import { UserContext } from '../../contexts/UserContext';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../_actions/user_action';
 
 function Header(props) {
-  const usercontext = useContext(UserContext);
-  const { userState } = usercontext;
-  const { userStateDispatch } = usercontext;
-
+  const userState = useSelector((state) => state.user); // 전체 상태 가져옴
+  const dispatch = useDispatch();
   const onLogoutHandle = (e) => {
     e.preventDefault();
-
-    userStateDispatch({ type: 'LOGOUT' });
+    localStorage.setItem('userId', 0);
   };
-  console.log(userState.userId);
+
+  const loginHandler = () => {
+    localStorage.setItem('userId', 12);
+    dispatch(login(2));
+  };
 
   return (
     <>
@@ -21,6 +24,9 @@ function Header(props) {
         <a href='/'>
           <img src={logo} alt='logo' className={styles.logo} />
         </a>
+        <p>{userState.userId}</p>
+        <p>{localStorage.getItem('userId')}</p>
+        <button onClick={loginHandler}>login</button>
 
         <button className={styles.logout_btn} onClick={onLogoutHandle}>
           Log out
