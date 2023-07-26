@@ -1,4 +1,21 @@
 .smallboxing {
-    display: flex;
-    margin-top: 30px;
-  }
+  display: flex;
+  margin-top: 30px;
+}
+.editprofilebtn {
+  grid-row: 1;
+  width: 10%;
+  height: 40px;
+  border-radius: 18px;
+  border: 1px solid black;
+  font-size: medium;
+  position: absolute;
+  right: 5%;
+  margin-top: 20px;
+  margin-right: 20px;
+  text-align: center;
+  z-index: 999;
+}
+.editprofilebtn:hover {
+  background-color: red;
+}
