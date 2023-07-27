@@ -15,7 +15,8 @@ import { Link, useNavigate } from 'react-router-dom';
 function OnboardingPage() {
   const navigate = useNavigate();
   const loginHandler = () => {
-    navigate('/login');
+    navigate('../Login');
+
   };
 
   return (
@@ -24,15 +25,13 @@ function OnboardingPage() {
         <div>
           <img src={logo1} className={styles.symbol} alt='logo1' />
         </div>
-
-        <Link to="/Login" onClick={loginHandler}>
-
+        <Link to="../Login" onClick={loginHandler}>
 
           <button>Log in</button>
         </Link>
       </div>
       <div className={styles.ob_2}>
-        <img src={contents1} alt="contents1" />
+        <img className={styles.contents} src={contents1} alt="contents1" />
       </div>
       <div className={styles.ob_3}>
         <div className={styles.red_circle}></div>
@@ -45,7 +44,7 @@ function OnboardingPage() {
           <br /> 사진 구매를 통해 언제 어디서든 자유롭게
           <br /> 상업적으로 사용이 가능해요.
         </div>
-        <img src={contents2} alt="contents"></img>
+        <img className={styles.contents} src={contents2} alt="contents"></img>
       </div>
       <div className={styles.ob_4}>
         <div className={styles.red_circle}></div>
@@ -61,10 +60,10 @@ function OnboardingPage() {
           당신의 사진 실력을 모두에게 보여주세요!
         </div>
         <div className={styles.split}>
-          <img src={contents3} alt="contents3" className={styles.contents3}></img>
+          <img src={contents3} alt="contents3" className={`${styles.contents3} ${styles.contents}`}></img>
           <div className={styles.sentence3}>
             <p>당신의 작품에 대한 인기를 마음껏 누려보세요!</p>
-            <img src={contents4} alt="contents4" className={styles.contents4}></img>
+            <img src={contents4} alt="contents4" className={`${styles.contents4} ${styles.contents}`}></img>
           </div>
         </div>
       </div>
@@ -79,7 +78,7 @@ function OnboardingPage() {
           <br />
           많은 사람들이 당신의 사진에 관심을 가지게 될 거예요.
         </div>
-        <img src={contents5} alt="contents5"></img>
+        <img className={styles.contents} src={contents5} alt="contents5"></img>
       </div>
       <div className={styles.ob_6}>
         <div className={styles.red_circle}></div>
@@ -93,7 +92,7 @@ function OnboardingPage() {
           사람들이 어떤 사진에 관심을 많이 가지는지 알아보세요!
         </div>
       </div>
-      <img src={contents6} alt="contents6" className={styles.contents6}></img>
+      <img src={contents6} alt="contents6" className={`${styles.contents6} ${styles.contents}`}></img>
       <div className={styles.ob_7}>
         <div className={styles.red_circle}></div>
         <div className={styles.paragraph2}>
@@ -104,7 +103,7 @@ function OnboardingPage() {
           그동안 까다로웠던 사진 저작권 걱정 없이 사진 구매를 통해
           <br /> 언제 어디서든 자유롭게 상업적으로 사용이 가능해요.
         </div>
-        <img src={contents7} alt="contents7" className={styles.contents7}></img>
+        <img src={contents7} alt="contents7" className={`${styles.contents7} ${styles.contents}`}></img>
       </div>
       <div className={styles.ob_8}>
         <div className={styles.red_circle}></div>
@@ -117,7 +116,7 @@ function OnboardingPage() {
           <br />
           구매가 가능해요. 구매 후에는 원본 사진으로 다운로드가 가능해요.
         </div>
-        <img src={contents8} alt="contents8" className={styles.contents8}></img>
+        <img src={contents8} alt="contents8" className={`${styles.contents8} ${styles.contents}`}></img>
       </div>
     </div>
   );
