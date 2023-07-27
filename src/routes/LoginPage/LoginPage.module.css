@@ -1,7 +1,15 @@
+.LoginPage {
+  display: flex;
+  flex-direction: row;
+}
+.L_img {
+  height: 100vh;
+  width: 35%;
+}
 LoginPage {
   display: flex;
   flex-direction: row;
 }
-img {
+/* img {
   height: 100%;
-}
+} */

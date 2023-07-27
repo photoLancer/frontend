@@ -4,7 +4,6 @@ import Header from '../../components/Header/Header';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import styles from './myprofile.module.css';
 import Album from '../../components/Myprofile/album/Album';
-import EditProfile from '../../components/Myprofile/profile/edit/EditProfile';
 
 function MyprofilePage() {
   const [profileContent,setProfileContent]=useState(1);
@@ -46,7 +45,6 @@ function MyprofilePage() {
               <div className='maincontents border border-solid border-red-500'>
                 {profileContent === 1 ? <Profile /> : ''}
                 {profileContent === 2 ? <Album /> : ''}
-                {profileContent === 3 ? <EditProfile /> : ''}
               </div>
             </div>
           </div>

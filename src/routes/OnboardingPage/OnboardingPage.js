@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Onboarding.module.css';
 import logo1 from '../../logo/logo_symbol.png';
+
 import contents1 from './onboarding.JPG';
 import contents2 from './contents2.JPG';
 import contents3 from './contents3.JPG';
@@ -10,21 +11,22 @@ import contents6 from './contents6.JPG';
 import contents7 from './contents7.JPG';
 import contents8 from './contents8.JPG';
 import { useRef } from 'react';
-import LoginPage from '../LoginPage/LoginPage';
 import { Link, useNavigate } from 'react-router-dom';
 function OnboardingPage() {
   const navigate = useNavigate();
   const loginHandler = () => {
     navigate('../Login');
+
   };
 
   return (
     <div className={styles.Onboarding}>
       <div className={styles.ob_1}>
         <div>
-          <img src={logo1} className={styles.symbol} alt="logo1" />
+          <img src={logo1} className={styles.symbol} alt='logo1' />
         </div>
         <Link to="../Login" onClick={loginHandler}>
+
           <button>Log in</button>
         </Link>
       </div>
