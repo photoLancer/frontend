@@ -4,7 +4,7 @@
 }
 .editprofilebtn {
   grid-row: 1;
-  width: 10%;
+  width: 7%;
   height: 40px;
   border-radius: 18px;
   border: 1px solid black;
@@ -17,5 +17,5 @@
   z-index: 999;
 }
 .editprofilebtn:hover {
-  background-color: red;
+  background-color: lightgray;
 }
