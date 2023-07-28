@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './editprofile.module.css';
+import Profile from '../Profile';
 
 const EditProfile=()=>{
     const [inputValue,setInputValue]=useState('');
@@ -8,7 +9,17 @@ const EditProfile=()=>{
         setInputValue(event.target.value);
     };
 
+    const [applyData,setApplyData]=useState(false);
+
+    const applyHandler=()=>{
+        setApplyData(true);
+    };
+
     return(
+        <>
+        {applyData ? (
+        <Profile />
+        ) : (
         <>
         <div className={styles.header}><p>프로필 수정</p></div>
         <div className={styles.contents}>
@@ -42,9 +53,11 @@ const EditProfile=()=>{
             
         </div>
         <div className={styles.footer}>
-            <button className={styles.apply}>적용</button>
-            <button className={styles.cancel}>취소</button>
+            <button className={styles.apply} onClick={applyHandler}>적용</button>
+            <button className={styles.cancel } onClick={applyHandler}>취소</button>
         </div>
+        </>
+        )}
         </>
     );
 }
