@@ -37,11 +37,11 @@ const EditProfile=()=>{
             </div>
             <div className={styles.editinfo}>
                 <div className={styles.nicknamewrap}>
-                <p className={styles.nicknamehead}>닉네임</p>
+                <p className={styles.nicknamehead}>닉네임</p><br/>
                 <input type='text' className={styles.nickname} placeholder='제목을 입력해주세요'value={inputValue} onChange={HandleChange}/>
                 </div>
                 <div className={styles.infotextwrap}>
-                <p className={styles.infohead}>소개</p>
+                <p className={styles.infohead}>소개</p><br/>
                 <input type='text' className={styles.infotext} placeholder='소개를 입력해주세요' value={inputValue} onChange={HandleChange} />
                 </div>
             </div>

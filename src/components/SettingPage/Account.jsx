@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import styles from './account.module.css';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 
 const Account=()=>{
-    const [isChanging,setIsChanging]=useState(false);
-    const [isConfirming,setIsConfirming]=useState(false);
+    const [isChanging,setIsChanging]=useState(true);
+    const [isConfirming,setIsConfirming]=useState(true);
+    const [showPassword,setShowPassword]=useState(false);
 
     const changepwHandler=()=>{
         setIsChanging(true);
@@ -12,6 +14,9 @@ const Account=()=>{
     const confirmpwHandler=()=>{
         setIsConfirming(true);
         setIsChanging(false);
+    };
+    const toggleShowPassword=()=>{
+        setShowPassword((prevShowPassword)=>!prevShowPassword);
     };
 
     return(
@@ -47,11 +52,21 @@ const Account=()=>{
            <div className={styles.boxing0}>
            <div className={styles.boxing1}>
                     <p className={styles.pwtext}>새 비밀번호</p><br/>
-                    <input type='password' className={styles.inputbox}></input>
+                    <div className={styles.inputdiv}>
+                    <input type={showPassword?'text':'password'} className={styles.inputbox} />
+                    {showPassword?(<FaEyeSlash className={styles.eyeIcon} onClick={toggleShowPassword} />):(
+                        <FaEye className={styles.eyeIcon} onClick={toggleShowPassword} />
+                    )}
+                    </div>
                 </div>
                 <div className={styles.boxing2}>
                     <p className={styles.pwtext}>새 비밀번호 확인</p><br/>
-                    <input type='password' className={styles.inputbox}></input>
+                    <div className={styles.inputdiv}>
+                    <input type={showPassword?'text':'password'} className={styles.inputbox} />
+                    {showPassword?(<FaEyeSlash className={styles.eyeIcon} onClick={toggleShowPassword} />):(
+                        <FaEye className={styles.eyeIcon} onClick={toggleShowPassword} />
+                    )}
+                    </div>
                 </div>
                 </div>
                 <div className={styles.changepw}><button className={styles.changepwbtn} onClick={confirmpwHandler}>변경하기</button></div>
