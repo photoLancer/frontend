@@ -1,10 +1,15 @@
 import React, { useContext } from 'react';
 import styles from './feedpurchase.module.css';
 import { FeedOptionDispatchContext } from './Feed';
+import { PhotoContext } from '../../routes/HomePage/HomePage';
+import { useDispatch, useSelector } from 'react-redux';
+import { photoPurchase } from '../../_actions/user_action';
 
 function FeedPurchase(props) {
-  const purchasePoint = 130;
-  const holdingPoint = 50224;
+  const photoInfo = useContext(PhotoContext);
+  const userState = useSelector((state) => state.user); //유저 상태 들고옴
+  const dispatch = useDispatch();
+
   //화면 제어
   const screenClickHandler = (e) => {
     e.stopPropagation();
@@ -18,8 +23,16 @@ function FeedPurchase(props) {
   };
 
   //구매
+  const holdingPoint = userState.userPoint;
+  const purchasePoint = 130; //photo_id 값에서 들고옴
+  const afterPrice = holdingPoint - purchasePoint;
   const purchase = () => {
     console.log('purchase');
+    console.log(photoInfo.photo_id);
+    console.log(userState.userPoint);
+    const afterHoldingPoint = userState.userPoint - purchasePoint;
+    console.log(afterHoldingPoint);
+    dispatch(photoPurchase(afterHoldingPoint));
     shareDispatch({ type: 'PURCHASE_SCREEN_CLICK' });
   };
   return (
@@ -45,9 +58,7 @@ function FeedPurchase(props) {
           <div>
             <div className='flex flex-row justify-between mb-2'>
               <p className={styles.pp}>구매 후 포인트</p>
-              <p className={styles.point}>
-                {holdingPoint - purchasePoint} point
-              </p>
+              <p className={styles.point}>{afterPrice} point</p>
             </div>
             <hr className='border border-solid border-gray-200 mb-4' />
             <button className={styles.purchase_btn} onClick={purchase}>
