@@ -10,3 +10,10 @@ export const login = (userId) => ({
 export const logout = () => ({
   type: 'LOGOUT',
 });
+
+export const photoPurchase = (userPoint) => ({
+  type: 'PHOTO_PURCHASE',
+  payload: {
+    userPoint,
+  },
+});

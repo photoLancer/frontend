@@ -3,11 +3,13 @@ import styles from './feed.module.css';
 import FeedContent from './FeedContent';
 import { PhotoDispatchContext } from '../../routes/HomePage/HomePage';
 import FeedShare from './FeedShare';
+import FeedPurchase from './FeedPurchase';
 
 export const FeedOptionDispatchContext = createContext();
 
 const initialShareState = {
   shareClicked: false,
+  purchaseClicked: false,
 };
 
 const shareReducer = (state, action) => {
@@ -21,6 +23,16 @@ const shareReducer = (state, action) => {
       return {
         ...state,
         shareClicked: false,
+      };
+    case 'PURCHASE_CLICK':
+      return {
+        ...state,
+        purchaseClicked: true,
+      };
+    case 'PURCHASE_SCREEN_CLICK':
+      return {
+        ...state,
+        purchaseClicked: false,
       };
     default:
       throw new Error('Unhandled action');
@@ -49,6 +61,7 @@ function Feed() {
       <div className={styles.screen} onClick={screenClickHandler}>
         <FeedOptionDispatchContext.Provider value={shareDispatch}>
           {shareState.shareClicked ? <FeedShare /> : ''}
+          {shareState.purchaseClicked ? <FeedPurchase /> : ''}
           <div className={styles.contents}>
             <button
               className={styles.feed_btn}
