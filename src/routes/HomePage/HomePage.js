@@ -9,6 +9,7 @@ import Following from '../../components/HomePageComponent/Following/Following';
 import Notice from '../../components/HomePageComponent/Notice/Notice';
 import Feed from '../../components/Feed/Feed';
 
+
 export const PhotoContext = createContext();
 export const PhotoDispatchContext = createContext();
 
