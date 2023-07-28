@@ -19,21 +19,23 @@ const EditProfile=()=>{
             <div className={styles.editinfo}>
                 <div className={styles.nicknamewrap}>
                 <p className={styles.nicknamehead}>닉네임</p>
-                <input type='text' className={styles.nickname} value={inputValue} onChange={handleChange}/>
+                <input type='text' className={styles.nickname} placeholder='제목을 입력해주세요'value={inputValue} onChange={handleChange}/>
                 </div>
                 <div className={styles.infotextwrap}>
                 <p className={styles.infohead}>소개</p>
-                <input type='text' className={styles.infotext} placeholder='코멘트를 입력하세요' value={inputValue} onChange={handleChange}/>
+                <input type='text' className={styles.infotext} placeholder='소개를 입력해주세요' value={inputValue} onChange={handleChange} />
                 </div>
             </div>
             <div className={styles.bookmark}>
                 <div className={styles.bookmarkwrap}>
                 <p className={styles.bookmarkhead}>북마크 설정</p>
-                <input type='text' className={styles.search} placeholder='키워드를 입력하세요' value={inputValue} onChange={handleChange}/>
+                <input type='text' className={styles.search} placeholder='#Trip' value={inputValue} onChange={handleChange}/>
                 <div className={styles.tagbox}>
-                    <span className={styles.tag}>##</span>
-                    <span className={styles.tag}>##</span>
-                    <span className={styles.tag}>##</span>
+                    <div className={styles.tagwrap}>
+                    <span className={styles.tag}>#Trip</span>
+                    <span className={styles.tag}>#food</span>
+                    
+                    </div>
                 </div>
                 </div>
             </div>
