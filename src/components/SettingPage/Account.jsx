@@ -4,7 +4,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Account=()=>{
     const [isChanging,setIsChanging]=useState(true);
-    const [isConfirming,setIsConfirming]=useState(true);
+    const [isConfirming,setIsConfirming]=useState(false);
     const [showPassword,setShowPassword]=useState(false);
 
     const changepwHandler=()=>{
