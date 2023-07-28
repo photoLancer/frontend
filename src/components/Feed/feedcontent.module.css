@@ -59,6 +59,7 @@
   overflow: hidden;
   border-radius: 16px;
   margin-bottom: 8px;
+  border: 1px solid black;
 }
 
 .tag {
@@ -76,7 +77,7 @@
   margin-right: 4px;
 }
 
-.comment_p {
+.sentence_p {
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 600;
@@ -84,4 +85,36 @@
   letter-spacing: 0em;
   text-align: left;
   color: #111111;
+}
+
+.commentContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.commentText {
+  height: 22%;
+  border-radius: 8px;
+  border: 1px solid gray;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.commentBtn {
+  width: 96px;
+  height: 32px;
+  border-radius: 24px;
+  color: #fff;
+  background-color: #000;
+  font-family: Pretendard;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
 }

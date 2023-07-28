@@ -1,48 +1,87 @@
+import { useState } from 'react';
 import styles from './account.module.css';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 
 const Account=()=>{
+    const [isChanging,setIsChanging]=useState(true);
+    const [isConfirming,setIsConfirming]=useState(false);
+    const [showPassword,setShowPassword]=useState(false);
+
+    const changepwHandler=()=>{
+        setIsChanging(true);
+        setIsConfirming(false);
+    };
+    const confirmpwHandler=()=>{
+        setIsConfirming(true);
+        setIsChanging(false);
+    };
+    const toggleShowPassword=()=>{
+        setShowPassword((prevShowPassword)=>!prevShowPassword);
+    };
+
     return(
     <>
     <div className={styles.bigbox}>
-        <div className={styles.middlebox}>
+        <div className={styles.middlebox1}>
             <p className={styles.headtext}>소셜 로그인</p>
-            <div className={styles.content}>
+            <div className={styles.content1}>
                 <div className={styles.smallbox1}>
+                    <div className={styles.boxwrap}>
                     <img className={styles.snslogo}></img>
-                    <p className={styles.snsname}>Twitter</p>
-                    <button className={styles.connectbtn}>연결해제</button>
+                    <p className={styles.snsname}>카카오</p>
+                    </div>
+                    <div className={styles.btnwrap}>
+                    <button className={styles.connectbtn}>연결</button>
+                    </div>
                 </div>
                 <div className={styles.smallbox1}>
+                <div className={styles.boxwrap}>
                     <img className={styles.snslogo}></img>
                     <p className={styles.snsname}>Naver</p>
-                    <button className={styles.connectbtn}>연결</button>
+                </div>
+                <div className={styles.btnwrap}>
+                    <button className={styles.connectbtn}>연결해제</button>
+                    </div>   
                 </div>
             </div>
         </div>
-        <div className={styles.middlebox}>
-            <p className={styles.headtext}>암호</p>
-            <div className={styles.content}>
+        <div className={styles.middlebox2}> 
+            <div className={styles.content2}>
+        {isChanging &&(
+           <>
+           <div className={styles.boxing0}>
+           <div className={styles.boxing1}>
+                    <p className={styles.pwtext}>새 비밀번호</p><br/>
+                    <div className={styles.inputdiv}>
+                    <input type={showPassword?'text':'password'} className={styles.inputbox} />
+                    {showPassword?(<FaEyeSlash className={styles.eyeIcon} onClick={toggleShowPassword} />):(
+                        <FaEye className={styles.eyeIcon} onClick={toggleShowPassword} />
+                    )}
+                    </div>
+                </div>
+                <div className={styles.boxing2}>
+                    <p className={styles.pwtext}>새 비밀번호 확인</p><br/>
+                    <div className={styles.inputdiv}>
+                    <input type={showPassword?'text':'password'} className={styles.inputbox} />
+                    {showPassword?(<FaEyeSlash className={styles.eyeIcon} onClick={toggleShowPassword} />):(
+                        <FaEye className={styles.eyeIcon} onClick={toggleShowPassword} />
+                    )}
+                    </div>
+                </div>
+                </div>
+                <div className={styles.changepw}><button className={styles.changepwbtn} onClick={confirmpwHandler}>변경하기</button></div>
+           </>
+        )}
+        {isConfirming &&(
+        <>
                 <div className={styles.smallbox2}>
                     <p className={styles.pwtext}>현재 이용 비밀번호</p>
-                    <input type='password' className={styles.pwbox}></input>
+                    <div className={styles.pwbox}>~~~</div>
                 </div>
-                <div className={styles.changepw}><button className={styles.changepwbtn}>변경하기</button></div>
-            </div>
+                <div className={styles.changepw}><button className={styles.changepwbtn} onClick={changepwHandler}>변경하기</button></div>
+         </>
+        )}
         </div>
-        <div className={styles.middlebox}>
-            <p className={styles.headtext}>플랜</p>
-            <div className={styles.content}>
-                <div className={styles.smallbox3}>
-                    <p className={styles.plantext}>현재 이용 플랜</p>
-                    <p className={styles.myplan}>Standard</p>
-                </div>
-                <div className={styles.smallbox4}>
-                    <p className={styles.smalltext}>혜택 소개소개소개</p>
-                    <p className={styles.smalltext}>혜택 소개소개소개</p>
-                    <p className={styles.smalltext}>혜택 소개소개소개</p>
-                </div>
-                <div className={styles.changeplan}><button className={styles.changeplanbtn}>Pro 버전으로 변경</button></div>
-            </div>
         </div>
     </div>
     </>
