@@ -2,6 +2,7 @@ import React, { useContext, useState, useRef, useEffect } from 'react';
 import styles from './feedcontent.module.css';
 import { PhotoContext } from '../../routes/HomePage/HomePage';
 import FeedComment from './FeedComment';
+import { FeedOptionDispatchContext } from './Feed';
 
 function FeedContent() {
   const gym =
@@ -22,6 +23,7 @@ function FeedContent() {
 
   const [like, setLike] = useState(false);
   const [commentActive, setcommentActive] = useState(false);
+  const [shareActive, setShareActive] = useState(false);
   const onClickHandler = (e) => {
     e.stopPropagation();
   };
@@ -49,6 +51,12 @@ function FeedContent() {
     { user_id: 2, name: 'lemon', lv: 7, text: 'Your photo skill is so good!!' },
   ]);
   //
+
+  //share
+  const shareDispatch = useContext(FeedOptionDispatchContext);
+  const shareBtnHandler = () => {
+    shareDispatch({ type: 'SHARE_CLICK' });
+  };
 
   return (
     <>
@@ -85,7 +93,9 @@ function FeedContent() {
               <button className={styles.btn} onClick={commentBtnHandler}>
                 2
               </button>
-              <button className={styles.btn}>3</button>
+              <button className={styles.btn} onClick={shareBtnHandler}>
+                3
+              </button>
               <button className={styles.btn}>4</button>
             </div>
           </div>
