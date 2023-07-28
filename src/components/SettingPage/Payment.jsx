@@ -9,7 +9,7 @@ const Payment=()=>{
                 <div className={styles.smallbox1}>
                     <p className={styles.text1}>메인계좌</p>
                     <div className={styles.tinybox}>
-                        <p className={styles.bankname}>농협</p>
+                        <p className={styles.bankname}>농협</p><br/>
                         <p className={styles.number}>34782939</p>
                     </div>
                     <button className={styles.deletebtn1}>삭제</button>
@@ -17,7 +17,7 @@ const Payment=()=>{
                 <div className={styles.smallbox2}>
                     <p className={styles.text2}>서브계좌</p>
                     <div className={styles.tinybox}>
-                        <p className={styles.bankname}>국민</p>
+                        <p className={styles.bankname}>국민</p><br/>
                         <p className={styles.number}>34782939</p>
                     </div>
                     <button className={styles.deletebtn2}>삭제</button>

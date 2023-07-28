@@ -7,10 +7,14 @@
 
     margin-top: 30px;
 }
-.middlebox{
+.middlebox1{
+    width: 68%;
+    height: 80%;
+    margin-top: 20px;
+}
+.middlebox2{
     width: 30%;
     height: 80%;
-
     margin-top: 20px;
 }
 .headtext{
@@ -18,40 +22,67 @@
     font-weight: 600;
     
 }
-.content{
+.content1{
     border: 1px solid #d9d9d9;
     width: 100%;
     height: 80%;
     margin-top: 20px;
     border-radius: 30px;
+    display: flex;
+    align-items: center;
+}
+.boxwrap{
+    height: 70%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.boxwrap img,p{
+    display: inline-block;
 }
 .smallbox1{
-    display: flex;
-    flex-direction: row;
+    display: inline-block;
     justify-content: space-between;
-    width: 90%;
-    height: 40px;
+    width: 30%;
+    height: 50%;
     margin-left: 10px;
     margin-top: 20px;
+    justify-content: center;
+    align-items: center;
 }
 .snslogo{
     border: 1px solid black;
     border-radius: 50px;
-    width: 15%;
-    height: 100%;
+    width: 30%;
+    height: 45%;
     margin-left: 10px;
+    margin-left: 20px;
 }
 .snsname{
     font-size: large;
     font-weight: 600;
     padding-top: 10px;
-    margin-left: -20px;
+    margin-left: 40px;
 }
 .connectbtn{
     color:#000;
     background-color: lightgray;
     border-radius: 10px;
-    width: 30%;
+    width: 40%;
+    height: 30px;
+    justify-content: center;
+}
+.btnwrap{
+    text-align: center;
+    width: 100%;
+    height: 30%;
+}
+.content2{
+    border: 1px solid #d9d9d9;
+    width: 100%;
+    height: 80%;
+    margin-top: 20px;
+    border-radius: 30px;
 }
 .smallbox2{
     margin-top: 140px;
@@ -64,63 +95,19 @@
 .pwbox{
     width: 60%;
     background-color: lightgray;
-    height: 30px;
-    margin-top: 10px;
+    height:35px;
+    margin-top: 15px;
     border-radius: 10px;
 }
 .changepw{
     display: flex;
     justify-content: center;
+
 }
 .changepwbtn{
     background-color: lightgray;
     width: 30%;
     height: 30px;
     border-radius: 10px;
-    margin-top: 80px;
-}
-.smallbox3{
-    display: flex;
-    height: 30px;
-    flex-direction: row;
-    width: 100%;
-    justify-content: center;
-    margin-left: 30px;
-    margin-top: 50px;
-}
-.plantext{
-    width: 50%;
-    height: 100%;
-    font-weight: 600;
-    font-size: large;
-}
-.myplan{
-    width: 50%;
-    height: 100%;
-    color: gray;
-    font-size: large;
-}
-.smallbox4{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 40px;
-}
-.smalltext{
-    font-size: smaller;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-.changeplan{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 30px;
-    margin-top: 70px;
-}
-.changeplanbtn{
-    background-color: lightgray;
-    border-radius: 10px;
-    width: 50%;
-    height: 100%;
+    margin-top: 30px;
 }
