@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import styles from './uploadphoto.module.css';
 import { UploadDispatchContext } from '../../App';
+import Uploading from './Uploading';
 
 function UploadPhoto() {
   const uploadDispatch = useContext(UploadDispatchContext);
@@ -10,7 +11,8 @@ function UploadPhoto() {
   const uploadScreenClickHandler = (e) => {
     e.stopPropagation();
   };
-  const [uploadPhoto1,setUploadPhoto1]=useState(true);
+  
+  const [uploadPhoto1,setUploadPhoto1]=useState(false);
   const [uploadPhoto2,setUploadPhoto2]=useState(true);
 
   const nextStepHandler1=()=>{
@@ -25,19 +27,10 @@ function UploadPhoto() {
   return (   
     <>
       <div className={styles.screen} onClick={screenClickHandler}>
-        
+      <div className={styles.uploadScreen}>
           {uploadPhoto1&&(
             <>
-            <div className={styles.uploadScreen}>
-            <div className={styles.uploadwrap}>
-          <p className={styles.head}>사진 올리기</p>
-          <div></div>
-          </div>
-          </div></>
-          )}
-          {uploadPhoto2&&(
-          <>
-          <div className={styles.uploadScreen}>
+         
           <div className={styles.uploadwrap}>
           <p className={styles.head}>사진 올리기</p>
           <form action='/target' className={styles.dropzone} id='myDropzone'>
@@ -47,12 +40,18 @@ function UploadPhoto() {
             <button className={styles.selectbtn}>컴퓨터에서 선택</button>
             </div>
           </form>
-          <button className={styles.nextbtn} onClick={nextStepHandler1}>다음</button>
+          <button className={styles.nextbtn1} onClick={nextStepHandler1}>다음</button>
           </div>
-          </div>
+          
+           </>
+          )}
+          {uploadPhoto2&&(
+          <>
+            <Uploading />
+            <button className={styles.nextbtn2} onClick={nextStepHandler2}>다음</button>
           </>)}
         
-
+          </div>
       </div>
     </>
   );

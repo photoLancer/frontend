@@ -16,6 +16,7 @@
   background-color: #fff;
   position: fixed;
   top: 10%;
+  border-radius: 20px;
 }
 .uploadwrap{
   width: 80%;
@@ -34,7 +35,7 @@
   width: 100%;
   height: 60vh;
   border: 2px solid lightgray;
-  border-radius: 10px;
+  border-radius: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -60,7 +61,7 @@
   margin-top: 90px;
   font-size: smaller;
 }
-.nextbtn{
+.nextbtn1{
   width: 20%;
   height: 30px;
   border: 1px solid #ff8b00;
