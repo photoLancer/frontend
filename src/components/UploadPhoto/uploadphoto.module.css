@@ -70,3 +70,41 @@
   right: 0;
   color: #ff8b00;
 }
+.nextbtn2{
+  width: 15%;
+  height: 30px;
+  border: 1px solid #ff8b00;
+  border-radius: 15px;
+  position: absolute;
+  right: 0;
+  color: #ff8b00;
+  margin-top: -70px;
+  margin-right: 100px;
+}
+.btnwrap{
+  position: absolute;
+  right: 0;
+  margin-top: -70px;
+  height: 30px;
+  width: 60%;
+  margin-right: 40px;
+  margin-right: -30px;
+  
+}
+.cancelbtn, .backbtn, .finishbtn{
+  margin-left: 50px;
+  
+}
+.cancelbtn, .backbtn{
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  height: 100%;
+  width: 15%;  
+}
+.finishbtn{
+  color: red;
+  border: 1px solid red;
+  height: 100%;
+  width: 20%; 
+  border-radius: 15px;
+}

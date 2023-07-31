@@ -1,0 +1,35 @@
+.uploadwrap{
+    width: 80%;
+    height: 80vh;
+    
+    align-items: center;
+    margin-left: 85px;
+    margin-top: 50px;
+    position: relative;
+  }
+  .uploadbox{
+    border: 1px solid lightgray;
+    height: 450px;
+    margin-top: 20px;
+    border-radius: 20px;
+    text-align: center;
+    
+  }
+  .head{
+    font-weight: 600;
+    font-size: x-large;
+    text-align: center;
+    width: 100%;
+    height: 30px;
+  }
+  .photo{
+    width: 100%;
+    height: 300px;
+    border: 1px solid red;
+    border-radius: 20px;
+  }
+  .ques{
+    margin-top: 65px;
+    font-size: large;
+    font-weight: 600;
+  }
