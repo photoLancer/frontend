@@ -16,6 +16,7 @@
   background-color: #fff;
   position: fixed;
   top: 10%;
+  border-radius: 20px;
 }
 .uploadwrap{
   width: 80%;
@@ -34,7 +35,7 @@
   width: 100%;
   height: 60vh;
   border: 2px solid lightgray;
-  border-radius: 10px;
+  border-radius: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -60,7 +61,7 @@
   margin-top: 90px;
   font-size: smaller;
 }
-.nextbtn{
+.nextbtn1{
   width: 20%;
   height: 30px;
   border: 1px solid #ff8b00;
@@ -68,4 +69,42 @@
   position: absolute;
   right: 0;
   color: #ff8b00;
+}
+.nextbtn2{
+  width: 15%;
+  height: 30px;
+  border: 1px solid #ff8b00;
+  border-radius: 15px;
+  position: absolute;
+  right: 0;
+  color: #ff8b00;
+  margin-top: -70px;
+  margin-right: 100px;
+}
+.btnwrap{
+  position: absolute;
+  right: 0;
+  margin-top: -70px;
+  height: 30px;
+  width: 60%;
+  margin-right: 25px;
+
+  
+}
+.cancelbtn, .backbtn, .finishbtn{
+  margin-left: 50px;
+  
+}
+.cancelbtn, .backbtn{
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  height: 100%;
+  width: 18%;  
+}
+.finishbtn{
+  color: red;
+  border: 1px solid red;
+  height: 100%;
+  width: 23%; 
+  border-radius: 15px;
 }
