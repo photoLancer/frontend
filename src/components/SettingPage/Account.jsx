@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './account.module.css';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { TextField, Button, FormControl, FormHelperText } from '@mui/material';
 
 const Account=()=>{
     const [isChanging,setIsChanging]=useState(false);
@@ -32,7 +33,31 @@ const Account=()=>{
             isConnected=true;
             toggleButton.innerText="연결해제";
         }
-    }
+    };
+
+    //이전 비밀번호와 같게 입력했을 때 errortext1 
+    //새비밀번호 확인이 잘못되었을 때 errortext2
+    //다른 error 사항 없을 때는 text 띄우지 않음
+
+    const [currentPassword, setCurrentPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+
+    const handleChangePassword = () => {
+        setPasswordError('');
+      
+        if (newPassword !== confirmPassword) {
+          setPasswordError('errortext2');
+          return;
+        }
+      
+        if (currentPassword === newPassword) {
+          setPasswordError('errortext1');
+          return;
+        }
+    };
+
 
     return(
     <>
@@ -70,11 +95,13 @@ const Account=()=>{
            <div className={styles.boxing1}>
                     <p className={styles.pwtext}>새 비밀번호</p><br/>
                     <div className={styles.inputdiv}>
-                    <input type={showPassword?'text':'password'} className={styles.inputbox} />
+                    <input type={showPassword?'text':'password'} className={styles.inputbox}  />
                     {showPassword?(<FaEyeSlash className={styles.eyeIcon} onClick={toggleShowPassword} />):(
                         <FaEye className={styles.eyeIcon} onClick={toggleShowPassword} />
                     )}
                     </div>
+                    {passwordError === 'errortext1' && (
+                     <p className={styles.errortext}>이전 비밀번호와 같습니다. 더 안전한 비밀번호를 입력하세요.</p>)}
                 </div>
                 <div className={styles.boxing2}>
                     <p className={styles.pwtext}>새 비밀번호 확인</p><br/>
@@ -84,6 +111,9 @@ const Account=()=>{
                         <FaEye className={styles.eyeIcon} onClick={toggleShowPassword} />
                     )}
                     </div>
+                    {passwordError === 'errortext2' && (
+                        <p className={styles.errortext}>비밀번호와 비밀번호 확인이 일치하지 않습니다.</p>
+                    )}
                 </div>
                 </div>
                 <div className={styles.changepw}><button className={styles.changepwbtn} onClick={confirmpwHandler}>변경하기</button></div>

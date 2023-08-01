@@ -97,14 +97,20 @@
     font-size: large;
     font-weight: 600;
 }
+.errortext{
+    font-size: small;
+    color: red;
+    width: 80%;
+    margin-top: 10px;
+}
 .pwbox{
-    width: 60%;
+    width: 70%;
     background-color: #f2f2f2;
-    height:35px;
+    height:40px;
     margin-top: 15px;
     border-radius: 10px;
-    margin-left: 60px;
-    padding-top: 7px;
+    margin-left: 50px;
+    padding-top: 10px;
 }
 .inputdiv{
     width: 70%;
@@ -116,7 +122,7 @@
     background-color: #f2f2f2;
 }
 .inputbox{
-    width: 90%;
+    width: 100%;
     height: 100%;
     display: inline-block;
     padding-left: 10px;
@@ -125,10 +131,12 @@
 }
 .eyeIcon{
     margin-top: 8px;
+    margin-left: -25px;
 }
 .changepw{
     display: flex;
     justify-content: center;
+    margin-top: -10px;
 
 }
 .changepwbtn{
@@ -140,7 +148,7 @@
 }
 .boxing0{
     text-align: center;
-    margin-top: 90px;
+    margin-top: 60px;
 }
 .boxing2{
     margin-top: 30px;
