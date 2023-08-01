@@ -53,29 +53,29 @@ const Uploading =()=>{
                 </div>
                 
                 <div className={styles.bookmarkwrap}>
-      <p className={styles.texthead}>북마크 설정</p>
-      <div className={styles.searchwrap}>
-        <input
-          type='text'
-          className={styles.search}
-          placeholder='#Trip'
-          value={tagText}
-          onChange={handleInputChange}
-        />
-        <button className={styles.add} onClick={handleAddTag}>+</button></div>
-      <div className={styles.tagbox}>
-        <div className={styles.tagwrap}>
-          {tags.map((tag, index) => (<span className={styles.tag} key={index}>
-            {tag}
-            <button
-                className={styles.delete}
-                onClick={() => handleDeleteTag(tag)}
-              >x</button>
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
+            <p className={styles.texthead}>북마크 설정</p>
+            <div className={styles.searchwrap}>
+                <input
+                type='text'
+                className={styles.search}
+                placeholder='#Trip'
+                value={tagText}
+                onChange={handleInputChange}
+                />
+                <button className={styles.add} onClick={handleAddTag}>+</button></div>
+            <div className={styles.tagbox}>
+                <div className={styles.tagwrap}>
+                {tags.map((tag, index) => (<span className={styles.tag} key={index}>
+                    {tag}
+                    <button
+                        className={styles.delete}
+                        onClick={() => handleDeleteTag(tag)}
+                    >x</button>
+                    </span>
+                ))}
+                </div>
+            </div>
+            </div>
 
 
             <div className={styles.selectwrap}>
