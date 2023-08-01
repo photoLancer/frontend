@@ -28,7 +28,9 @@ function UploadPhoto() {
     setUploadPhoto3(true);
   };
   const cancelHandler=()=>{
-
+    setUploadPhoto1(false);
+    setUploadPhoto2(false);
+    setUploadPhoto3(false);
   }
   const backHandler=()=>{
     setUploadPhoto1(false);
@@ -46,11 +48,11 @@ function UploadPhoto() {
     };
   return (   
     <>
-      <div className={styles.screen}>
-      <div className={styles.uploadScreen}>
+      
           {uploadPhoto1&&(
             <>
-         
+         <div className={styles.screen}>
+      <div className={styles.uploadScreen}>
           <div className={styles.uploadwrap}>
           <p className={styles.head}>사진 올리기</p>
           <form action='/target' className={styles.dropzone} id='myDropzone'>
@@ -62,11 +64,14 @@ function UploadPhoto() {
           </form>
           <button className={styles.nextbtn1} onClick={nextStepHandler1}>다음</button>
           </div>
-          
+          </div>
+          </div>
            </>
           )}
           {uploadPhoto2&&(
           <>
+          <div className={styles.screen}>
+      <div className={styles.uploadScreen}>
             <Uploading />
             <div className={styles.agreebtn}>
                     <p className={styles.agreetext}>서비스 약관을 읽고 동의합니다.</p>
@@ -81,23 +86,26 @@ function UploadPhoto() {
               <button className={styles.nextbtn3}>다음</button>
               </>
             )}
-          
-            
+          </div>
+          </div>
           </>
           )}
            {uploadPhoto3&&(
           <>
+          <div className={styles.screen}>
+      <div className={styles.uploadScreen}>
             <Uploaded />
             <div className={styles.btnwrap}>
             <button className={styles.cancelbtn} onClick={cancelHandler}>취소</button>
             <button className={styles.backbtn} onClick={backHandler}>뒤로 가기</button>
             <button className={styles.finishbtn} onClick={finishHandler}>게시글 업로드</button>
             </div>
+            </div>
+            </div>
           </>
           )}
         
-          </div>
-      </div>
+        
     </>
   );
 }
