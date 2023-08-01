@@ -12,10 +12,9 @@ const Account=()=>{
     const confirmpwHandler=()=>{
         setIsChanging(false);
     };
-    
+
     const [showPassword,setShowPassword]=useState(false);
 
-   
     const toggleShowPassword=()=>{
         setShowPassword((prevShowPassword)=>!prevShowPassword);
     };
