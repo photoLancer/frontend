@@ -81,7 +81,7 @@
     font-size: small;
 }
 .search{
-    width: 90%;
+    width: 100%;
     height: 100%;
     border-radius: 5px;
     display: inline-block;
@@ -99,7 +99,7 @@
 }
 .tagbox{
     width: 90%;
-    height: 90px;
+    height: 80px;
     border: 1px solid lightgray;
     margin-top: 8px;
     border-radius: 15px;
@@ -146,11 +146,13 @@
 .selectcontent{
     margin-top: 30px;
     font-size: small;
+    position: relative;
+    
 }
 .selectfoot{
     display: flex;
     flex-direction: row;
-    margin-top: 30px;
+    margin-top: 40px;
     position: relative;
     width: 100%;
     height: 30px;
@@ -175,4 +177,26 @@
 }
 .agreetext{
     margin-right: 10px;
+}
+.inputpoint{
+    border: 1px solid lightgray;
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-left: 10px;
+
+}
+.pointfoot{
+    width: 60%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+}
+.pointcheck{
+    font-weight: 600;
+    font-size: medium;
+    margin-left: 40px;
 }
