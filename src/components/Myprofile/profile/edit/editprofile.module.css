@@ -7,19 +7,20 @@
 
 .contents{
     width: 100%;
-    height: 300px;
+    height: 350px;
     display: flex;
     flex-direction: row;
     border: 2px solid lightgray;
 }
 .editimg{
     width: 20%;
-    height: 300px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 80px;
+    
 }
 .imgage{
     width: 75%;
@@ -39,11 +40,16 @@
 }
 .editinfo{
     width: 40%;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
+    height: 350px;
+   
     border-right: 2px solid lightgray;
     border-left: 2px solid lightgray;
+    
+}
+.editinfowrap{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
 }
 .nicknamewrap{
     width: 100%;
@@ -82,9 +88,14 @@
 .bookmark{
     width: 40%;
 }
+.thirdbox{
+    
+    width: 40%;
+}
 .bookmarkwrap{
-    margin-left: 40px;
+    width: 80%;
     margin-top: 40px;
+    margin-left: 40px;
 }
 .bookmarkhead{
     font-weight: 600;
@@ -92,15 +103,15 @@
 }
 .searchwrap{
     display: flex;
-    width: 90%;
-    height: 35px;
+    width: 100%;
+    height: 30px;
     border: 1px solid lightgray;
     margin-top: 10px;
     position: relative;
     align-items: center;
 }
 .search{
-    width: 90%;
+    width: 100%;
     height: 100%;
     border-radius: 5px;
     display: inline-block;
@@ -117,17 +128,16 @@
     margin-right: 10px;
 }
 .tagbox{
-    width: 90%;
-    height: 120px;
+    width: 100%;
+    height: 100px;
     border: 1px solid lightgray;
-    margin-top: 15px;
+    margin-top: 10px;
     border-radius: 5px;
     overflow-x: hidden;
 }
 .tagwrap{
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
 }
 
 .tag{
@@ -135,10 +145,11 @@
     margin-left: 10px;
     border-radius: 20px;
     display: inline-block;
-    height: 35px;
+    height: 30px;
     padding: 5px;
     margin-top: 7px;
     padding-left: 15px;
+    font-size: small;
 }
 .delete{
     border: 1px solid lightgray;
@@ -147,6 +158,30 @@
     padding: 2px;
     height: 23px;
     margin-right: 7px;
+}
+.texthead{
+    font-weight: 600;
+    font-size: large;
+    width: 30%;
+}
+.purpose{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 140px;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.selection{
+    margin-left: 10px;
+    width: 70%;
+    margin-top: -10px;
+}
+.selectbox{
+    width: 100%;
+    height: 40px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
 }
 .footer{
     width: 100%;
