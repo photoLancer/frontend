@@ -28,10 +28,10 @@
     position: relative;
 }
 .smallbox1{
-    background-color: lightgray;
+    background-color: #f2f2f2;
 }
 .smallbox2:hover{
-    background-color: lightgray;
+    background-color: #f2f2f2;
 }
 .deletebtn1, .deletebtn2{
     width: 6%;
