@@ -37,8 +37,13 @@ function UploadPhoto() {
   };
   const finishHandler=()=>{
 
-  }
+  };
   
+  const [agreeService,setAgreeService]=useState(false);
+
+    const handleAgreeChange=()=>{
+        setAgreeService(true);
+    };
   return (   
     <>
       <div className={styles.screen}>
@@ -63,7 +68,20 @@ function UploadPhoto() {
           {uploadPhoto2&&(
           <>
             <Uploading />
-            <button className={styles.nextbtn2} onClick={nextStepHandler2}>다음</button>
+            <div className={styles.agreebtn}>
+                    <p className={styles.agreetext}>서비스 약관을 읽고 동의합니다.</p>
+                    <input type='checkbox' onChange={handleAgreeChange}/>
+                </div>
+            {agreeService?(
+              <>
+              <button className={styles.nextbtn2} onClick={nextStepHandler2}>다음</button>
+              </>
+            ):(
+              <>
+              <button className={styles.nextbtn3}>다음</button>
+              </>
+            )}
+          
             
           </>
           )}

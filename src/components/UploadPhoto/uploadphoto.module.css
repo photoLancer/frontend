@@ -73,6 +73,17 @@
 .nextbtn2{
   width: 15%;
   height: 30px;
+  background-color: #ff8b00;
+  border-radius: 15px;
+  position: absolute;
+  right: 0;
+  color: white;
+  margin-top: -70px;
+  margin-right: 100px;
+}
+.nextbtn3{
+  width: 15%;
+  height: 30px;
   border: 1px solid #ff8b00;
   border-radius: 15px;
   position: absolute;
@@ -107,4 +118,16 @@
   height: 100%;
   width: 23%; 
   border-radius: 15px;
+}
+.agreebtn{
+  width: 30%;
+  position: absolute;
+  right: 0;
+  margin-top: -130px;
+  margin-right: 40px;
+  font-size: small;
+}
+.agreetext{
+  margin-left: -10px;
+  margin-right: 10px;
 }
