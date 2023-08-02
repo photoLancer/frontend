@@ -2,6 +2,7 @@ import { React, useContext, useEffect, useState } from 'react';
 import styles from './sidebar.module.css';
 import { UploadDispatchContext } from '../../App';
 import { useDispatch, useSelector } from 'react-redux';
+import home from '../../img/home.png';
 
 function Sidebar(props) {
   const userState = useSelector((state) => state.user);
@@ -53,8 +54,10 @@ function Sidebar(props) {
         </div>
         <nav className='flex flex-col w-full items-center'>
           <a href='/' className={styles.nav_contents_home}>
-            <div className='w-10/12 flex flex-row'>
-              <div className='w-5 h-5 bg-slate-300 mr-2'></div>
+            <div className='w-10/12 flex flex-row items-center'>
+              <div className='w-10 h-10  mr-2'>
+                <img src={home} alt='a' className={styles.home_img} />
+              </div>
               <p className={`${current_page === 1 ? 'font-semibold' : ''}`}>
                 홈
               </p>

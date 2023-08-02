@@ -99,10 +99,10 @@
 
 .nav_contents_home {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: #fff;
   width: 90%;
-  padding: 7px 0;
+  /* padding: 7px 0; */
   margin-bottom: 12px;
   font-family: Pretendard;
   font-size: 14px;
