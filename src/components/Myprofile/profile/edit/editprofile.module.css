@@ -7,19 +7,20 @@
 
 .contents{
     width: 100%;
-    height: 300px;
+    height: 350px;
     display: flex;
     flex-direction: row;
     border: 2px solid lightgray;
 }
 .editimg{
     width: 20%;
-    height: 300px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 80px;
+    
 }
 .imgage{
     width: 75%;
@@ -30,19 +31,25 @@
 
 }
 .editbtn{
-    height: 35px;
+    width: 50%;
+    height: 30px;
     border: 1px solid black;
-    border-radius: 20px;
-    padding: 10px;
+    border-radius: 14px;
+    padding: 5px;
 
 }
 .editinfo{
     width: 40%;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
+    height: 350px;
+   
     border-right: 2px solid lightgray;
     border-left: 2px solid lightgray;
+    
+}
+.editinfowrap{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
 }
 .nicknamewrap{
     width: 100%;
@@ -58,7 +65,8 @@
     width: 80%;
     height: 35px;
     margin-top: 10px;
-    background-color: aliceblue;
+    border-radius: 5px;
+    padding-left: 10px;
 }
 .infotextwrap{
     width: 100%;
@@ -74,36 +82,105 @@
     width: 80%;
     height: 140px;
     margin-top: 10px;
-    background-color: aliceblue;
+    border-radius: 5px;
+    padding-left: 10px;
 }
 .bookmark{
     width: 40%;
 }
+.thirdbox{
+    
+    width: 40%;
+}
 .bookmarkwrap{
-    margin-left: 40px;
+    width: 80%;
     margin-top: 40px;
+    margin-left: 40px;
 }
 .bookmarkhead{
     font-weight: 600;
     font-size: large;
 }
-.search{
-    width: 90%;
-    height: 35px;
+.searchwrap{
+    display: flex;
+    width: 100%;
+    height: 30px;
     border: 1px solid lightgray;
-    border-radius: 5px;
     margin-top: 10px;
+    position: relative;
+    align-items: center;
+}
+.search{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    display: inline-block;
+    padding-left: 10px;
+}
+.add{
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    width: 7%;
+    height: 60%;
+    margin-right: 10px;
 }
 .tagbox{
-    width: 90%;
-    height: 120px;
+    width: 100%;
+    height: 100px;
     border: 1px solid lightgray;
-    margin-top: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    overflow-x: hidden;
+}
+.tagwrap{
+    width: 100%;
+    height: 100%;
 }
 .tag{
     border: 1px solid lightgray;
     margin-left: 10px;
-    
+    border-radius: 20px;
+    display: inline-block;
+    height: 30px;
+    padding: 5px;
+    margin-top: 7px;
+    padding-left: 15px;
+    font-size: small;
+}
+.delete{
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    margin-left: 8px;
+    padding: 2px;
+    height: 23px;
+    margin-right: 7px;
+}
+.texthead{
+    font-weight: 600;
+    font-size: large;
+    width: 30%;
+}
+.purpose{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 140px;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.selection{
+    margin-left: 10px;
+    width: 70%;
+    margin-top: -10px;
+}
+.selectbox{
+    width: 100%;
+    height: 40px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
 }
 .footer{
     width: 100%;
@@ -112,22 +189,14 @@
     position: relative;
 }
 .apply{
-    position: absolute;
-    right: 0;
-    width: 8%;
-    border: 1px solid black;
-    border-radius: 10px;
-    height: 40px;
-    margin-right: 120px;
-    margin-top: 30px;
-
+    margin-right: 100px;
 }
-.cancel{
+.cancel, .apply{
     position: absolute;
     right: 0;
     width: 8%;
     border: 1px solid black;
-    border-radius: 10px;
-    height: 40px;
+    border-radius: 20px;
+    height: 35px;
     margin-top: 30px;
 }

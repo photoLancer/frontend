@@ -2,13 +2,14 @@ import React, { useContext, useState, useRef, useEffect } from 'react';
 import styles from './feedcontent.module.css';
 import { PhotoContext } from '../../routes/HomePage/HomePage';
 import FeedComment from './FeedComment';
+import { FeedOptionDispatchContext } from './Feed';
 
 function FeedContent() {
   const gym =
     'https://news.skhynix.co.kr/hubfs/A_Medialibrary/10_Newsroom%20Upload/2022/11%EC%9B%94/%ED%95%98%EC%9D%B4%EC%9D%B8%ED%84%B0%EB%B7%B0_%EC%B2%B4%EC%9C%A1%EC%8B%9C%EC%84%A4/SK%ED%95%98%EC%9D%B4%EB%8B%89%EC%8A%A4_%ED%97%AC%EC%8A%A4%EC%9E%A52.jpg';
 
   //
-  //header height 알아내는 코드 - 가상 height 만들기 목적
+  //header height 알아내는 코드 - 가상 height 만들기 목적 , comment 기능 시 필요
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(null);
   useEffect(() => {
@@ -19,22 +20,23 @@ function FeedContent() {
   }, []);
   //
   const photo = useContext(PhotoContext);
+  console.log(photo.photo_id);
 
-  const [like, setLike] = useState(false);
-  const [commentActive, setcommentActive] = useState(false);
   const onClickHandler = (e) => {
     e.stopPropagation();
   };
 
+  //like
+  const [like, setLike] = useState(false);
   const likeBtnHandler = () => {
     setLike(!like);
   };
 
+  //comments
+  const [commentActive, setcommentActive] = useState(false);
   const commentBtnHandler = () => {
     setcommentActive(!commentActive);
   };
-
-  //comments
   const [commentText, setCommentText] = useState();
   const commentTextHandler = (e) => {
     setCommentText(e.target.value);
@@ -49,6 +51,17 @@ function FeedContent() {
     { user_id: 2, name: 'lemon', lv: 7, text: 'Your photo skill is so good!!' },
   ]);
   //
+
+  //share
+  const feedOptionDispatch = useContext(FeedOptionDispatchContext);
+  const shareBtnHandler = () => {
+    feedOptionDispatch({ type: 'SHARE_CLICK' });
+  };
+
+  //purchase
+  const purchaseBtnHandler = () => {
+    feedOptionDispatch({ type: 'PURCHASE_CLICK' });
+  };
 
   return (
     <>
@@ -85,8 +98,12 @@ function FeedContent() {
               <button className={styles.btn} onClick={commentBtnHandler}>
                 2
               </button>
-              <button className={styles.btn}>3</button>
-              <button className={styles.btn}>4</button>
+              <button className={styles.btn} onClick={shareBtnHandler}>
+                3
+              </button>
+              <button className={styles.btn} onClick={purchaseBtnHandler}>
+                4
+              </button>
             </div>
           </div>
           <div className={styles.photo_img}>
