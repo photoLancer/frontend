@@ -1,9 +1,10 @@
 const initialState = {
   userId: 1,
-  userName: '',
-  userProfileImg: '',
-  userLv: 0,
-  userLvExp: 0,
+  userName: 'abc',
+  userProfileImg:
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSC8LH9YxLxyznRum-miHeKOtlHHIXzq-KAA&usqp=CAU',
+  userLv: 5,
+  userLvExp: 92.4,
   userPoint: 50224,
   isLoggedIn: false,
 };

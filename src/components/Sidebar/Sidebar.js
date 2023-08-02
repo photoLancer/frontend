@@ -1,15 +1,17 @@
 import { React, useContext, useEffect, useState } from 'react';
 import styles from './sidebar.module.css';
 import { UploadDispatchContext } from '../../App';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Sidebar(props) {
+  const userState = useSelector((state) => state.user);
   const uploadDispatch = useContext(UploadDispatchContext);
   const { current_page } = props;
 
   const user_image_url =
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSC8LH9YxLxyznRum-miHeKOtlHHIXzq-KAA&usqp=CAU';
 
-  const [lv, setLv] = useState(92.4);
+  // const [lv, setLv] = useState(userState.userLvExp);
 
   const uploadHandler = (e) => {
     e.preventDefault();
@@ -19,30 +21,34 @@ function Sidebar(props) {
   return (
     <>
       <div className='flex flex-col items-center border border-solid border-black  w-9/12'>
-        <div className='user flex flex-col items-center mb-4'>
+        <div className='user flex flex-col items-center mb-4 w-full'>
           <div className={styles.user_image}>
             <img
-              src={user_image_url}
+              src={userState.userProfileImg}
               alt='#'
               className={styles.user_image_img}
             />
           </div>
-          <p className={styles.user_name}>name</p>
+          <p className={styles.user_name}>{userState.userName}</p>
         </div>
         <div className='user_info w-full mb-10'>
           <div className='lv flex mb-2'>
-            <p className={styles.user_info_left}>LV.5</p>
+            <p className={styles.user_info_left}>LV.{userState.userLv}</p>
             <div className={styles.user_info_lv}>
               <div
                 className={styles.user_info_black_bar}
-                style={{ width: `${lv}%` }}
+                style={{ width: `${userState.userLvExp}%` }}
               ></div>
-              <div className={styles.user_info_lv_number}>{lv}%</div>
+              <div className={styles.user_info_lv_number}>
+                {userState.userLvExp}%
+              </div>
             </div>
           </div>
           <div className='point flex'>
             <p className={styles.user_info_left}>Point</p>
-            <p className={styles.user_info_point_right}>93400</p>
+            <p className={styles.user_info_point_right}>
+              {userState.userPoint}
+            </p>
           </div>
         </div>
         <nav className='flex flex-col w-full items-center'>
