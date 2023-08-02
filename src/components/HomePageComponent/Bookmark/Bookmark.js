@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import styles from './bookmark.module.css';
 import LeftBtn from './LeftBtn';
 import { Row } from 'antd';
-import PhotoCard from './PhotoCard';
+import PhotoCard from '../PhotoCard/PhotoCard';
 
 function Bookmark() {
   //오른쪽 버튼 관리

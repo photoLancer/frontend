@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './explore.module.css';
-import Hotphoto from './Hotphoto';
-import RecentlyPhoto from './RecentlyPhoto';
 import Contest from './Contest';
 import Clickcontest from './Clickcontest';
+import PhotoCard from '../PhotoCard/PhotoCard';
+import { Row } from 'antd';
 
 function Explore() {
   useEffect(() => {
@@ -63,24 +63,28 @@ function Explore() {
         <div className='mb-16'>
           <h1 className={styles.title}>{`HOT PHOTO >`}</h1>
           <div className='hot_photos flex flex-row items-start'>
-            {hotPhotos &&
-              hotPhotos.map((photo, index) => (
-                <React.Fragment key={index}>
-                  <Hotphoto id={photo.id} image={photo.img} />
-                </React.Fragment>
-              ))}
+            <Row gutter={[24, 24]}>
+              {hotPhotos &&
+                hotPhotos.map((photo, index) => (
+                  <React.Fragment key={index}>
+                    <PhotoCard id={photo.id} image={photo.img} />
+                  </React.Fragment>
+                ))}
+            </Row>
           </div>
         </div>
 
         <div className='mb-16'>
           <h1 className={styles.title}>{`RECENTLY UPLOADED PHOTO >`}</h1>
           <div className='recently_photo flex flex-row items-start'>
-            {recentlyPhotos &&
-              recentlyPhotos.map((photo, index) => (
-                <React.Fragment key={index}>
-                  <RecentlyPhoto id={photo.id} image={photo.img} />
-                </React.Fragment>
-              ))}
+            <Row gutter={[24, 24]}>
+              {recentlyPhotos &&
+                recentlyPhotos.map((photo, index) => (
+                  <React.Fragment key={index}>
+                    <PhotoCard id={photo.id} image={photo.img} />
+                  </React.Fragment>
+                ))}
+            </Row>
           </div>
         </div>
 

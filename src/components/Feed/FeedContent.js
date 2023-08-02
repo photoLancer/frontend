@@ -20,6 +20,7 @@ function FeedContent() {
   }, []);
   //
   const photo = useContext(PhotoContext);
+  console.log(photo.photo_id);
 
   const onClickHandler = (e) => {
     e.stopPropagation();
