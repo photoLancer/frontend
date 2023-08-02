@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './contest.module.css';
+import { Row } from 'antd';
+import PhotoCard from '../PhotoCard/PhotoCard';
 
 function Contest(props) {
   const { info } = props;
@@ -8,33 +10,24 @@ function Contest(props) {
   }, []);
   return (
     <>
-      <div className='flex flex-row'>
-        <div className={`basis-1/3 h-84 ${styles.contest_photo}`}>
-          <img
-            src={info[0].img}
-            alt={info[0].id}
-            className={styles.contest_photo_img}
+      <div className='recently_photo flex flex-row items-start'>
+        <Row gutter={[24, 24]}>
+          <PhotoCard
+            id={info[0].id}
+            image={info[0].img}
+            ranking={info[0].ranking}
           />
-        </div>
-        <div className='basis-1/3'>
-          <div className={`h-40 mb-4 ${styles.contest_photo}`}>
-            <img
-              src={info[1].img}
-              alt={info[0].id}
-              className={styles.contest_photo_img}
-            />
-          </div>
-          <div className={`h-40 ${styles.contest_photo}`}>
-            <img
-              src={info[2].img}
-              alt={info[0].id}
-              className={styles.contest_photo_img}
-            />
-          </div>
-        </div>
-        <div className={`basis-1/3 ${styles.contest_info}`}>
-          <p>contest info</p>
-        </div>
+          <PhotoCard
+            id={info[1].id}
+            image={info[1].img}
+            ranking={info[1].ranking}
+          />
+          <PhotoCard
+            id={info[2].id}
+            image={info[2].img}
+            ranking={info[2].ranking}
+          />
+        </Row>
       </div>
     </>
   );

@@ -24,6 +24,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+.ranking {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  z-index: 3;
+
+  font-family: neurimbo Gothic;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #fdfdfd;
 }
 
 .first_photo {
