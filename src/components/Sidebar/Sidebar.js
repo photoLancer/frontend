@@ -21,86 +21,63 @@ function Sidebar(props) {
 
   return (
     <>
-      <div className='flex flex-col items-center border border-solid border-black  w-9/12'>
-        <div className='user flex flex-col items-center mb-4 w-full'>
+      <div className="flex flex-col items-center border border-solid border-black  w-9/12">
+        <div className="user flex flex-col items-center mb-4 w-full">
           <div className={styles.user_image}>
-            <img
-              src={userState.userProfileImg}
-              alt='#'
-              className={styles.user_image_img}
-            />
+            <img src={userState.userProfileImg} alt="#" className={styles.user_image_img} />
           </div>
           <p className={styles.user_name}>{userState.userName}</p>
         </div>
-        <div className='user_info w-full mb-10'>
-          <div className='lv flex mb-2'>
+        <div className="user_info w-full mb-10">
+          <div className="lv flex mb-2">
             <p className={styles.user_info_left}>LV.{userState.userLv}</p>
             <div className={styles.user_info_lv}>
-              <div
-                className={styles.user_info_black_bar}
-                style={{ width: `${userState.userLvExp}%` }}
-              ></div>
-              <div className={styles.user_info_lv_number}>
-                {userState.userLvExp}%
-              </div>
+              <div className={styles.user_info_black_bar} style={{ width: `${userState.userLvExp}%` }}></div>
+              <div className={styles.user_info_lv_number}>{userState.userLvExp}%</div>
             </div>
           </div>
-          <div className='point flex'>
+          <div className="point flex">
             <p className={styles.user_info_left}>Point</p>
-            <p className={styles.user_info_point_right}>
-              {userState.userPoint}
-            </p>
+            <p className={styles.user_info_point_right}>{userState.userPoint}</p>
           </div>
         </div>
-        <nav className='flex flex-col w-full items-center'>
-          <a href='/' className={styles.nav_contents_home}>
-            <div className='w-10/12 flex flex-row items-center'>
-              <div className='w-10 h-10  mr-2'>
-                <img src={home} alt='a' className={styles.home_img} />
+        <nav className="flex flex-col w-full items-center">
+          <a href="/" className={styles.nav_contents_home}>
+            <div className="w-10/12 flex flex-row items-center">
+              <div className="w-10 h-10  mr-2">
+                <img src={home} alt="a" className={styles.home_img} />
               </div>
-              <p className={`${current_page === 1 ? 'font-semibold' : ''}`}>
-                홈
-              </p>
+              <p className={`${current_page === 1 ? 'font-semibold' : ''}`}>홈</p>
             </div>
           </a>
-          <a href='/profile' className={styles.nav_contents}>
-            <div className='w-10/12 flex flex-row'>
-              <div className='w-5 h-5 bg-slate-300 mr-2'></div>
-              <p className={`${current_page === 2 ? 'font-semibold' : ''}`}>
-                나의 프로필
-              </p>
+          <a href="/profile" className={styles.nav_contents}>
+            <div className="w-10/12 flex flex-row">
+              <div className="w-5 h-5 bg-slate-300 mr-2"></div>
+              <p className={`${current_page === 2 ? 'font-semibold' : ''}`}>나의 프로필</p>
             </div>
           </a>
-          <a href='/' className={styles.nav_contents}>
-            <div className='w-10/12 flex flex-row'>
-              <div className='w-5 h-5 bg-slate-300 mr-2'></div>
-              <p className={`${current_page === 3 ? 'font-semibold' : ''}`}>
-                알람
-              </p>
+          <a href="/" className={styles.nav_contents}>
+            <div className="w-10/12 flex flex-row">
+              <div className="w-5 h-5 bg-slate-300 mr-2"></div>
+              <p className={`${current_page === 3 ? 'font-semibold' : ''}`}>알람</p>
             </div>
           </a>
-          <a href='/chat' className={styles.nav_contents}>
-            <div className='w-10/12 flex flex-row'>
-              <div className='w-5 h-5 bg-slate-300 mr-2'></div>
-              <p className={`${current_page === 4 ? 'font-semibold' : ''}`}>
-                채팅
-              </p>
+          <a href="/chat" className={styles.nav_contents}>
+            <div className="w-10/12 flex flex-row">
+              <div className="w-5 h-5 bg-slate-300 mr-2"></div>
+              <p className={`${current_page === 4 ? 'font-semibold' : ''}`}>채팅</p>
             </div>
           </a>
-          <a href='/' className={styles.nav_contents} onClick={uploadHandler}>
-            <div className='w-10/12 flex flex-row'>
-              <div className='w-5 h-5 bg-slate-300 mr-2'></div>
-              <p className={`${current_page === 5 ? 'font-semibold' : ''}`}>
-                사진 올리기
-              </p>
+          <a href="/" className={styles.nav_contents} onClick={uploadHandler}>
+            <div className="w-10/12 flex flex-row">
+              <div className="w-5 h-5 bg-slate-300 mr-2"></div>
+              <p className={`${current_page === 5 ? 'font-semibold' : ''}`}>사진 올리기</p>
             </div>
           </a>
-          <a href='/setting' className={styles.nav_contents}>
-            <div className='w-10/12 flex flex-row'>
-              <div className='w-5 h-5 bg-slate-300 mr-2'></div>
-              <p className={`${current_page === 6 ? 'font-semibold' : ''}`}>
-                설정
-              </p>
+          <a href="/setting" className={styles.nav_contents}>
+            <div className="w-10/12 flex flex-row">
+              <div className="w-5 h-5 bg-slate-300 mr-2"></div>
+              <p className={`${current_page === 6 ? 'font-semibold' : ''}`}>설정</p>
             </div>
           </a>
         </nav>
