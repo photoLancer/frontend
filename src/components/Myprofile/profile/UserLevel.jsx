@@ -29,44 +29,50 @@ const UserLevel =()=>{
                 <div className={styles.achieve}>
                     <div className={styles.achievecontents}>
                         <div className={styles.achievement} value="checkicon">V</div>
-                        <div className={styles.achievement} value="tasks">upload 1 photo~</div>
-                        <div className={styles.achievement} value="rewards">+5%~</div>
+                        <div className={styles.achievement} value="tasks">upload 1 photo</div>
+                        <div className={styles.achievement} value="rewards">+5Point</div>
                     </div>
                     <div className={styles.achievecontents}>
                         <div className={styles.achievement} value="checkicon">V</div>
-                        <div className={styles.achievement} value="tasks">upload 1 photo~</div>
-                        <div className={styles.achievement} value="rewards">+5%~</div>
+                        <div className={styles.achievement} value="tasks">upload 1 photo</div>
+                        <div className={styles.achievement} value="rewards">+5Point</div>
                     </div>
                     <div className={styles.achievecontents}>
                         <div className={styles.achievement} value="checkicon">V</div>
-                        <div className={styles.achievement} value="tasks">upload 1 photo~</div>
-                        <div className={styles.achievement} value="rewards">+5%~</div>
+                        <div className={styles.achievement} value="tasks">upload 1 photo</div>
+                        <div className={styles.achievement} value="rewards">+5Point</div>
                     </div>
                     <div className={styles.achievecontents}>
                         <div className={styles.achievement} value="checkicon">V</div>
-                        <div className={styles.achievement} value="tasks">upload 1 photo~</div>
-                        <div className={styles.achievement} value="rewards">+5%~</div>
+                        <div className={styles.achievement} value="tasks">upload 1 photo</div>
+                        <div className={styles.achievement} value="rewards">+5Point</div>
                     </div>
                     <div className={styles.nonachievecontents}>
                         <div className={styles.achievement} value="checkicon">V</div>
-                        <div className={styles.achievement} value="tasks">upload 1 photo~</div>
-                        <div className={styles.achievement} value="rewards">+5%~</div>
+                        <div className={styles.achievement} value="tasks">upload 1 photo</div>
+                        <div className={styles.achievement} value="rewards">+5Point</div>
                     </div>
                     <div className={styles.nonachievecontents}>
                         <div className={styles.achievement} value="checkicon">V</div>
-                        <div className={styles.achievement} value="tasks">upload 1 photo~</div>
-                        <div className={styles.achievement} value="rewards">+5%~</div>
+                        <div className={styles.achievement} value="tasks">upload 1 photo</div>
+                        <div className={styles.achievement} value="rewards">+5Point</div>
                     </div>
                     <div className={styles.nonachievecontents}>
                         <div className={styles.achievement} value="checkicon">V</div>
-                        <div className={styles.achievement} value="tasks">upload 1 photo~</div>
-                        <div className={styles.achievement} value="rewards">+5%~</div>
+                        <div className={styles.achievement} value="tasks">upload 1 photo</div>
+                        <div className={styles.achievement} value="rewards">+5Point</div>
                     </div>
                     <div className={styles.nonachievecontents}>
                         <div className={styles.achievement} value="checkicon">V</div>
-                        <div className={styles.achievement} value="tasks">upload 1 photo~</div>
-                        <div className={styles.achievement} value="rewards">+5%~</div>
+                        <div className={styles.achievement} value="tasks">upload 1 photo</div>
+                        <div className={styles.achievement} value="rewards">+5Point</div>
                     </div>
+                </div>
+                <div className={styles.pagenum}>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
                 </div>
                 </div>
             </div>
