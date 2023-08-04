@@ -9,7 +9,6 @@ import Following from '../../components/HomePageComponent/Following/Following';
 import Notice from '../../components/HomePageComponent/Notice/Notice';
 import Feed from '../../components/Feed/Feed';
 
-
 export const PhotoContext = createContext();
 export const PhotoDispatchContext = createContext();
 
@@ -82,25 +81,33 @@ function HomePage() {
               <div className='navbar mb-8'>
                 <div className='flex flex-row'>
                   <button
-                    className={styles.navbar_button}
+                    className={`${styles.navbar_button} ${
+                      homeContent === 1 ? styles.selected : ''
+                    }`}
                     onClick={exploreHandler}
                   >
                     Explore
                   </button>
                   <button
-                    className={styles.navbar_button}
+                    className={`${styles.navbar_button} ${
+                      homeContent === 2 ? styles.selected : ''
+                    }`}
                     onClick={bookmarkHandler}
                   >
                     Bookmark
                   </button>
                   <button
-                    className={styles.navbar_button}
+                    className={`${styles.navbar_button} ${
+                      homeContent === 3 ? styles.selected : ''
+                    }`}
                     onClick={followingHandler}
                   >
                     Following
                   </button>
                   <button
-                    className={styles.navbar_button}
+                    className={`${styles.navbar_button} ${
+                      homeContent === 4 ? styles.selected : ''
+                    }`}
                     onClick={noticeHandler}
                   >
                     Notice
