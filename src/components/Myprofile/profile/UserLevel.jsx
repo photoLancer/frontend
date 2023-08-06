@@ -1,8 +1,15 @@
+import { useState } from 'react';
 import styles from './userlevel.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+import EditTitle from './edit/EditTitle';
 
 const UserLevel =()=>{
     const userState=useSelector((state)=>state.user);
+    const [isEditingTitle,setIsEditingTitle]=useState(false);
+
+    const handleEditTitle=()=>{
+        setIsEditingTitle(true);
+    };
 
     return(
         <>
@@ -30,9 +37,12 @@ const UserLevel =()=>{
                 <div className={styles.titlehead}>Your title</div>
                 <div className={styles.title}>
                 <div className={styles.myTitle2}>{userState.userTitle}</div> 
-                <button className={styles.editTitle}>edit title</button>
+                <button className={styles.editTitle} onClick={handleEditTitle}>edit title</button>
                 </div>
                 </div>
+                {isEditingTitle?(
+                    <EditTitle />
+                ):('')}
             </div>
             <div className={styles.achievecheck}>
                 <div className={styles.achievecheckwrap}>
