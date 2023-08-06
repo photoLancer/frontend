@@ -125,3 +125,38 @@
     text-align: center;
     margin-top: 20px;
 }
+
+.user_info_lv {
+    margin-left: 50px;
+    width: 70%;
+    background-color: #d9d9d9;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 35px;
+  }
+  
+  .user_info_black_bar {
+    width: 20px;
+    height: 100%;
+    background-color: gray;
+    position: absolute;
+    z-index: 2;
+    border-radius: 25px;
+    top: 0;
+    left: 0;
+  }
+  
+  .user_info_lv_number {
+    font-family: Pretendard;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #fff;
+    z-index: 3;
+    padding-top: 8px;
+  }
+  

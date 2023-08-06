@@ -3,8 +3,11 @@ import styles from './userpoint.module.css';
 import Exchange from './point/Exchange';
 import Charge from './point/Charge';
 import TradeLog from './point/TradeLog';
+import { useDispatch, useSelector } from 'react-redux';
 
 function UserPoint() {
+  const userState=useSelector((state)=>state.user);
+
     const [pointContent,setPointContent]=useState(1);
 
     const exchangeHandler=()=>{
@@ -23,7 +26,7 @@ function UserPoint() {
         <div className={styles.pointcheckwrap}>
             <div className={styles.pointcheck}>
                 <div className={styles.pointhead}>Your Point</div>
-                <div className={styles.myPoint}>$ 55,000</div>
+                <div className={styles.myPoint}>$ {userState.userPoint}</div>
             </div>
             <div className={styles.chargingBox}>
             <div className='flex flex-row'>

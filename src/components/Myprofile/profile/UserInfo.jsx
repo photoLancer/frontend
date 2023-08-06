@@ -45,8 +45,8 @@ const UserInfo=()=>{
                 <div className={styles.footer}>
                 <div className={styles.taghead}>관심 키워드</div>
                 <div className={styles.tagging}>
-                    <span className={styles.tag}>##</span>
-                    <span className={styles.tag}>##</span>
+                    <span className={styles.tag}>#Trip</span>
+                    <span className={styles.tag}>#Travel</span>
                 </div>
                 </div>
             </div>
