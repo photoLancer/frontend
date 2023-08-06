@@ -1,6 +1,7 @@
 const initialState = {
   userId: 1,
   userName: 'abc',
+  userTitle:'Beginner',
   userProfileImg:
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSC8LH9YxLxyznRum-miHeKOtlHHIXzq-KAA&usqp=CAU',
   userLv: 5,
