@@ -17,9 +17,10 @@
     font-weight: 600;
 }
 .myPoint{
-    font-size:large;
     font-weight: 600;
     margin: 10px;
+    margin-top: 20px;
+    font-size: x-large;
 }
 .chargingBox{
     width: 90%;

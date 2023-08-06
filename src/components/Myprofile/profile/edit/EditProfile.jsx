@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import styles from './editprofile.module.css';
 import Profile from '../Profile';
+import { useDispatch, useSelector } from 'react-redux';
 
 const EditProfile=()=>{
+    const userState=useSelector((state)=>state.user);
+
     const [inputValue, setInputValue] = useState('');
 
     const HandleChange=(event)=>{
@@ -50,7 +53,11 @@ const EditProfile=()=>{
         <div className={styles.header}><p>프로필 수정</p></div>
         <div className={styles.contents}>
             <div className={styles.editimg}>
-                <img className={styles.imgage}></img>
+                <img 
+                src={userState.userProfileImg}
+                alt='#'
+                className={styles.imgage}
+                />
                 <button className={styles.editbtn}>사진 변경</button>
             </div>
             <div className={styles.editinfo}>
