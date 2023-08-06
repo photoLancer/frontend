@@ -1,6 +1,11 @@
+import { useState } from 'react';
 import styles from './userlevel.module.css';
 
 const UserLevel =()=>{
+    const editTitleHandler=(e)=>{
+        
+    }
+
     return(
         <>
         <div className={styles.level}>
@@ -19,7 +24,7 @@ const UserLevel =()=>{
                 <div className={styles.titlehead}>Your title</div>
                 <div className={styles.title}>
                 <div className={styles.myTitle2}>Beginner</div> 
-                <button className={styles.editTitle}>edit title</button>
+                <a href='/profile' className={styles.editTitle} onClick={editTitleHandler}>edit title</a>
                 </div>
                 </div>
             </div>
