@@ -53,9 +53,9 @@ function App() {
         )}
         <UploadDispatchContext.Provider value={uploadingDispatch}>
           <Routes>
-            <Route exact path='/' element={HomePage()} />
+            <Route exact path='/home' element={HomePage()} />
             <Route exact path='/login' element={LoginPage()} />
-            <Route exact path='/Onboarding' element={OnboardingPage()} />
+            <Route exact path='/' element={OnboardingPage()} />
             <Route exact path='/profile' element={MyprofilePage()} />
             <Route exact path='/chat' element={ChatPage()} />
             <Route exact path='/setting' element={SettingPage()} />

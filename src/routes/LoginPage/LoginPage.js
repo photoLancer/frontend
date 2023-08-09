@@ -8,8 +8,46 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import styles from './LoginPage.module.css';
 import Login from './Login.JPG';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../_actions/user_action';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [idValue, setIdValue] = useState('');
+  const [pwValue, setPwValue] = useState('');
+
+  const handleIdChange = (event) => {
+    setIdValue(event.target.value);
+  };
+  const handlePwChange = (e) => {
+    setPwValue(e.target.value);
+  };
+
+  const onSubmitHandler = async () => {
+    const body = {
+      user_id: idValue,
+      password: pwValue,
+    };
+    try {
+      const response = await axios.post(
+        'http://photolancer.shop/api/v1/users/login',
+        body
+      );
+      // console.log(response);
+      // console.log(response.data.jwt);
+      // console.log(response.data.errorMessage);
+      if (response.data.errorMessage === null) {
+        //로그인이 성공적으로 된 경우
+        dispatch(login(response.data.jwt));
+        navigate('/home');
+      }
+    } catch (error) {
+      console.error('Error:', error.message); // 오류 메시지 출력
+    }
+  };
   return (
     <div className={styles.LoginPage}>
       <img className={styles.L_img} src={Login} alt='login_camera' />
@@ -49,6 +87,8 @@ function LoginPage() {
               border: 'none',
               borderRadius: '16px',
             }}
+            value={idValue}
+            onChange={handleIdChange}
           ></TextField>
           <TextField
             label='Password'
@@ -63,6 +103,8 @@ function LoginPage() {
             }}
             margin='normal'
             required
+            value={pwValue}
+            onChange={handlePwChange}
           ></TextField>
           <Button
             type='submit'
@@ -81,6 +123,7 @@ function LoginPage() {
               letterSpacing: '0em',
               textAlign: 'center',
             }}
+            onClick={onSubmitHandler}
           >
             Sign in
           </Button>
