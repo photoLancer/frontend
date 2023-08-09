@@ -53,7 +53,7 @@ function Sidebar(props) {
           </div>
         </div>
         <nav className='flex flex-col w-full items-center'>
-          <a href='/' className={styles.nav_contents_home}>
+          <a href='/home' className={styles.nav_contents_home}>
             <div className='w-10/12 flex flex-row items-center'>
               <div className='w-10 h-10  mr-2'>
                 <img src={home} alt='a' className={styles.home_img} />
