@@ -43,10 +43,16 @@ function LoginPage() {
         //로그인이 성공적으로 된 경우
         dispatch(login(response.data.jwt));
         navigate('/home');
+        return;
+      } else {
+        //회원정보 수정이 필요한 경우  ->redirect 해야됨
+        alert('회원정보 수정 필요');
+        return;
       }
     } catch (error) {
       console.error('Error:', error.message); // 오류 메시지 출력
     }
+    alert('로그인 실패');
   };
   return (
     <div className={styles.LoginPage}>
