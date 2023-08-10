@@ -29,7 +29,7 @@ function userReducer(state = initialState, action) {
         num_post: action.payload.num_post,
         num_following: action.payload.num_following,
         bookmark: action.payload.bookmark,
-        explane: action.payload.explain,
+        explane: action.payload.explane,
         userLvExp: action.payload.experience,
         isLoggedIn: true,
       };
