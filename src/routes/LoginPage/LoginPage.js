@@ -16,6 +16,14 @@ import { login } from '../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log('data', data);
+  };
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [idValue, setIdValue] = useState('');
@@ -80,48 +88,33 @@ function LoginPage() {
             >
               Log in
             </Typography>
-            <TextField
-              label="ID"
-              name="ID"
-              required
+            <input
+              className={styles.input_user}
+              label="id"
+              name="id"
               margin="normal"
               autoFocus
-              sx={{
-                background: 'rgba(237, 237, 237, 1)',
-                width: '554px',
-                height: '72px',
-                border: 'none',
-                borderRadius: '16px',
-              }}
+              placeholder="   ID"
+              {...register('id', { required: true })}
               value={idValue}
               onChange={handleIdChange}
-            ></TextField>
-            <TextField
+            ></input>
+            <input
+              className={styles.input_user}
               label="Password"
               name="pwd"
-              sx={{
-                mt: 2,
-                background: 'rgba(237, 237, 237, 1)',
-                width: '554px',
-                height: '72px',
-                border: 'none',
-                borderRadius: '16px',
-              }}
+              {...register('pwd', { required: true })}
               margin="normal"
-              required
+              placeholder="   Password"
               value={pwValue}
               onChange={handlePwChange}
-            ></TextField>
-            {errors.id && errors.id.type === 'required' && (
+            ></input>
+            {(errors.id || errors.pwd) && (errors.id.type === 'required' || errors.pwd.type === 'required') && (
               <span className={styles.errors1}>
                 아이디 또는 비밀번호<span className={styles.errors2}>를 입력해주세요</span>
               </span>
             )}
-            {errors.pwd && errors.pwd.type === 'required' && (
-              <span className={styles.errors1}>
-                아이디 또는 비밀번호<span className={styles.errors2}>를 입력해주세요</span>
-              </span>
-            )}
+
             <Button
               type="submit"
               variant="contained"

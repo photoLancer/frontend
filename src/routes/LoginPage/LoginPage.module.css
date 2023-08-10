@@ -10,7 +10,7 @@ LoginPage {
   display: flex;
   flex-direction: row;
 }
-.input_id {
+.input_user {
   background: rgba(237, 237, 237, 1);
   width: 554px;
   height: 72px;
