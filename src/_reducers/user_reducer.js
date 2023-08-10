@@ -10,6 +10,7 @@ const initialState = {
   num_post: 0,
   num_following: 0,
   bookmark: null,
+  explane: '',
   isLoggedIn: false,
 };
 
@@ -28,6 +29,8 @@ function userReducer(state = initialState, action) {
         num_post: action.payload.num_post,
         num_following: action.payload.num_following,
         bookmark: action.payload.bookmark,
+        explane: action.payload.explain,
+        userLvExp: action.payload.experience,
         isLoggedIn: true,
       };
     case 'LOGOUT':
@@ -44,6 +47,7 @@ function userReducer(state = initialState, action) {
         num_post: 0,
         num_following: 0,
         bookmark: null,
+        explane: '',
         isLoggedIn: false,
       };
     case 'PHOTO_PURCHASE':
