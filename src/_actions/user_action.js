@@ -23,6 +23,8 @@ export const login = async (jwt) => {
       num_post: user_info.data.num_post,
       num_following: user_info.data.num_following,
       bookmark: user_info.data.bookmark,
+      explane: user_info.data.explane,
+      experience: user_info.data.experience,
     },
   };
 };

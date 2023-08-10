@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 function Header(props) {
   const navigate = useNavigate();
   const userState = useSelector((state) => state.user); // 전체 상태 가져옴
+  console.log(userState);
   const dispatch = useDispatch();
   const onLogoutHandle = (e) => {
     e.preventDefault();
@@ -17,14 +18,14 @@ function Header(props) {
     navigate('/');
   };
 
-  const loginHandler = () => {
-    dispatch(login(2));
-  };
+  // const loginHandler = () => {
+  //   dispatch(login(2));
+  // };
 
   return (
     <>
       <div className={styles.header}>
-        <a href='/'>
+        <a href='/home'>
           <img src={logo} alt='logo' className={styles.logo} />
         </a>
         {/* <p>{userState.userId}</p> */}
