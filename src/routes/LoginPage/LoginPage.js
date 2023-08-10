@@ -8,6 +8,8 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import styles from './LoginPage.module.css';
 import Login from './Login.JPG';
+import { useForm } from 'react-hook-form';
+import { useRef } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../_actions/user_action';
@@ -32,10 +34,7 @@ function LoginPage() {
       password: pwValue,
     };
     try {
-      const response = await axios.post(
-        'http://photolancer.shop/api/v1/users/login',
-        body
-      );
+      const response = await axios.post('http://photolancer.shop/api/v1/users/login', body);
       // console.log(response);
       // console.log(response.data.jwt);
       // console.log(response.data.errorMessage);
@@ -56,106 +55,116 @@ function LoginPage() {
   };
   return (
     <div className={styles.LoginPage}>
-      <img className={styles.L_img} src={Login} alt='login_camera' />
-      <Container component='main'>
-        <Box
-          sx={{
-            marginTop: '168px',
-            display: 'flex',
-            flexDirection: 'column',
-            marginLeft: '250px',
-            width: '35%',
-          }}
-        >
-          <Typography
-            component='h1'
-            variant='h5'
-            selected
+      <img className={styles.L_img} src={Login} alt="login_camera" />
+      <Container component="main">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Box
             sx={{
-              fontFamily: 'neurimbo Gothic',
-              fontWeight: '400',
-              fontSize: '50px',
-              lineHeight: '82.5px',
+              marginTop: '168px',
+              display: 'flex',
+              flexDirection: 'column',
+              marginLeft: '250px',
+              width: '35%',
             }}
           >
-            Log in
-          </Typography>
-          <TextField
-            label='ID'
-            name='ID'
-            required
-            margin='normal'
-            autoFocus
-            sx={{
-              background: 'rgba(237, 237, 237, 1)',
-              width: '554px',
-              height: '72px',
-              border: 'none',
-              borderRadius: '16px',
-            }}
-            value={idValue}
-            onChange={handleIdChange}
-          ></TextField>
-          <TextField
-            label='Password'
-            name='pwd'
-            sx={{
-              mt: 2,
-              background: 'rgba(237, 237, 237, 1)',
-              width: '554px',
-              height: '72px',
-              border: 'none',
-              borderRadius: '16px',
-            }}
-            margin='normal'
-            required
-            value={pwValue}
-            onChange={handlePwChange}
-          ></TextField>
-          <Button
-            type='submit'
-            variant='contained'
-            sx={{
-              mt: 2,
-              mb: 2,
-              backgroundColor: 'black',
-              width: '554px',
-              height: '72px',
-              borderRadius: '16px',
-              fontFamily: 'neurimbo Gothic',
-              fontSize: '30px',
-              fontWeight: '400',
-              lineHeight: '49px',
-              letterSpacing: '0em',
-              textAlign: 'center',
-            }}
-            onClick={onSubmitHandler}
-          >
-            Sign in
-          </Button>
+            <Typography
+              component="h1"
+              variant="h5"
+              selected
+              sx={{
+                fontFamily: 'neurimbo Gothic',
+                fontWeight: '400',
+                fontSize: '50px',
+                lineHeight: '82.5px',
+              }}
+            >
+              Log in
+            </Typography>
+            <TextField
+              label="ID"
+              name="ID"
+              required
+              margin="normal"
+              autoFocus
+              sx={{
+                background: 'rgba(237, 237, 237, 1)',
+                width: '554px',
+                height: '72px',
+                border: 'none',
+                borderRadius: '16px',
+              }}
+              value={idValue}
+              onChange={handleIdChange}
+            ></TextField>
+            <TextField
+              label="Password"
+              name="pwd"
+              sx={{
+                mt: 2,
+                background: 'rgba(237, 237, 237, 1)',
+                width: '554px',
+                height: '72px',
+                border: 'none',
+                borderRadius: '16px',
+              }}
+              margin="normal"
+              required
+              value={pwValue}
+              onChange={handlePwChange}
+            ></TextField>
+            {errors.id && errors.id.type === 'required' && (
+              <span className={styles.errors1}>
+                아이디 또는 비밀번호<span className={styles.errors2}>를 입력해주세요</span>
+              </span>
+            )}
+            {errors.pwd && errors.pwd.type === 'required' && (
+              <span className={styles.errors1}>
+                아이디 또는 비밀번호<span className={styles.errors2}>를 입력해주세요</span>
+              </span>
+            )}
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                mt: 2,
+                mb: 2,
+                backgroundColor: 'black',
+                width: '554px',
+                height: '72px',
+                borderRadius: '16px',
+                fontFamily: 'neurimbo Gothic',
+                fontSize: '30px',
+                fontWeight: '400',
+                lineHeight: '49px',
+                letterSpacing: '0em',
+                textAlign: 'center',
+              }}
+              onClick={onSubmitHandler}
+            >
+              Sign in
+            </Button>
 
-          <Grid
-            container
-            spacing={2}
-            direction='row'
-            justifyContent='center'
-            alignItems='center'
-          >
-            <Grid item md={5}>
-              Find <Link>ID or Password</Link>
+            <Grid
+              container
+              spacing={2}
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              sx={{
+                mt: 2,
+                width: '554px',
+              }}
+            >
+              <Grid item>아이디 찾기</Grid>
+              <Grid item>|</Grid>
+              <Grid item>비밀번호 찾기</Grid>
+              <Grid item>|</Grid>
+              <Grid item>회원가입</Grid>
             </Grid>
-            <Grid item>|</Grid>
-            <Grid item>회원가입</Grid>
-          </Grid>
-          <Grid container>Using Photo Lancer on mobile</Grid>
-        </Box>
+            <p className={styles.mobile_message}>Using Photo Lancer on mobile</p>
+          </Box>
+        </form>
       </Container>
-      <img src='./LogIn_background.JPG'></img>
-      <div className={styles.Login_contents}>
-        <input name='id'></input>
-        <input name='pwd'></input>
-        <input type='submit' value='Sign in' name='sign in'></input>
-      </div>
     </div>
   );
 }
