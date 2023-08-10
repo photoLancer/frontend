@@ -9,6 +9,7 @@ import MyprofilePage from './routes/MyProfilePage/MyprofilePage';
 import SettingPage from './routes/SettingPage/SettingPage';
 import ChatPage from './routes/ChatPage/ChatPage';
 import UploadPhoto from './components/UploadPhoto/UploadPhoto';
+import AlarmPage from './routes/AlarmPage/AlarmPage';
 
 export const UploadContext = createContext();
 export const UploadDispatchContext = createContext();
@@ -52,12 +53,13 @@ function App() {
         )}
         <UploadDispatchContext.Provider value={uploadingDispatch}>
           <Routes>
-            <Route exact path='/' element={HomePage()} />
+            <Route exact path='/home' element={HomePage()} />
             <Route exact path='/login' element={LoginPage()} />
-            <Route exact path='/Onboarding' element={OnboardingPage()} />
+            <Route exact path='/' element={OnboardingPage()} />
             <Route exact path='/profile' element={MyprofilePage()} />
             <Route exact path='/chat' element={ChatPage()} />
             <Route exact path='/setting' element={SettingPage()} />
+            <Route exact path='/alarm' element={AlarmPage()} />
           </Routes>
         </UploadDispatchContext.Provider>
       </div>

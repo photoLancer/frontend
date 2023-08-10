@@ -24,9 +24,12 @@
   letter-spacing: 0em;
   text-align: left;
 
-  border-radius: 8px;
+  border-radius: 24px;
   color: #000;
   border: 1px solid #000;
   background-color: #fff;
   cursor: pointer;
+}
+.logout_btn:hover {
+  background-color: lightgray;
 }

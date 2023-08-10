@@ -10,17 +10,48 @@ import styles from './LoginPage.module.css';
 import Login from './Login.JPG';
 import { useForm } from 'react-hook-form';
 import { useRef } from 'react';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../_actions/user_action';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-  console.log(watch('id'));
-  const onSubmit = (data) => {
-    console.log('data', data);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [idValue, setIdValue] = useState('');
+  const [pwValue, setPwValue] = useState('');
+
+  const handleIdChange = (event) => {
+    setIdValue(event.target.value);
+  };
+  const handlePwChange = (e) => {
+    setPwValue(e.target.value);
+  };
+
+  const onSubmitHandler = async () => {
+    const body = {
+      user_id: idValue,
+      password: pwValue,
+    };
+    try {
+      const response = await axios.post('http://photolancer.shop/api/v1/users/login', body);
+      // console.log(response);
+      // console.log(response.data.jwt);
+      // console.log(response.data.errorMessage);
+      if (response.data.errorMessage === null) {
+        //로그인이 성공적으로 된 경우
+        dispatch(login(response.data.jwt));
+        navigate('/home');
+        return;
+      } else {
+        //회원정보 수정이 필요한 경우  ->redirect 해야됨
+        alert('회원정보 수정 필요');
+        return;
+      }
+    } catch (error) {
+      console.error('Error:', error.message); // 오류 메시지 출력
+    }
+    alert('로그인 실패');
   };
   return (
     <div className={styles.LoginPage}>
@@ -49,23 +80,38 @@ function LoginPage() {
             >
               Log in
             </Typography>
-            <input
-              className={styles.input_id}
+            <TextField
               label="ID"
               name="ID"
+              required
               margin="normal"
               autoFocus
-              placeholder="     ID"
-              {...register('id', { required: true })}
-            ></input>
-
-            <input
-              className={styles.input_id}
+              sx={{
+                background: 'rgba(237, 237, 237, 1)',
+                width: '554px',
+                height: '72px',
+                border: 'none',
+                borderRadius: '16px',
+              }}
+              value={idValue}
+              onChange={handleIdChange}
+            ></TextField>
+            <TextField
               label="Password"
               name="pwd"
-              placeholder="     Password"
+              sx={{
+                mt: 2,
+                background: 'rgba(237, 237, 237, 1)',
+                width: '554px',
+                height: '72px',
+                border: 'none',
+                borderRadius: '16px',
+              }}
               margin="normal"
-            ></input>
+              required
+              value={pwValue}
+              onChange={handlePwChange}
+            ></TextField>
             {errors.id && errors.id.type === 'required' && (
               <span className={styles.errors1}>
                 아이디 또는 비밀번호<span className={styles.errors2}>를 입력해주세요</span>
@@ -77,13 +123,12 @@ function LoginPage() {
               </span>
             )}
             <Button
-              className={styles.sign_button}
               type="submit"
               variant="contained"
               sx={{
                 mt: 2,
                 mb: 2,
-                backgroundColor: 'background: rgba(17, 17, 17, 0.5)',
+                backgroundColor: 'black',
                 width: '554px',
                 height: '72px',
                 borderRadius: '16px',
@@ -94,9 +139,11 @@ function LoginPage() {
                 letterSpacing: '0em',
                 textAlign: 'center',
               }}
+              onClick={onSubmitHandler}
             >
               Sign in
             </Button>
+
             <Grid
               container
               spacing={2}
@@ -118,11 +165,6 @@ function LoginPage() {
           </Box>
         </form>
       </Container>
-      <div className={styles.Login_contents}>
-        <input name="id"></input>
-        <input name="pwd"></input>
-        <input type="submit" value="Sign in" name="sign in"></input>
-      </div>
     </div>
   );
 }

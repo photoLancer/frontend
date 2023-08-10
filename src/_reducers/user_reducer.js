@@ -1,20 +1,51 @@
 const initialState = {
-  userId: 1,
-  userName: 'abc',
-  userProfileImg:
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSC8LH9YxLxyznRum-miHeKOtlHHIXzq-KAA&usqp=CAU',
-  userLv: 5,
-  userLvExp: 92.4,
-  userPoint: 50224,
+  jwt: null,
+  userName: '',
+  userTitle: '',
+  userProfileImg: '',
+  userLv: 0,
+  userLvExp: 0,
+  userPoint: 0,
+  num_follower: 0,
+  num_post: 0,
+  num_following: 0,
+  bookmark: null,
   isLoggedIn: false,
 };
 
 function userReducer(state = initialState, action) {
   switch (action.type) {
     case 'LOGIN':
-      return { ...state, userId: action.payload.userId, isLoggedIn: true };
+      return {
+        ...state,
+        jwt: action.payload.jwt,
+        userName: action.payload.nickname,
+        userTitle: action.payload.title,
+        userProfileImg: action.payload.profileUrl,
+        userLv: action.payload.level,
+        userPoint: action.payload.point,
+        num_follower: action.payload.num_follower,
+        num_post: action.payload.num_post,
+        num_following: action.payload.num_following,
+        bookmark: action.payload.bookmark,
+        isLoggedIn: true,
+      };
     case 'LOGOUT':
-      return { ...state, userId: -1, isLoggedIn: false };
+      return {
+        ...state,
+        jwt: null,
+        userName: '',
+        userTitle: '',
+        userProfileImg: '',
+        userLv: 0,
+        userLvExp: 0,
+        userPoint: 0,
+        num_follower: 0,
+        num_post: 0,
+        num_following: 0,
+        bookmark: null,
+        isLoggedIn: false,
+      };
     case 'PHOTO_PURCHASE':
       return { ...state, userPoint: action.payload.userPoint };
     default:
