@@ -13,19 +13,19 @@ function Contest(props) {
       <div className='recently_photo flex flex-row items-start'>
         <Row gutter={[24, 24]}>
           <PhotoCard
-            id={info[0].id}
-            image={info[0].img}
-            ranking={info[0].ranking}
+            id={info[0].post.postId}
+            image={info[0].post.thumbNailUri}
+            ranking={info[0].ranked}
           />
           <PhotoCard
-            id={info[1].id}
-            image={info[1].img}
-            ranking={info[1].ranking}
+            id={info[1].post.postId}
+            image={info[1].post.thumbNailUri}
+            ranking={info[1].ranked}
           />
           <PhotoCard
-            id={info[2].id}
-            image={info[2].img}
-            ranking={info[2].ranking}
+            id={info[2].post.postId}
+            image={info[2].post.thumbNailUri}
+            ranking={info[2].ranked}
           />
         </Row>
       </div>
