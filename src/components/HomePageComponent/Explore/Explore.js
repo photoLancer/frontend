@@ -4,42 +4,43 @@ import Contest from './Contest';
 import Clickcontest from './Clickcontest';
 import PhotoCard from '../PhotoCard/PhotoCard';
 import { Row } from 'antd';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 function Explore() {
+  const [explore, setExplore] = useState(null);
+  const userState = useSelector((state) => state.user);
+
+  const [hotPhotos, setHotPhotos] = useState(null);
+  const [recentlyPhotos, setRecentlyPhotos] = useState(null);
+
+  const [contestInfo, setContestInfo] = useState(null);
+  const [awardPhotos, setAwardPhotos] = useState(null);
+  const [contestList, setContestList] = useState(null);
+  const [current, setCurrent] = useState(0);
+
   useEffect(() => {
-    console.log('explore page');
-  });
+    const func = async () => {
+      const response = await axios.get('http://photolancer.shop/explore', {
+        headers: {
+          Authorization: userState.jwt,
+        },
+      });
+      setExplore(response.data);
+      setHotPhotos(response.data.hotPhotoList.slice(0, 3));
+      setRecentlyPhotos(response.data.recentPhotoList.slice(0, 3));
+      setContestList(response.data.awardPhotoList.contestList);
+      setContestInfo(response.data.awardPhotoList.contest);
+      setAwardPhotos(response.data.awardPhotoList.postContests);
+    };
+    func();
+  }, []);
 
-  const vento =
-    'https://recipe1.ezmember.co.kr/cache/recipe/2015/09/27/56b76a345db3358387f761b77631070c1.jpg';
-  const maltipoo =
-    'http://www.catdogs.co.kr/data/file/friends/thumb-2949977478_zDciQuEK_abd02efbaef97e3bee04af11e9087fcfb36fcfa2_1000x1000.jpg';
-  const maltipoo2 =
-    'https://m.the-pet.co.kr/web/product/big/201902/b072988043ac56e690d2a57af382e7c3.jpg';
-  const gym =
-    'https://news.skhynix.co.kr/hubfs/A_Medialibrary/10_Newsroom%20Upload/2022/11%EC%9B%94/%ED%95%98%EC%9D%B4%EC%9D%B8%ED%84%B0%EB%B7%B0_%EC%B2%B4%EC%9C%A1%EC%8B%9C%EC%84%A4/SK%ED%95%98%EC%9D%B4%EB%8B%89%EC%8A%A4_%ED%97%AC%EC%8A%A4%EC%9E%A52.jpg';
-  const [hotPhotos, setHotPhotos] = useState([
-    { id: 1, img: maltipoo2 },
-    { id: 2, img: vento },
-    { id: 3, img: gym },
-  ]);
+  console.log(explore);
 
-  const [recentlyPhotos, setRecentlyPhotos] = useState([
-    { id: 1, img: gym },
-    { id: 2, img: vento },
-    { id: 3, img: maltipoo },
-  ]);
-
-  const [contestInfos, setContestInfos] = useState([
-    { id: 1, ranking: '1st', img: maltipoo },
-    { id: 2, ranking: '2nd', img: maltipoo2 },
-    { id: 3, ranking: '3rd', img: gym },
-    {
-      contest_id: 1,
-      constest_title: '이달의 일반인 인기모델',
-      contest_desc: 'abcd',
-    },
-  ]);
+  // console.log('contestList: ', contestList);
+  // console.log('contestInfo: ', contestInfo);
+  // console.log('awardPhotos: ', awardPhotos);
 
   const [contestBtnClicked, setConstestBtnClicked] = useState(false);
 
@@ -49,12 +50,34 @@ function Explore() {
 
   const contestSelectUpBtnHandler = () => {
     console.log('up');
+    if (current === 0) {
+      setCurrent(contestList.length - 1);
+    } else {
+      setCurrent(current - 1);
+    }
   };
   const contestSelectDownBtnHandler = () => {
     console.log('down');
+    if (current === contestList.length - 1) {
+      setCurrent(0);
+    } else {
+      setCurrent(current + 1);
+    }
   };
-  const contestSelectCheckHandler = () => {
+
+  const contestSelectCheckHandler = async () => {
     console.log('check');
+    const response = await axios.get(
+      `http://photolancer.shop/explore/awards/${contestList[current].id}`,
+      {
+        headers: {
+          Authorization: userState.jwt,
+        },
+      }
+    );
+    console.log(response.data);
+    setContestInfo(response.data.contest);
+    setAwardPhotos(response.data.postContests);
   };
 
   return (
@@ -67,7 +90,7 @@ function Explore() {
               {hotPhotos &&
                 hotPhotos.map((photo, index) => (
                   <React.Fragment key={index}>
-                    <PhotoCard id={photo.id} image={photo.img} />
+                    <PhotoCard id={photo.postId} image={photo.thumbNailUri} />
                   </React.Fragment>
                 ))}
             </Row>
@@ -81,7 +104,7 @@ function Explore() {
               {recentlyPhotos &&
                 recentlyPhotos.map((photo, index) => (
                   <React.Fragment key={index}>
-                    <PhotoCard id={photo.id} image={photo.img} />
+                    <PhotoCard id={photo.postId} image={photo.thumbNailUri} />
                   </React.Fragment>
                 ))}
             </Row>
@@ -103,7 +126,7 @@ function Explore() {
                   <div className={`flex flex-row ${styles.contest_select}`}>
                     <div className='flex justify-center items-center basis-11/12'>
                       <p className={styles.contest_title}>
-                        {contestInfos[3].constest_title}
+                        {contestList[current].information}
                       </p>
                     </div>
                     <div
@@ -131,10 +154,14 @@ function Explore() {
                   check
                 </button>
               </div>
-              <Clickcontest info={contestInfos} />
+              <h2 className={styles.contest_title_a}>Contest Info</h2>
+              <div className={`w-full h-80 ${styles.contest_info}`}>
+                <p>{contestInfo.name}</p>
+              </div>
+              <Clickcontest info={awardPhotos} />
             </div>
           ) : (
-            <Contest info={contestInfos} />
+            awardPhotos && <Contest info={awardPhotos} />
           )}
         </div>
       </div>

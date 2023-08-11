@@ -11,43 +11,39 @@ function Clickcontest(props) {
   return (
     <>
       <div>
-        <h2 className={styles.title}>Contest Info</h2>
-        <div className={`w-full h-80 ${styles.contest_info}`}>
-          <p>contest info</p>
-        </div>
         <h2 className={styles.title}>Contest Ranked photo</h2>
         <div className='flex flex-row'>
           <div
             className={`basis-6/12 h-84 ${styles.contest_photo} ${styles.first_photo}`}
-            onClick={() => photoClickHandler(info[0].id)}
+            onClick={() => photoClickHandler(info[0].post.postId)}
           >
-            <div className={styles.ranking}>{info[0].ranking}</div>
+            <div className={styles.ranking}>{info[0].ranked}</div>
             <img
-              src={info[0].img}
-              alt={info[0].id}
+              src={info[0].post.thumbNailUri}
+              alt={info[0].post.postId}
               className={styles.contest_photo_img}
             />
           </div>
           <div className='basis-6/12'>
             <div
               className={`h-56 mb-4 ${styles.contest_photo} ${styles.second_photo}`}
-              onClick={() => photoClickHandler(info[1].id)}
+              onClick={() => photoClickHandler(info[1].post.postId)}
             >
-              <div className={styles.ranking}>{info[1].ranking}</div>
+              <div className={styles.ranking}>{info[1].ranked}</div>
               <img
-                src={info[1].img}
-                alt={info[0].id}
+                src={info[1].post.thumbNailUri}
+                alt={info[1].post.postId}
                 className={styles.contest_photo_img}
               />
             </div>
             <div
               className={`h-56 ${styles.contest_photo} ${styles.second_photo}`}
-              onClick={() => photoClickHandler(info[2].id)}
+              onClick={() => photoClickHandler(info[2].post.postId)}
             >
-              <div className={styles.ranking}>{info[2].ranking}</div>
+              <div className={styles.ranking}>{info[2].ranked}</div>
               <img
-                src={info[2].img}
-                alt={info[0].id}
+                src={info[2].post.thumbNailUri}
+                alt={info[2].post.postId}
                 className={styles.contest_photo_img}
               />
             </div>
