@@ -74,8 +74,8 @@ function FeedContent() {
     fetchComment();
   }, []);
   //
-  console.log('feedInfo: ', feedInfo);
-  console.log('comment: ', comments);
+  // console.log('feedInfo: ', feedInfo);
+  // console.log('comment: ', comments);
 
   const onClickHandler = (e) => {
     e.stopPropagation();

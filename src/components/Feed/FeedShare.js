@@ -1,9 +1,12 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef, useState, useEffect } from 'react';
 import styles from './feedshare.module.css';
 import { FeedOptionDispatchContext } from './Feed';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { PhotoContext } from '../../routes/HomePage/HomePage';
 
 const Follower = (props) => {
-  const { id, name, Lv, onCheckChange } = props;
+  const { user_id, name, Lv, onCheckChange, profileUrl } = props;
   const checkRef = useRef();
   const [isChecked, setIsChecked] = useState(false);
   const boxClick = () => {
@@ -15,7 +18,7 @@ const Follower = (props) => {
       <div className={styles.follower_box} onClick={boxClick}>
         <div className={`w-11/12 flex flex-row justify-between items-center `}>
           <div className={styles.follower_profile_img}>
-            {/* <img src="" alt="" /> */}
+            <img src={profileUrl} alt='' />
           </div>
           <p className={styles.follower_name}>
             Lv{Lv}. {name}
@@ -36,6 +39,10 @@ const Follower = (props) => {
 };
 
 function FeedShare() {
+  const photo = useContext(PhotoContext);
+  // console.log(photo.photo_id);
+  const userState = useSelector((state) => state.user);
+  const [loading, setLoading] = useState(true);
   //search
   const inputRef = useRef();
   const [searchInput, setSearchInput] = useState('');
@@ -61,83 +68,121 @@ function FeedShare() {
   const closeShareScreen = () => {
     shareDispatch({ type: 'SHARE_SCREEEN_CLICK' });
   };
-
-  // 유저 목록
-  const [followers, setFollwers] = useState([
-    { user_id: 1, name: 'Mayson', lv: 5, checked: false },
-    { user_id: 2, name: 'lemon', lv: 7, checked: false },
-  ]);
+  const [followera, setFollowera] = useState(null);
+  useEffect(() => {
+    const fetchFollower = async () => {
+      try {
+        const response = await axios.get(
+          `http://photolancer.shop/follower/users`,
+          {
+            headers: {
+              Authorization: userState.jwt,
+            },
+          }
+        );
+        setFollowera(response.data);
+        const updatedFollowers = followera.map((follower) => ({
+          ...follower,
+          checked: false, // 기본값으로 false를 설정합니다.
+        }));
+        setFollowera(updatedFollowers);
+      } catch (error) {
+        console.error('Error fetching follower info:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchFollower();
+  }, []);
+  // console.log('followera:', followera);
 
   const handleCheckChange = (userId, isChecked) => {
-    setFollwers((prevFollowers) =>
+    setFollowera((prevFollowers) =>
       prevFollowers.map((follower) =>
-        follower.user_id === userId
-          ? { ...follower, checked: isChecked }
-          : follower
+        follower.id === userId ? { ...follower, checked: isChecked } : follower
       )
     );
   };
   //공유 버튼
-  const share = () => {
-    console.log('share user');
-    followers.map((follower) => {
+  const share = async () => {
+    let shared_userId_list = [];
+    followera.map((follower) => {
       if (follower.checked) {
-        console.log(follower.user_id); //공유된 user_id
+        // console.log(follower.id); //공유된 user_id
+        shared_userId_list.push(follower.id);
       }
     });
+    console.log(shared_userId_list);
+
+    const shareFeedWithFollowers = await axios.post(
+      `http://photolancer.shop/post/${photo.photo_id}/share`,
+      { userId: shared_userId_list },
+      {
+        headers: {
+          Authorization: userState.jwt,
+        },
+      }
+    );
+    console.log(shareFeedWithFollowers);
+
     shareDispatch({ type: 'SHARE_SCREEEN_CLICK' });
   };
   return (
     <>
       <div className={styles.screen} onClick={screenClickHandler}>
         <div className={styles.content} onClick={contentClickHandler}>
-          <div
-            className={`w-10/12 border border-solid border-black ${styles.a}`}
-          >
-            <div>
-              <div className='flex flex-row justify-end'>
-                <button onClick={closeShareScreen}>X</button>
-              </div>
+          {loading ? (
+            <p>loading...</p>
+          ) : (
+            <div
+              className={`w-10/12 border border-solid border-black ${styles.a}`}
+            >
+              <div>
+                <div className='flex flex-row justify-end'>
+                  <button onClick={closeShareScreen}>X</button>
+                </div>
 
-              <div className='mb-6'>
-                <h2 className={styles.h2}>공유할 ID</h2>
-                <div className={styles.search_bar} onClick={onFocus}>
-                  <div className={`w-11/12 flex flex-row justify-between`}>
-                    <input
-                      type='text'
-                      placeholder='ID 검색'
-                      className={styles.search_bar_input}
-                      ref={inputRef}
-                      value={searchInput}
-                      onChange={inputHandler}
-                    />
-                    <button onClick={searchHandler}>O</button>
+                <div className='mb-6'>
+                  <h2 className={styles.h2}>공유할 ID</h2>
+                  <div className={styles.search_bar} onClick={onFocus}>
+                    <div className={`w-11/12 flex flex-row justify-between`}>
+                      <input
+                        type='text'
+                        placeholder='ID 검색'
+                        className={styles.search_bar_input}
+                        ref={inputRef}
+                        value={searchInput}
+                        onChange={inputHandler}
+                      />
+                      <button onClick={searchHandler}>O</button>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h2 className={styles.h2}>팔로워</h2>
+                  <div className='follower_list'>
+                    {followera &&
+                      followera.map((follower, index) => (
+                        <React.Fragment key={index}>
+                          <Follower
+                            user_id={follower.id}
+                            name={follower.nickname}
+                            Lv={follower.level}
+                            profileUrl={follower.profileUrl}
+                            onCheckChange={(isChecked) =>
+                              handleCheckChange(follower.id, isChecked)
+                            }
+                          />
+                        </React.Fragment>
+                      ))}
                   </div>
                 </div>
               </div>
-              <div>
-                <h2 className={styles.h2}>팔로워</h2>
-                <div className='follower_list'>
-                  {followers &&
-                    followers.map((follower, index) => (
-                      <React.Fragment key={index}>
-                        <Follower
-                          user_id={follower.user_id}
-                          name={follower.name}
-                          Lv={follower.lv}
-                          onCheckChange={(isChecked) =>
-                            handleCheckChange(follower.user_id, isChecked)
-                          }
-                        />
-                      </React.Fragment>
-                    ))}
-                </div>
-              </div>
+              <button className={styles.share_btn} onClick={share}>
+                공유하기
+              </button>
             </div>
-            <button className={styles.share_btn} onClick={share}>
-              공유하기
-            </button>
-          </div>
+          )}
         </div>
       </div>
     </>
