@@ -16,6 +16,9 @@ import { login } from '../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
+  const JoinHandler = () => {
+    navigate('../Membership');
+  };
   const {
     register,
     handleSubmit,
@@ -67,11 +70,12 @@ function LoginPage() {
       <Container component="main">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Box
+            className
             sx={{
-              marginTop: '168px',
+              marginTop: '100px',
               display: 'flex',
               flexDirection: 'column',
-              marginLeft: '250px',
+              marginLeft: '150px',
               width: '35%',
             }}
           >
@@ -152,7 +156,16 @@ function LoginPage() {
               <Grid item>|</Grid>
               <Grid item>비밀번호 찾기</Grid>
               <Grid item>|</Grid>
-              <Grid item>회원가입</Grid>
+              <Grid item>
+                <Link
+                  to="../Membership"
+                  onClick={JoinHandler}
+                  className={styles.link_join}
+                  style={{ textDecoration: 'none', color: 'black' }}
+                >
+                  회원가입
+                </Link>
+              </Grid>
             </Grid>
             <p className={styles.mobile_message}>Using Photo Lancer on mobile</p>
           </Box>
