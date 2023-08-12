@@ -3,8 +3,11 @@ import styles from './bookmark.module.css';
 import LeftBtn from './LeftBtn';
 import { Row } from 'antd';
 import PhotoCard from '../PhotoCard/PhotoCard';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 function Bookmark() {
+  const userState = useSelector((state) => state.user);
   //오른쪽 버튼 관리
   const hotphotoBtn = useRef();
   const recentlyBtn = useRef();
@@ -68,19 +71,40 @@ function Bookmark() {
   };
 
   //bookmark 사진 관리
-  const bulldak_img =
-    'https://mblogthumb-phinf.pstatic.net/MjAxOTA4MTRfMjIz/MDAxNTY1NzY5MzIyNDMx.dz5PGsVkjTdtH6ZcLxRCiitudpFEfn7bArSg3-3t_jAg.LmZeLTYdEk3AwksjTS16pr2y7LjOj5WvCnJ44MkQALcg.JPEG.gjrlarla/%EC%9D%B8%EC%8A%A4%ED%83%80%EA%B0%90%EC%84%B1%ED%8F%B0%EC%82%AC%EC%A7%849.jpg?type=w800';
-  const [Bookmarks, setBookmarks] = useState([
-    { id: 1, img: bulldak_img },
-    { id: 2, img: bulldak_img },
-    { id: 3, img: bulldak_img },
-    { id: 4, img: bulldak_img },
-    { id: 5, img: bulldak_img },
-    { id: 6, img: bulldak_img },
-    { id: 7, img: bulldak_img },
-    { id: 8, img: bulldak_img },
-    { id: 9, img: bulldak_img },
-  ]);
+
+  const [bookmarka, setBookmarka] = useState(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchBookmark = async () => {
+      try {
+        const bookmark = await axios.get(
+          'http://photolancer.shop/bookmark?page=0',
+          {
+            headers: {
+              Authorization: userState.jwt,
+            },
+          }
+        );
+        setBookmarka(bookmark.data);
+
+        const response = await axios.get(
+          'http://photolancer.shop/api/v1/bookmark/list',
+          {
+            headers: {
+              Authorization: userState.jwt,
+            },
+          }
+        );
+        console.log('a:', response);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBookmark();
+  }, []);
+  console.log(bookmarka);
 
   return (
     <>
@@ -134,16 +158,20 @@ function Bookmark() {
             </div>
           </div>
         </div>
-        <div className='bookmark_photos'>
-          <Row gutter={[24, 24]}>
-            {Bookmarks &&
-              Bookmarks.map((photo, index) => (
-                <React.Fragment key={index}>
-                  <PhotoCard id={photo.id} image={photo.img} />
-                </React.Fragment>
-              ))}
-          </Row>
-        </div>
+        {loading ? (
+          <p>loading...</p>
+        ) : (
+          <div className='bookmark_photos'>
+            <Row gutter={[24, 24]}>
+              {bookmarka.content &&
+                bookmarka.content.map((photo, index) => (
+                  <React.Fragment key={index}>
+                    <PhotoCard id={photo.postId} image={photo.thumbNailUri} />
+                  </React.Fragment>
+                ))}
+            </Row>
+          </div>
+        )}
       </div>
     </>
   );
