@@ -7,18 +7,25 @@ import { Row } from 'antd';
 import { useSelector } from 'react-redux';
 
 const MyPost=()=>{
-    const [myPost,setMyPost]=useState(null);
+    const [myPost,setMyPost]=useState([]);
 
     useEffect(()=>{
-        const func = async()=>{
-            const response = await axios.get('http://photolancer.shop/my-profile/album/mypost',{
-                headers: {
-                    Authorization: userState.jwt,
-                  },
-            });
-            setMyPost(response.data.content);
-        }
-    })
+        const fetchMyPost = async()=>{
+            try {
+                const response = await axios.get('http://photolancer.shop/my-profile/album/mypost?page=0', {
+                    headers: {
+                        Authorization: userState.jwt,
+                    },
+                });
+                setMyPost(response.data.content);
+            }
+            catch (error) {
+                console.error('Error fetching my posts:', error);
+            }
+        };
+
+        fetchMyPost();
+    },[]);
     return(
         <>
         <div className={styles.boxing}>

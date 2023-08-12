@@ -1,0 +1,19 @@
+.boxing{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+}
+.photobox{
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 50px;
+}
+.myimage{
+    width: 30%;
+    height: 300px;
+    border-radius: 32px;
+    border: 1px solid black;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    
+}
