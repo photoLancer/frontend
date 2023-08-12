@@ -16,6 +16,13 @@ function Bookmark() {
   const [hrShowHotPhoto, setHrShowHotPhoto] = useState(true);
   const [hrShowRecently, setHrShowRecently] = useState(false);
 
+  //bookmark 사진 정보
+  const [bookmarka, setBookmarka] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [userBookmark, setUserBookmark] = useState(
+    userState.bookmark.slice(0, 4)
+  ); //북마크 중 4개까지만
+
   useEffect(() => {
     if (rightSelect === 1) {
       hotphotoBtn.current.style = 'color:#111111';
@@ -43,24 +50,43 @@ function Bookmark() {
     setHrShowRecently(false);
   };
 
-  const hotphotoHandler = () => {
+  const hotphotoHandler = async () => {
     setRightSelect(1);
-    console.log('hotphoto');
+    setHrShowRecently(false);
+
+    const response = await axios.get(
+      'http://photolancer.shop/bookmark/popular?page=0',
+      {
+        headers: {
+          Authorization: userState.jwt,
+        },
+      }
+    );
+    setBookmarka(response.data);
   };
-  const recentlyBtnHandler = () => {
+  const recentlyBtnHandler = async () => {
     setRightSelect(2);
-    console.log('recently uploaded');
+    setHrShowHotPhoto(false);
+    const response = await axios.get(
+      'http://photolancer.shop/bookmark/recent?page=0',
+      {
+        headers: {
+          Authorization: userState.jwt,
+        },
+      }
+    );
+    setBookmarka(response.data);
   };
 
   //왼쪽 버튼 관리
   const [buttons, setButtons] = useState([
-    { tag: 'Trip', isClicked: true },
+    { tag: 'Trip', isClicked: false },
     { tag: 'Travel', isClicked: false },
     { tag: 'Journey', isClicked: false },
     { tag: 'Tour', isClicked: false },
   ]);
 
-  const handleButtonClick = (index) => {
+  const handleButtonClick = async (index) => {
     const updatedButtons = [...buttons];
     for (let i = 0; i < updatedButtons.length; i++) {
       updatedButtons[i].isClicked = false;
@@ -68,12 +94,20 @@ function Bookmark() {
     updatedButtons[index].isClicked = true;
     setButtons(updatedButtons);
     console.log(buttons[index].tag);
+    //
+    const response = await axios.get(
+      `http://photolancer.shop/bookmark/${buttons[index].tag}?page=0`,
+      {
+        headers: {
+          Authorization: userState.jwt,
+        },
+      }
+    );
+    setBookmarka(response.data);
   };
 
   //bookmark 사진 관리
 
-  const [bookmarka, setBookmarka] = useState(null);
-  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchBookmark = async () => {
       try {
@@ -86,16 +120,6 @@ function Bookmark() {
           }
         );
         setBookmarka(bookmark.data);
-
-        const response = await axios.get(
-          'http://photolancer.shop/api/v1/bookmark/list',
-          {
-            headers: {
-              Authorization: userState.jwt,
-            },
-          }
-        );
-        console.log('a:', response);
       } catch (error) {
         console.log(error);
       } finally {
@@ -103,6 +127,11 @@ function Bookmark() {
       }
     };
     fetchBookmark();
+    const bookmarkButtons = [];
+    userBookmark.map((bookmark) =>
+      bookmarkButtons.push({ tag: `${bookmark}`, isClicked: false })
+    );
+    setButtons(bookmarkButtons);
   }, []);
   console.log(bookmarka);
 
@@ -161,16 +190,18 @@ function Bookmark() {
         {loading ? (
           <p>loading...</p>
         ) : (
-          <div className='bookmark_photos'>
-            <Row gutter={[24, 24]}>
-              {bookmarka.content &&
-                bookmarka.content.map((photo, index) => (
-                  <React.Fragment key={index}>
-                    <PhotoCard id={photo.postId} image={photo.thumbNailUri} />
-                  </React.Fragment>
-                ))}
-            </Row>
-          </div>
+          <>
+            <div className='bookmark_photos'>
+              <Row gutter={[24, 24]}>
+                {bookmarka.content &&
+                  bookmarka.content.map((photo, index) => (
+                    <React.Fragment key={index}>
+                      <PhotoCard id={photo.postId} image={photo.thumbNailUri} />
+                    </React.Fragment>
+                  ))}
+              </Row>
+            </div>
+          </>
         )}
       </div>
     </>
