@@ -2,26 +2,48 @@ import { useState } from 'react';
 import styles from './editprofile.module.css';
 import Profile from '../Profile';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
 const EditProfile=()=>{
     const userState=useSelector((state)=>state.user);
 
-    const [inputValue, setInputValue] = useState('');
+    const [inputName, setInputName] = useState('');
+    const [inputExplane, setInputExplane] = useState('');
 
-    const HandleChange=(event)=>{
-        setInputValue(event.target.value);
+    const HandleNameChange=(event)=>{
+        setInputName(event.target.value);
+    };
+    const HandleExplaneChange=(event)=>{
+        setInputExplane(event.target.value);
     };
 
     const [applyData,setApplyData]=useState(false);
     const [cancelData,setCancelData]=useState(false);
 
-    const applyHandler=()=>{
-        setInputValue(inputValue);
-        setApplyData(true);
-        setCancelData(false);
+    const applyHandler=async()=>{
+        console.log('apply');
+        try {
+            const response=await axios.put(
+            `http://photolancer.shop/api/v1/users/update`,  
+            {
+                nickname:inputName,
+                explane:inputExplane,
+            },
+            {
+                headers:{
+                    Authorization:userState.jwt,
+                },
+            }
+            );
+            console.log('Profile updated:',response.data);
+
+        } catch(error){
+            console.error('Error:',error);
+        }
     };
     const cancelHandler=()=>{
-        setInputValue('');
+        setInputName('');
+        setInputExplane('');
         setApplyData(false);
         setCancelData(true);
     };
@@ -64,11 +86,11 @@ const EditProfile=()=>{
                 <div className={styles.editinfowrap}>
                 <div className={styles.nicknamewrap}>
                 <p className={styles.nicknamehead}>닉네임</p><br/>
-                <input type='text' className={styles.nickname} placeholder='제목을 입력해주세요'value={inputValue} onChange={HandleChange}/>
+                <input type='text' className={styles.nickname} placeholder='제목을 입력해주세요'value={inputName} onChange={HandleNameChange}/>
                 </div>
                 <div className={styles.infotextwrap}>
                 <p className={styles.infohead}>소개</p><br/>
-                <input type='text' className={styles.infotext} placeholder='소개를 입력해주세요' value={inputValue} onChange={HandleChange} />
+                <input type='text' className={styles.infotext} placeholder='소개를 입력해주세요' value={inputExplane} onChange={HandleExplaneChange} />
                 </div>
                 </div>
             </div>
