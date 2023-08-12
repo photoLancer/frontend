@@ -36,7 +36,7 @@ function Explore() {
     func();
   }, []);
 
-  console.log(explore);
+  // console.log(explore);
 
   // console.log('contestList: ', contestList);
   // console.log('contestInfo: ', contestInfo);

@@ -6,7 +6,7 @@ import PhotoCard from '../PhotoCard/PhotoCard';
 function Contest(props) {
   const { info } = props;
   useEffect(() => {
-    console.log(info);
+    // console.log(info);
   }, []);
   return (
     <>
