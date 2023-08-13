@@ -117,23 +117,42 @@ function Bookmark() {
 
   const handleButtonClick = async (index) => {
     const updatedButtons = [...buttons];
-    for (let i = 0; i < updatedButtons.length; i++) {
-      updatedButtons[i].isClicked = false;
-    }
-    updatedButtons[index].isClicked = true;
-    setButtons(updatedButtons);
-    console.log(buttons[index].tag);
-    setClickedBookmarkButton(buttons[index].tag);
-    //
-    const response = await axios.get(
-      `http://photolancer.shop/bookmark/${buttons[index].tag}?page=0`,
-      {
-        headers: {
-          Authorization: userState.jwt,
-        },
+
+    if (updatedButtons[index].isClicked === true) {
+      //이미 눌러져 있는 북마크를 클릭 했을 때
+      console.log('aaa');
+      for (let i = 0; i < updatedButtons.length; i++) {
+        updatedButtons[i].isClicked = false;
       }
-    );
-    setBookmarka(response.data);
+      setButtons(updatedButtons);
+      const response = await axios.get(
+        'http://photolancer.shop/bookmark?page=0',
+        {
+          headers: {
+            Authorization: userState.jwt,
+          },
+        }
+      );
+      setBookmarka(response.data);
+    } else {
+      for (let i = 0; i < updatedButtons.length; i++) {
+        updatedButtons[i].isClicked = false;
+      }
+      updatedButtons[index].isClicked = true;
+      setButtons(updatedButtons);
+      console.log(buttons[index].tag);
+      setClickedBookmarkButton(buttons[index].tag);
+      //
+      const response = await axios.get(
+        `http://photolancer.shop/bookmark/${buttons[index].tag}?page=0`,
+        {
+          headers: {
+            Authorization: userState.jwt,
+          },
+        }
+      );
+      setBookmarka(response.data);
+    }
   };
 
   //bookmark 사진 관리
