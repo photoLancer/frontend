@@ -23,6 +23,9 @@ function Bookmark() {
     userState.bookmark.slice(0, 4)
   ); //북마크 중 4개까지만
 
+  //클릭한 북마크
+  const [clickedBookmarkButton, setClickedBookmarkButton] = useState(null);
+
   useEffect(() => {
     if (rightSelect === 1) {
       hotphotoBtn.current.style = 'color:#111111';
@@ -54,28 +57,54 @@ function Bookmark() {
     setRightSelect(1);
     setHrShowRecently(false);
 
-    const response = await axios.get(
-      'http://photolancer.shop/bookmark/popular?page=0',
-      {
-        headers: {
-          Authorization: userState.jwt,
-        },
-      }
-    );
-    setBookmarka(response.data);
+    if (clickedBookmarkButton) {
+      //북마크 버튼을 누른 상태에서 hotPhoto를 누른 경우
+      const response = await axios.get(
+        `http://photolancer.shop/bookmark/${clickedBookmarkButton}/popular?page=0`,
+        {
+          headers: {
+            Authorization: userState.jwt,
+          },
+        }
+      );
+      setBookmarka(response.data);
+    } else {
+      const response = await axios.get(
+        'http://photolancer.shop/bookmark/popular?page=0',
+        {
+          headers: {
+            Authorization: userState.jwt,
+          },
+        }
+      );
+      setBookmarka(response.data);
+    }
   };
   const recentlyBtnHandler = async () => {
     setRightSelect(2);
     setHrShowHotPhoto(false);
-    const response = await axios.get(
-      'http://photolancer.shop/bookmark/recent?page=0',
-      {
-        headers: {
-          Authorization: userState.jwt,
-        },
-      }
-    );
-    setBookmarka(response.data);
+
+    if (clickedBookmarkButton) {
+      const response = await axios.get(
+        `http://photolancer.shop/bookmark/${clickedBookmarkButton}/recent?page=0`,
+        {
+          headers: {
+            Authorization: userState.jwt,
+          },
+        }
+      );
+      setBookmarka(response.data);
+    } else {
+      const response = await axios.get(
+        'http://photolancer.shop/bookmark/recent?page=0',
+        {
+          headers: {
+            Authorization: userState.jwt,
+          },
+        }
+      );
+      setBookmarka(response.data);
+    }
   };
 
   //왼쪽 버튼 관리
@@ -94,6 +123,7 @@ function Bookmark() {
     updatedButtons[index].isClicked = true;
     setButtons(updatedButtons);
     console.log(buttons[index].tag);
+    setClickedBookmarkButton(buttons[index].tag);
     //
     const response = await axios.get(
       `http://photolancer.shop/bookmark/${buttons[index].tag}?page=0`,
