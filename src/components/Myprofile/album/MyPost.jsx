@@ -21,6 +21,7 @@ const MyPost=()=>{
                 });
                 
                 setMyPost(response.data.content);
+
             }
             catch (error) {
                 console.error('Error fetching my posts:', error);
