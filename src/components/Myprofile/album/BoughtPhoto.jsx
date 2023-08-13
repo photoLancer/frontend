@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
 import styles from './boughtphoto.module.css';
+import React from 'react';
 import axios from 'axios';
 import PhotoCard from '../../HomePageComponent/PhotoCard/PhotoCard';
 import { Row } from 'antd';
 import { useSelector } from 'react-redux';
 
 const BoughtPhoto=()=>{
+    const userState=useSelector((state)=>state.user);
     const [boughtPhoto,setBoughtPhoto]=useState([]);
 
     useEffect(()=>{
         const fetchBoughtPhoto=async()=>{
             try{
-            const response = await axios.get('http://photolancer.shop/my-profile/album/bought-photo',{
+            const response = await axios.get('http://photolancer.shop/my-profile/album/bought-photo?page=0',{
                 headers:{
                     Authorization:userState.jwt,
                 },

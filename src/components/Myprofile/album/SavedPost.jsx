@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './savedpost.module.css';
 import axios from 'axios';
 import PhotoCard from '../../HomePageComponent/PhotoCard/PhotoCard';
@@ -6,12 +7,13 @@ import { Row } from 'antd';
 import { useSelector } from 'react-redux';
 
 const SavedPost=()=>{
+    const userState=useSelector((state)=>state.user);
     const [savedPost,setSavedPost]=useState([]);
 
     useEffect(()=>{
         const fetchSavedPost=async()=>{
             try{
-                const response =await axios.get('http://photolancer.shop/my-profile/album/saved-post',{
+                const response =await axios.get('http://photolancer.shop/my-profile/album/saved-post?page=0',{
                     headers:{
                         Authorization: userState.jwt,
                     },
