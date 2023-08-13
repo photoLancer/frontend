@@ -1,0 +1,172 @@
+/*MembershipPage.js*/
+
+.MembershipPage {
+  display: flex;
+  flex-direction: row;
+}
+.L_img {
+  height: 100vh;
+  width: 35%;
+}
+.create_account {
+  margin-top: 150px;
+  margin-left: 200px;
+  width: 38%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.create_account p {
+  font-family: neurimbo Gothic;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.create_account div {
+  border-radius: 12px;
+  background-color: rgba(254, 229, 0, 1);
+  height: 10%;
+  padding: 30px 16px 30px 16px;
+  border-radius: 12px;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: 0em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.create_account div:hover {
+  cursor: pointer;
+}
+.create_account div:nth-child(3) {
+  background-color: rgba(3, 199, 90, 1);
+  color: white;
+}
+.create_account div:nth-child(4) {
+  background-color: white;
+  color: black;
+  border: 1px solid rgba(237, 237, 237, 1);
+}
+.create_account div:nth-child(5) {
+  background-color: rgba(237, 237, 237, 1);
+  color: black;
+}
+/*CreateAccountPage.js*/
+.create_account2 {
+  margin-top: 60px;
+  margin-left: 200px;
+  width: 554px;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.create_account2 p {
+  font-family: neurimbo Gothic;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0em;
+  margin-bottom: 10px;
+}
+.create_input {
+  width: 100%;
+  height: 83px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.input_user {
+  width: 410px;
+  height: 46px;
+  padding: 8px 16px 8px 16px;
+  border-radius: 8px;
+  border: 1px solid black;
+  background-color: rgba(237, 237, 237, 1);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+input::placeholder {
+  color: black;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.create_input label {
+  margin-top: 10px;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.create_input div {
+  display: flex;
+  flex-direction: column;
+}
+.account_error1 {
+  color: red;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.account_error2 {
+  font-weight: 700;
+}
+.service_agree {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.agree1 {
+  width: 140px;
+  height: 38px;
+  padding: 4px 24px 4px 24px;
+  border-radius: 24px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+.agree2 {
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: right;
+}
+.agree2 label {
+  margin-right: 7px;
+}
+.signIn {
+  width: 103px;
+  height: 38px;
+  padding: 4px 20px 4px 20px;
+  border-radius: 8px;
+  border: 1px solid black;
+  color: white;
+  background-color: black;
+  font-family: Pretendard;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-left: 450px;
+}

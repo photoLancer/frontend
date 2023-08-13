@@ -16,17 +16,15 @@ function OnboardingPage() {
   const navigate = useNavigate();
   const loginHandler = () => {
     navigate('../Login');
-
   };
 
   return (
     <div className={styles.Onboarding}>
       <div className={styles.ob_1}>
         <div>
-          <img src={logo1} className={styles.symbol} alt='logo1' />
+          <img src={logo1} className={styles.symbol} alt="logo1" />
         </div>
         <Link to="../Login" onClick={loginHandler}>
-
           <button>Log in</button>
         </Link>
       </div>

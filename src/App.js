@@ -4,6 +4,8 @@ import styles from './app.module.css';
 
 import HomePage from './routes/HomePage/HomePage';
 import LoginPage from './routes/LoginPage/LoginPage';
+import MembershipPage from './routes/MembershipPage/MembershipPage';
+import CreateAccountPage from './routes/MembershipPage/CreateAccountPage';
 import OnboardingPage from './routes/OnboardingPage/OnboardingPage';
 import MyprofilePage from './routes/MyProfilePage/MyprofilePage';
 import SettingPage from './routes/SettingPage/SettingPage';
@@ -36,10 +38,7 @@ const uploadReducer = (state, action) => {
 };
 
 function App() {
-  const [uploadingState, uploadingDispatch] = useReducer(
-    uploadReducer,
-    initialUploadState
-  );
+  const [uploadingState, uploadingDispatch] = useReducer(uploadReducer, initialUploadState);
 
   return (
     <div>
@@ -53,13 +52,15 @@ function App() {
         )}
         <UploadDispatchContext.Provider value={uploadingDispatch}>
           <Routes>
-            <Route exact path='/home' element={HomePage()} />
-            <Route exact path='/login' element={LoginPage()} />
-            <Route exact path='/' element={OnboardingPage()} />
-            <Route exact path='/profile' element={MyprofilePage()} />
-            <Route exact path='/chat' element={ChatPage()} />
-            <Route exact path='/setting' element={SettingPage()} />
-            <Route exact path='/alarm' element={AlarmPage()} />
+            <Route exact path="/home" element={HomePage()} />
+            <Route exact path="/login" element={LoginPage()} />
+            <Route exact path="/Membership" element={MembershipPage()} />
+            <Route exact path="/CreateAccount" element={CreateAccountPage()} />
+            <Route exact path="/" element={OnboardingPage()} />
+            <Route exact path="/profile" element={MyprofilePage()} />
+            <Route exact path="/chat" element={ChatPage()} />
+            <Route exact path="/setting" element={SettingPage()} />
+            <Route exact path="/alarm" element={AlarmPage()} />
           </Routes>
         </UploadDispatchContext.Provider>
       </div>
