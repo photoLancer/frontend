@@ -1,12 +1,14 @@
-import React, { useRef, useState, useEffect } from 'react';
-import styles from './bookmark.module.css';
-import LeftBtn from './LeftBtn';
+import React, { useRef, useState, useEffect, useContext } from 'react';
+import styles from './searchExplore.module.css';
+// import LeftBtn from './LeftBtn';
 import { Row } from 'antd';
 import PhotoCard from '../PhotoCard/PhotoCard';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { SearchContext } from '../../../routes/HomePage/HomePage';
 
-function Bookmark() {
+function SearchExplore() {
+  const searchState = useContext(SearchContext);
   const userState = useSelector((state) => state.user);
   //오른쪽 버튼 관리
   const hotphotoBtn = useRef();
@@ -19,12 +21,6 @@ function Bookmark() {
   //bookmark 사진 정보
   const [bookmarka, setBookmarka] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [userBookmark, setUserBookmark] = useState(
-    userState.bookmark.slice(0, 4)
-  ); //북마크 중 4개까지만
-
-  //클릭한 북마크
-  const [clickedBookmarkButton, setClickedBookmarkButton] = useState(null);
 
   useEffect(() => {
     if (rightSelect === 1) {
@@ -57,101 +53,29 @@ function Bookmark() {
     setRightSelect(1);
     setHrShowRecently(false);
 
-    if (clickedBookmarkButton) {
-      //북마크 버튼을 누른 상태에서 hotPhoto를 누른 경우
-      const response = await axios.get(
-        `http://photolancer.shop/bookmark/${clickedBookmarkButton}/popular?page=0`,
-        {
-          headers: {
-            Authorization: userState.jwt,
-          },
-        }
-      );
-      setBookmarka(response.data);
-    } else {
-      const response = await axios.get(
-        'http://photolancer.shop/bookmark/popular?page=0',
-        {
-          headers: {
-            Authorization: userState.jwt,
-          },
-        }
-      );
-      setBookmarka(response.data);
-    }
+    const response = await axios.get(
+      `http://photolancer.shop/bookmark/${searchState.searchInput}/popular?page=0`,
+      {
+        headers: {
+          Authorization: userState.jwt,
+        },
+      }
+    );
+    setBookmarka(response.data);
   };
   const recentlyBtnHandler = async () => {
     setRightSelect(2);
     setHrShowHotPhoto(false);
 
-    if (clickedBookmarkButton) {
-      const response = await axios.get(
-        `http://photolancer.shop/bookmark/${clickedBookmarkButton}/recent?page=0`,
-        {
-          headers: {
-            Authorization: userState.jwt,
-          },
-        }
-      );
-      setBookmarka(response.data);
-    } else {
-      const response = await axios.get(
-        'http://photolancer.shop/bookmark/recent?page=0',
-        {
-          headers: {
-            Authorization: userState.jwt,
-          },
-        }
-      );
-      setBookmarka(response.data);
-    }
-  };
-
-  //왼쪽 버튼 관리
-  const [buttons, setButtons] = useState([
-    { tag: 'Trip', isClicked: false },
-    { tag: 'Travel', isClicked: false },
-    { tag: 'Journey', isClicked: false },
-    { tag: 'Tour', isClicked: false },
-  ]);
-
-  const handleButtonClick = async (index) => {
-    const updatedButtons = [...buttons];
-
-    if (updatedButtons[index].isClicked === true) {
-      //이미 눌러져 있는 북마크를 클릭 했을 때
-      for (let i = 0; i < updatedButtons.length; i++) {
-        updatedButtons[i].isClicked = false;
+    const response = await axios.get(
+      `http://photolancer.shop/bookmark/${searchState.searchInput}/recent?page=0`,
+      {
+        headers: {
+          Authorization: userState.jwt,
+        },
       }
-      setButtons(updatedButtons);
-      const response = await axios.get(
-        'http://photolancer.shop/bookmark?page=0',
-        {
-          headers: {
-            Authorization: userState.jwt,
-          },
-        }
-      );
-      setBookmarka(response.data);
-    } else {
-      for (let i = 0; i < updatedButtons.length; i++) {
-        updatedButtons[i].isClicked = false;
-      }
-      updatedButtons[index].isClicked = true;
-      setButtons(updatedButtons);
-      console.log(buttons[index].tag);
-      setClickedBookmarkButton(buttons[index].tag);
-      //
-      const response = await axios.get(
-        `http://photolancer.shop/bookmark/${buttons[index].tag}?page=0`,
-        {
-          headers: {
-            Authorization: userState.jwt,
-          },
-        }
-      );
-      setBookmarka(response.data);
-    }
+    );
+    setBookmarka(response.data);
   };
 
   //bookmark 사진 관리
@@ -160,7 +84,7 @@ function Bookmark() {
     const fetchBookmark = async () => {
       try {
         const bookmark = await axios.get(
-          'http://photolancer.shop/bookmark?page=0',
+          `http://photolancer.shop/bookmark/${searchState.searchInput}?page=0`,
           {
             headers: {
               Authorization: userState.jwt,
@@ -175,31 +99,13 @@ function Bookmark() {
       }
     };
     fetchBookmark();
-    const bookmarkButtons = [];
-    userBookmark.map((bookmark) =>
-      bookmarkButtons.push({ tag: `${bookmark}`, isClicked: false })
-    );
-    setButtons(bookmarkButtons);
   }, []);
   console.log(bookmarka);
 
   return (
     <>
       <div>
-        <div className='mb-4'>
-          <h2 className={styles.title}>User's Bookmark</h2>
-        </div>
-        <div className='flex flex-row justify-between items-center mb-8'>
-          <div className='tag_group'>
-            {buttons.map((button, index) => (
-              <LeftBtn
-                key={index}
-                tag={button.tag}
-                isClicked={button.isClicked}
-                onClick={() => handleButtonClick(index)}
-              />
-            ))}
-          </div>
+        <div className='flex flex-row justify-end items-center mb-8'>
           <div className='select_group flex flex-row'>
             <div>
               <button
@@ -256,4 +162,4 @@ function Bookmark() {
   );
 }
 
-export default Bookmark;
+export default SearchExplore;

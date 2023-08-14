@@ -12,6 +12,9 @@ import Feed from '../../components/Feed/Feed';
 export const PhotoContext = createContext();
 export const PhotoDispatchContext = createContext();
 
+export const SearchContext = createContext();
+export const SearchDispatchContext = createContext();
+
 const initialPhotoState = {
   photoClicked: false,
   photo_id: 0,
@@ -35,11 +38,31 @@ const photoReducer = (state, action) => {
   }
 };
 
+const initialSearchState = {
+  searchInput: null,
+};
+const searchReducer = (state, action) => {
+  switch (action.type) {
+    case 'SEARCH':
+      return {
+        ...state,
+        searchInput: action.search,
+      };
+
+    default:
+      throw new Error('Unhandled action');
+  }
+};
+
 function HomePage() {
   const [homeContent, setHomeContent] = useState(1);
   const [photoState, photoDispatch] = useReducer(
     photoReducer,
     initialPhotoState
+  );
+  const [searchState, searchDispatch] = useReducer(
+    searchReducer,
+    initialSearchState
   );
 
   const exploreHandler = () => {
@@ -68,65 +91,69 @@ function HomePage() {
         ) : (
           ''
         )}
-        <div class={styles.contents}>
-          <Header />
-          <div className='flex flex-row'>
-            <div className='sidebar basis-1/4 flex flex-row justify-center border border-solid border-black'>
-              <Sidebar current_page={1} />
-            </div>
-            <div className='main basis-3/4 border border-solid border-black'>
-              <div className='searchbar'>
-                <Searchbar />
-              </div>
-              <div className='navbar mb-8'>
-                <div className='flex flex-row'>
-                  <button
-                    className={`${styles.navbar_button} ${
-                      homeContent === 1 ? styles.selected : ''
-                    }`}
-                    onClick={exploreHandler}
-                  >
-                    Explore
-                  </button>
-                  <button
-                    className={`${styles.navbar_button} ${
-                      homeContent === 2 ? styles.selected : ''
-                    }`}
-                    onClick={bookmarkHandler}
-                  >
-                    Bookmark
-                  </button>
-                  <button
-                    className={`${styles.navbar_button} ${
-                      homeContent === 3 ? styles.selected : ''
-                    }`}
-                    onClick={followingHandler}
-                  >
-                    Following
-                  </button>
-                  <button
-                    className={`${styles.navbar_button} ${
-                      homeContent === 4 ? styles.selected : ''
-                    }`}
-                    onClick={noticeHandler}
-                  >
-                    Notice
-                  </button>
+        <SearchContext.Provider value={searchState}>
+          <SearchDispatchContext.Provider value={searchDispatch}>
+            <div class={styles.contents}>
+              <Header />
+              <div className='flex flex-row'>
+                <div className='sidebar basis-1/4 flex flex-row justify-center border border-solid border-black'>
+                  <Sidebar current_page={1} />
                 </div>
-                <hr className={styles.navbar_hr} />
-              </div>
+                <div className='main basis-3/4 border border-solid border-black'>
+                  <div className='searchbar'>
+                    <Searchbar />
+                  </div>
+                  <div className='navbar mb-8'>
+                    <div className='flex flex-row'>
+                      <button
+                        className={`${styles.navbar_button} ${
+                          homeContent === 1 ? styles.selected : ''
+                        }`}
+                        onClick={exploreHandler}
+                      >
+                        Explore
+                      </button>
+                      <button
+                        className={`${styles.navbar_button} ${
+                          homeContent === 2 ? styles.selected : ''
+                        }`}
+                        onClick={bookmarkHandler}
+                      >
+                        Bookmark
+                      </button>
+                      <button
+                        className={`${styles.navbar_button} ${
+                          homeContent === 3 ? styles.selected : ''
+                        }`}
+                        onClick={followingHandler}
+                      >
+                        Following
+                      </button>
+                      <button
+                        className={`${styles.navbar_button} ${
+                          homeContent === 4 ? styles.selected : ''
+                        }`}
+                        onClick={noticeHandler}
+                      >
+                        Notice
+                      </button>
+                    </div>
+                    <hr className={styles.navbar_hr} />
+                  </div>
 
-              <PhotoDispatchContext.Provider value={photoDispatch}>
-                <div className='maincontents border border-solid border-red-500'>
-                  {homeContent === 1 ? <Explore /> : ''}
-                  {homeContent === 2 ? <Bookmark /> : ''}
-                  {homeContent === 3 ? <Following /> : ''}
-                  {homeContent === 4 ? <Notice /> : ''}
+                  <PhotoDispatchContext.Provider value={photoDispatch}>
+                    <div className='maincontents border border-solid border-red-500'>
+                      {homeContent === 1 ? <Explore /> : ''}
+                      {homeContent === 2 ? <Bookmark /> : ''}
+                      {homeContent === 3 ? <Following /> : ''}
+                      {homeContent === 4 ? <Notice /> : ''}
+                    </div>
+                  </PhotoDispatchContext.Provider>
                 </div>
-              </PhotoDispatchContext.Provider>
+              </div>
             </div>
-          </div>
-        </div>
+          </SearchDispatchContext.Provider>
+        </SearchContext.Provider>
       </div>
     </>
   );

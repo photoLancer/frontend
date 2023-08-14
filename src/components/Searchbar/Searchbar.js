@@ -1,7 +1,9 @@
-import { React, useRef, useState } from 'react';
+import { React, useRef, useState, useContext } from 'react';
 import styles from './searchbar.module.css';
+import { SearchDispatchContext } from '../../routes/HomePage/HomePage';
 
 function Searchbar() {
+  const searchDispatch = useContext(SearchDispatchContext);
   const [searchInput, setSearchInput] = useState('');
   const inputRef = useRef();
   const onFocus = () => {
@@ -14,6 +16,7 @@ function Searchbar() {
 
   const searchHandler = (e) => {
     console.log(searchInput);
+    searchDispatch({ type: 'SEARCH', search: searchInput });
     setSearchInput('');
   };
 
