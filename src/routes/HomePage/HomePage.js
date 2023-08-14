@@ -48,6 +48,11 @@ const searchReducer = (state, action) => {
         ...state,
         searchInput: action.search,
       };
+    case 'MAKE_NULL':
+      return {
+        ...state,
+        searchInput: null,
+      };
 
     default:
       throw new Error('Unhandled action');

@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function SearchBookmark(props) {
   const { id, postNum, bookmarkName, onClick } = props;
-  console.log(id, postNum, bookmarkName);
+  // console.log(id, postNum, bookmarkName);
   return (
     <>
       <div
@@ -27,6 +27,7 @@ function Searchbar() {
   const [loading, setLoading] = useState(true);
   const [bookmarks, setBookmarks] = useState(null);
   const [searchInput, setSearchInput] = useState('');
+  const [recentlySearch, setRecentlySearch] = useState([]);
   const inputRef = useRef();
   const onFocus = () => {
     inputRef.current.focus();
@@ -46,8 +47,17 @@ function Searchbar() {
     searchDispatch({ type: 'SEARCH', search: searchInput });
     setSearchInput('');
     setIsFocus(false);
-  };
 
+    //최신 검색어 추가
+    if (!recentlySearch.includes(searchInput)) {
+      const updatedRecentlySearch = [searchInput, ...recentlySearch].slice(
+        0,
+        4
+      );
+      setRecentlySearch(updatedRecentlySearch);
+    }
+  };
+  console.log(recentlySearch);
   const handleBookmarkClick = (clickedBookmarkName) => {
     console.log('Clicked bookmark:', clickedBookmarkName);
     setSearchInput(clickedBookmarkName);
@@ -109,10 +119,12 @@ function Searchbar() {
         </div>
 
         <div className='tags flex flex-row'>
-          <div className={styles.tag}>#Trip</div>
-          <div className={styles.tag}>#Travel</div>
-          <div className={styles.tag}>#Journey</div>
-          <div className={styles.tag}>#Tour</div>
+          <p className={styles.recently_search_p}>최신 검색어</p>
+          {recentlySearch.map((search) => (
+            <>
+              <div className={styles.tag}>#{search}</div>
+            </>
+          ))}
         </div>
       </div>
     </>
