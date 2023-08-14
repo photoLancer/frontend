@@ -40,8 +40,9 @@ function Following() {
           Authorization: userState.jwt,
         },
       });
-      //console.log(response.data);
-      const userPosts = response.data.content[0].postList.slice(0,3);
+      console.log(response.data);
+      
+      const userPosts = response.data.content[1].postList;
       setFollowingPhoto(userPosts);
     }
     catch(error){
@@ -53,7 +54,8 @@ function Following() {
 
   return(
     <>
-   <div className={styles.headframe}>
+    
+   
    <Row>
       {followingInfo&&
       followingInfo.map((user, index) => (
@@ -62,21 +64,24 @@ function Following() {
           <div className={styles.smallimg}>{user.profileUrl}</div>
           <div className={styles.nickname}>{user.nickname}</div>
         </div>
-        <div className={styles.contentsframe}>
-        <Row gutter={[24, 24]}>
-              {followingPhoto &&
-                followingPhoto.map((user, index) => (
-                  <React.Fragment key={index}>
-                    <PhotoCard id={user.postId} image={user.thumbNailUri} />
-                  </React.Fragment>
-                ))}
-            </Row>
-            </div> 
+        <Row className={styles.contentsframe}>
+        
+        {followingPhoto &&       //content[1] - postList 배열 map
+          followingPhoto.map((userPost, index) => (
+            <>
+            <React.Fragment key={index}>
+              <PhotoCard id={userPost.postId} image={userPost.thumbNailUri} />
+          </React.Fragment>
+          </>
+          ))}
+      </Row>
             </>
       ))}
+
     </Row>
-    </div>
-  
+    
+      
+        
     </>
   );
 }
