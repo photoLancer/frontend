@@ -1,12 +1,42 @@
-import React, { useEffect,useRef, useState } from 'react';
+import React, { useEffect,useRef, useState,createContext,useReducer } from 'react';
 import styles from './album.module.css';
 import MyPost from "./MyPost";
 import SavedPost from "./SavedPost";
 import BoughtPhoto from "./BoughtPhoto";
+import Feed from '../../Feed/Feed';
 
+export const PhotoContext = createContext();
+export const PhotoDispatchContext = createContext();
+
+const initialPhotoState = {
+  photoClicked: false,
+  photo_id: 0,
+};
+const photoReducer = (state, action) => {
+  switch (action.type) {
+    case 'PHOTO_CLICK':
+      return {
+        ...state,
+        photoClicked: true,
+        photo_id: action.id,
+      };
+    case 'SCREEEN_CLICK':
+      return {
+        ...state,
+        photoClicked: false,
+        photo_id: 0,
+      };
+    default:
+      throw new Error('Unhandled action');
+  }
+};
 
 function Album() {
     const [albumContent,setAlbumContent]=useState(1);
+    const [photoState, photoDispatch] = useReducer(
+      photoReducer,
+      initialPhotoState
+    );
 
     const mypostBtn=useRef();
     const savedpostBtn=useRef();
@@ -59,6 +89,15 @@ function Album() {
     return (
         <>
         <div className='main basis-3/4 border border-solid border-black'>
+              {photoState.photoClicked ? (
+                <PhotoContext.Provider value={photoState}>
+                  <PhotoDispatchContext.Provider value={photoDispatch}>
+                    <Feed />
+                  </PhotoDispatchContext.Provider>
+                </PhotoContext.Provider>
+              ) : (
+                ''
+              )} 
                 <div className={styles.navbar}>
                 <div className={styles.textline}>
                   <button
@@ -98,11 +137,13 @@ function Album() {
                   </div>
                 </div>
 
+               <PhotoDispatchContext.Provider value={photoDispatch}>
               <div className='maincontents border border-solid border-red-500'>
                 {albumContent === 1 ? <MyPost /> : ''}
                 {albumContent === 2 ? <SavedPost /> : ''}
                 {albumContent === 3 ? <BoughtPhoto /> : ''}
               </div>
+              </PhotoDispatchContext.Provider>
             </div>
 
         </>
