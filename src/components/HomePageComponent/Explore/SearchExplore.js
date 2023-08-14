@@ -79,7 +79,7 @@ function SearchExplore() {
   };
 
   //bookmark 사진 관리
-
+  console.log(searchState.searchInput);
   useEffect(() => {
     const fetchBookmark = async () => {
       try {
@@ -100,7 +100,27 @@ function SearchExplore() {
     };
     fetchBookmark();
   }, []);
-  console.log(bookmarka);
+
+  useEffect(() => {
+    const fetchBookmark = async () => {
+      try {
+        const bookmark = await axios.get(
+          `http://photolancer.shop/bookmark/${searchState.searchInput}?page=0`,
+          {
+            headers: {
+              Authorization: userState.jwt,
+            },
+          }
+        );
+        setBookmarka(bookmark.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBookmark();
+  }, [searchState.searchInput]);
 
   return (
     <>

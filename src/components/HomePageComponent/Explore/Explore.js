@@ -11,7 +11,6 @@ import SearchExplore from './SearchExplore';
 
 function Explore() {
   const searchState = useContext(SearchContext);
-  console.log(searchState);
   const [explore, setExplore] = useState(null);
   const userState = useSelector((state) => state.user);
 

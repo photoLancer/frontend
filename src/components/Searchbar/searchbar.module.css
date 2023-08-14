@@ -6,6 +6,8 @@
   border-radius: 12px;
   padding: 12px 0;
   margin-bottom: 12px;
+  position: relative;
+  width: 100%;
 }
 
 .search_input {
@@ -23,6 +25,14 @@
   outline: none;
 }
 
+.search_bookmark {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+}
+
 .tag {
   display: flex;
   justify-content: center;
@@ -38,4 +48,26 @@
   border-radius: 18px;
   padding: 0 14px;
   margin-right: 8px;
+}
+
+/* bookmark */
+
+.searchBookmark:hover {
+  background-color: #ededed;
+  cursor: pointer;
+}
+
+.bookmarkName {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.postNum {
+  font-family: Pretendard;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: right;
 }
