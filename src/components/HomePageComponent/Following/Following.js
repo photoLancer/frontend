@@ -24,17 +24,20 @@ function Following() {
   return(
     <>
    <div>안녕</div>
+   <div className={styles.headframe}>
+   <img className={styles.smallimg}></img>
+   <p className={styles.nickname}>nickname {'>'}</p>
+   </div>
+   <div className={styles.content}>
         <Row gutter={[24, 24]}>
               {followingInfo &&
                 followingInfo.map((photo, index) => (
                   <React.Fragment key={index}>
-                    <img className={styles.smallimg}></img>
-                    <p className={styles.nickname}>{nickname+'>'}</p>
                     <PhotoCard id={photo.postId} image={photo.thumbNailUri} />
                   </React.Fragment>
                 ))}
             </Row>
-        
+            </div>
     </>
   );
 }
