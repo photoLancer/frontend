@@ -1,10 +1,31 @@
 
+import { useEffect, useState } from 'react';
 import styles from './userinfo.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
 const UserInfo=()=>{
     const userState=useSelector((state)=>state.user);
+     /*const [showBookmark,setShowBookmark]=useState(null);
 
+    useEffect(()=>{
+        const fetchBookmark=async()=>{
+            try{
+                const response = await axios.get('http://photolancer.shop/api/v1/bookmark/list',{
+                    headers:{
+                        Authorization:userState.jwt,
+                    },
+                })
+                const bookmarks=response.data;
+                setShowBookmark(bookmarks);
+                console.log(bookmarks);
+            }
+            catch(error){
+                console.error('Error fetching bookmark',error);
+            }
+        };
+        fetchBookmark();
+    },[userState.jwt]);  */
 
     return(
         <>
@@ -44,10 +65,14 @@ const UserInfo=()=>{
                 <div className={styles.infotext}>{userState.explane}</div>
                 <div className={styles.footer}>
                 <div className={styles.taghead}>관심 키워드</div>
-                <div className={styles.tagging}>
-                    <span className={styles.tag}>#Trip</span>
-                    <span className={styles.tag}>#Travel</span>
-                </div>
+                    
+                
+                        <div className={styles.tagging}>
+                        <span className={styles.tag}>{userState.bookmark[1]}</span>
+                        <span className={styles.tag}>{userState.bookmark[5]}</span>
+                        </div>
+         
+                
                 </div>
             </div>
             </div>
