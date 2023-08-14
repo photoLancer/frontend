@@ -2,6 +2,7 @@ import { React, useRef, useState, useContext, useEffect } from 'react';
 import styles from './searchbar.module.css';
 import { SearchDispatchContext } from '../../routes/HomePage/HomePage';
 import axios from 'axios';
+import search from '../../img/search.png';
 
 function SearchBookmark(props) {
   const { id, postNum, bookmarkName, onClick } = props;
@@ -57,7 +58,6 @@ function Searchbar() {
       setRecentlySearch(updatedRecentlySearch);
     }
   };
-  console.log(recentlySearch);
   const handleBookmarkClick = (clickedBookmarkName) => {
     console.log('Clicked bookmark:', clickedBookmarkName);
     setSearchInput(clickedBookmarkName);
@@ -78,13 +78,11 @@ function Searchbar() {
     };
     fetchBookmark();
   }, []);
-  console.log(bookmarks);
-  console.log(isFocus);
   return (
     <>
       <div className='border border-solid border-black w-full mb-10'>
         <div className={styles.search_bar} onClick={onFocus}>
-          <div className='w-11/12 flex flex-row justify-between'>
+          <div className='w-11/12 flex flex-row justify-between items-center'>
             <input
               type='text'
               placeholder='search..'
@@ -94,7 +92,9 @@ function Searchbar() {
               onChange={inputHandler}
               onBlur={onBlur}
             />
-            <button onClick={searchHandler}>O</button>
+            <button onClick={searchHandler}>
+              <img src={search} alt='a' className={styles.search_img} />
+            </button>
             {isFocus && (
               <div
                 className={`drop-shadow-lg rounded-xl py-2 border border-solid border-black z-10 ${styles.search_bookmark}`}

@@ -5,6 +5,10 @@ import FeedComment from './FeedComment';
 import { FeedOptionDispatchContext } from './Feed';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import ic_heart from '../../img/ic_heart.png';
+import chat from '../../img/chat.png';
+import share from '../../img/file.png';
+import cart from '../../img/ic_cart.png';
 
 function FeedContent() {
   const photo = useContext(PhotoContext);
@@ -168,16 +172,16 @@ function FeedContent() {
                 ${like ? styles.btn_like_active : ''}`}
                     onClick={likeBtnHandler}
                   >
-                    1
+                    <img src={ic_heart} alt='a' className={styles.icons} />
                   </button>
                   <button className={styles.btn} onClick={commentBtnHandler}>
-                    2
+                    <img src={chat} alt='a' className={styles.icons} />
                   </button>
                   <button className={styles.btn} onClick={shareBtnHandler}>
-                    3
+                    <img src={share} alt='' className={styles.icons} />
                   </button>
                   <button className={styles.btn} onClick={purchaseBtnHandler}>
-                    4
+                    <img src={cart} alt='' className={styles.icons} />
                   </button>
                 </div>
               </div>
