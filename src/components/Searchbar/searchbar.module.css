@@ -51,6 +51,10 @@
 }
 
 /* bookmark */
+.search_bookmark {
+  max-height: 30vh;
+  overflow: scroll;
+}
 
 .searchBookmark:hover {
   background-color: #ededed;

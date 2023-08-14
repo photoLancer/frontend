@@ -9,7 +9,7 @@ function SearchBookmark(props) {
   return (
     <>
       <div
-        className={`flex flex-row w-full  h-6 justify-center items-center ${styles.searchBookmark}`}
+        className={`flex flex-row w-full  h-8 justify-center items-center ${styles.searchBookmark}`}
         onClick={() => onClick(bookmarkName)}
       >
         <div className='flex flex-row justify-between w-11/12 items-center'>
@@ -92,12 +92,16 @@ function Searchbar() {
                 {loading ? (
                   <p>loading ...</p>
                 ) : (
-                  <SearchBookmark
-                    id={bookmarks[0].id}
-                    bookmarkName={bookmarks[0].bookmarkName}
-                    postNum={bookmarks[0].postNum}
-                    onClick={handleBookmarkClick} // 클릭 핸들러 함수 전달
-                  />
+                  bookmarks.map((bookmark) => (
+                    <>
+                      <SearchBookmark
+                        id={bookmark.id}
+                        bookmarkName={bookmark.bookmarkName}
+                        postNum={bookmark.postNum}
+                        onClick={handleBookmarkClick} // 클릭 핸들러 함수 전달
+                      />
+                    </>
+                  ))
                 )}
               </div>
             )}
