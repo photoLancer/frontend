@@ -3,6 +3,11 @@ import styles from './sidebar.module.css';
 import { UploadDispatchContext } from '../../App';
 import { useDispatch, useSelector } from 'react-redux';
 import home from '../../img/home.png';
+import profile from '../../img/profile.png';
+import alarm from '../../img/alarm.png';
+import chat from '../../img/chat.png';
+import picture from '../../img/picture.png';
+import settings from '../../img/settings.png';
 
 function Sidebar(props) {
   const userState = useSelector((state) => state.user);
@@ -65,7 +70,9 @@ function Sidebar(props) {
           </a>
           <a href='/profile' className={styles.nav_contents}>
             <div className='w-10/12 flex flex-row'>
-              <div className='w-5 h-5 bg-slate-300 mr-2'></div>
+              <div className='w-5 h-5  mr-2'>
+                <img src={profile} alt='' />
+              </div>
               <p className={`${current_page === 2 ? 'font-semibold' : ''}`}>
                 나의 프로필
               </p>
@@ -73,7 +80,9 @@ function Sidebar(props) {
           </a>
           <a href='/alarm' className={styles.nav_contents}>
             <div className='w-10/12 flex flex-row'>
-              <div className='w-5 h-5 bg-slate-300 mr-2'></div>
+              <div className='w-5 h-5  mr-2'>
+                <img src={alarm} alt='' />
+              </div>
               <p className={`${current_page === 3 ? 'font-semibold' : ''}`}>
                 알림
               </p>
@@ -81,7 +90,9 @@ function Sidebar(props) {
           </a>
           <a href='/chat' className={styles.nav_contents}>
             <div className='w-10/12 flex flex-row'>
-              <div className='w-5 h-5 bg-slate-300 mr-2'></div>
+              <div className='w-5 h-5  mr-2'>
+                <img src={chat} alt='' />
+              </div>
               <p className={`${current_page === 4 ? 'font-semibold' : ''}`}>
                 채팅
               </p>
@@ -89,7 +100,9 @@ function Sidebar(props) {
           </a>
           <a href='/' className={styles.nav_contents} onClick={uploadHandler}>
             <div className='w-10/12 flex flex-row'>
-              <div className='w-5 h-5 bg-slate-300 mr-2'></div>
+              <div className='w-5 h-5  mr-2'>
+                <img src={picture} alt='' />
+              </div>
               <p className={`${current_page === 5 ? 'font-semibold' : ''}`}>
                 사진 올리기
               </p>
@@ -97,7 +110,9 @@ function Sidebar(props) {
           </a>
           <a href='/setting' className={styles.nav_contents}>
             <div className='w-10/12 flex flex-row'>
-              <div className='w-5 h-5 bg-slate-300 mr-2'></div>
+              <div className='w-5 h-5  mr-2'>
+                <img src={settings} alt='' />
+              </div>
               <p className={`${current_page === 6 ? 'font-semibold' : ''}`}>
                 설정
               </p>

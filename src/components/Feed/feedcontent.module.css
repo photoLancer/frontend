@@ -48,6 +48,7 @@
 
 .btn_like_active {
   color: red;
+  background-color: red;
 }
 
 .photo_img {
@@ -117,4 +118,8 @@
   font-weight: 500;
   line-height: 30px;
   letter-spacing: 0em;
+}
+
+.icons {
+  width: 34px;
 }

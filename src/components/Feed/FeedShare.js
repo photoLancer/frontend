@@ -4,6 +4,7 @@ import { FeedOptionDispatchContext } from './Feed';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { PhotoContext } from '../../routes/HomePage/HomePage';
+import search from '../../img/search.png';
 
 const Follower = (props) => {
   const { user_id, name, Lv, onCheckChange, profileUrl } = props;
@@ -145,7 +146,9 @@ function FeedShare() {
                 <div className='mb-6'>
                   <h2 className={styles.h2}>공유할 ID</h2>
                   <div className={styles.search_bar} onClick={onFocus}>
-                    <div className={`w-11/12 flex flex-row justify-between`}>
+                    <div
+                      className={`w-11/12 flex flex-row justify-between items-center`}
+                    >
                       <input
                         type='text'
                         placeholder='ID 검색'
@@ -154,7 +157,13 @@ function FeedShare() {
                         value={searchInput}
                         onChange={inputHandler}
                       />
-                      <button onClick={searchHandler}>O</button>
+                      <button onClick={searchHandler}>
+                        <img
+                          src={search}
+                          alt=''
+                          className={styles.search_img}
+                        />
+                      </button>
                     </div>
                   </div>
                 </div>
