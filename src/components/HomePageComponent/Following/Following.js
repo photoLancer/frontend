@@ -6,19 +6,46 @@ import PhotoCard from '../PhotoCard/PhotoCard';
 import axios from 'axios';
 
 function Following() {
-  const [followingInfo,setFollowingInfo]=useState(null);
+  const [followingNickname,setFollowingNickname]=useState(null);
+  const [followingImg,setFollowingImg]=useState(null);
+  const [followingPhoto,setFollowingPhoto]=useState(null);
   const userState =useSelector((state)=>state.user);
 
   useEffect(()=>{
-    const fetchFollowing = async()=>{
-      const response = axios.get('http://photolancer.shop/following/users',{
+    const fetchFollowingInfo=async()=>{
+      try{
+        const response = await axios.get('http://photolancer.shop/following/users',{
+          headers: {
+            Authorization: userState.jwt,
+          },
+        });
+
+        setFollowingNickname(response.data.nickname);
+        setFollowingImg(response.data.profileUrl);
+
+      }
+      catch(error){
+        console.error('Error fetching following info',error);
+      }
+    };
+    fetchFollowingInfo();
+  },[]);
+
+  useEffect(()=>{
+    const fetchFollowingPhoto = async()=>{
+      try{
+      const response = axios.get('http://photolancer.shop/following/posts?page=0',{
         headers: {
           Authorization: userState.jwt,
         },
       });
-      setFollowingInfo(response.data);
+      setFollowingPhoto(response.data.content.postList);
+    }
+    catch(error){
+      console.error('Error fetching following photo',error);
+    }
     };
-    fetchFollowing();
+    fetchFollowingPhoto();
   },[]);
 
   return(
@@ -28,16 +55,16 @@ function Following() {
    <img className={styles.smallimg}></img>
    <p className={styles.nickname}>nickname {'>'}</p>
    </div>
-   <div className={styles.content}>
+   
         <Row gutter={[24, 24]}>
-              {followingInfo &&
-                followingInfo.map((photo, index) => (
+              {followingPhoto &&
+                followingPhoto.map((photo, index) => (
                   <React.Fragment key={index}>
                     <PhotoCard id={photo.postId} image={photo.thumbNailUri} />
                   </React.Fragment>
                 ))}
             </Row>
-            </div>
+          
     </>
   );
 }
