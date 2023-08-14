@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styles from './explore.module.css';
 import Contest from './Contest';
 import Clickcontest from './Clickcontest';
@@ -6,8 +6,11 @@ import PhotoCard from '../PhotoCard/PhotoCard';
 import { Row } from 'antd';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { SearchContext } from '../../../routes/HomePage/HomePage';
+import SearchExplore from './SearchExplore';
 
 function Explore() {
+  const searchState = useContext(SearchContext);
   const [explore, setExplore] = useState(null);
   const userState = useSelector((state) => state.user);
 
@@ -82,89 +85,93 @@ function Explore() {
 
   return (
     <>
-      <div>
-        <div className='mb-16'>
-          <h1 className={styles.title}>{`HOT PHOTO >`}</h1>
-          <div className='hot_photos flex flex-row items-start'>
-            <Row gutter={[24, 24]}>
-              {hotPhotos &&
-                hotPhotos.map((photo, index) => (
-                  <React.Fragment key={index}>
-                    <PhotoCard id={photo.postId} image={photo.thumbNailUri} />
-                  </React.Fragment>
-                ))}
-            </Row>
+      {searchState.searchInput === null ? (
+        <div>
+          <div className='mb-16'>
+            <h1 className={styles.title}>{`HOT PHOTO >`}</h1>
+            <div className='hot_photos flex flex-row items-start'>
+              <Row gutter={[24, 24]}>
+                {hotPhotos &&
+                  hotPhotos.map((photo, index) => (
+                    <React.Fragment key={index}>
+                      <PhotoCard id={photo.postId} image={photo.thumbNailUri} />
+                    </React.Fragment>
+                  ))}
+              </Row>
+            </div>
           </div>
-        </div>
 
-        <div className='mb-16'>
-          <h1 className={styles.title}>{`RECENTLY UPLOADED PHOTO >`}</h1>
-          <div className='recently_photo flex flex-row items-start'>
-            <Row gutter={[24, 24]}>
-              {recentlyPhotos &&
-                recentlyPhotos.map((photo, index) => (
-                  <React.Fragment key={index}>
-                    <PhotoCard id={photo.postId} image={photo.thumbNailUri} />
-                  </React.Fragment>
-                ))}
-            </Row>
+          <div className='mb-16'>
+            <h1 className={styles.title}>{`RECENTLY UPLOADED PHOTO >`}</h1>
+            <div className='recently_photo flex flex-row items-start'>
+              <Row gutter={[24, 24]}>
+                {recentlyPhotos &&
+                  recentlyPhotos.map((photo, index) => (
+                    <React.Fragment key={index}>
+                      <PhotoCard id={photo.postId} image={photo.thumbNailUri} />
+                    </React.Fragment>
+                  ))}
+              </Row>
+            </div>
           </div>
-        </div>
 
-        <div className='mb-16'>
-          <h1 className={styles.title}>
-            <button onClick={contestBtnHandler}>
-              {contestBtnClicked ? `PHOTO AWARDS v` : `PHOTO AWARDS >`}
-            </button>
-          </h1>
+          <div className='mb-16'>
+            <h1 className={styles.title}>
+              <button onClick={contestBtnHandler}>
+                {contestBtnClicked ? `PHOTO AWARDS v` : `PHOTO AWARDS >`}
+              </button>
+            </h1>
 
-          {contestBtnClicked ? (
-            <div className='mt-8'>
-              <div className='select flex flex-row h-12 items-center mb-12'>
-                <h2 className={`basis-1/12 ${styles.contest_h2}`}>Contest</h2>
-                <div className='basis-10/12 flex flex-row justify-center h-full'>
-                  <div className={`flex flex-row ${styles.contest_select}`}>
-                    <div className='flex justify-center items-center basis-11/12'>
-                      <p className={styles.contest_title}>
-                        {contestList[current].information}
-                      </p>
-                    </div>
-                    <div
-                      className={`flex flex-col basis-1/12 ${styles.contest_select_btns}`}
-                    >
-                      <button
-                        className='h-3/6'
-                        onClick={contestSelectUpBtnHandler}
+            {contestBtnClicked ? (
+              <div className='mt-8'>
+                <div className='select flex flex-row h-12 items-center mb-12'>
+                  <h2 className={`basis-1/12 ${styles.contest_h2}`}>Contest</h2>
+                  <div className='basis-10/12 flex flex-row justify-center h-full'>
+                    <div className={`flex flex-row ${styles.contest_select}`}>
+                      <div className='flex justify-center items-center basis-11/12'>
+                        <p className={styles.contest_title}>
+                          {contestList[current].information}
+                        </p>
+                      </div>
+                      <div
+                        className={`flex flex-col basis-1/12 ${styles.contest_select_btns}`}
                       >
-                        ▲
-                      </button>
-                      <button
-                        className='h-3/6'
-                        onClick={contestSelectDownBtnHandler}
-                      >
-                        ▼
-                      </button>
+                        <button
+                          className='h-3/6'
+                          onClick={contestSelectUpBtnHandler}
+                        >
+                          ▲
+                        </button>
+                        <button
+                          className='h-3/6'
+                          onClick={contestSelectDownBtnHandler}
+                        >
+                          ▼
+                        </button>
+                      </div>
                     </div>
                   </div>
+                  <button
+                    className={`basis-1/12 ${styles.contest_check_btn}`}
+                    onClick={contestSelectCheckHandler}
+                  >
+                    check
+                  </button>
                 </div>
-                <button
-                  className={`basis-1/12 ${styles.contest_check_btn}`}
-                  onClick={contestSelectCheckHandler}
-                >
-                  check
-                </button>
+                <h2 className={styles.contest_title_a}>Contest Info</h2>
+                <div className={`w-full h-80 ${styles.contest_info}`}>
+                  <p>{contestInfo.name}</p>
+                </div>
+                <Clickcontest info={awardPhotos} />
               </div>
-              <h2 className={styles.contest_title_a}>Contest Info</h2>
-              <div className={`w-full h-80 ${styles.contest_info}`}>
-                <p>{contestInfo.name}</p>
-              </div>
-              <Clickcontest info={awardPhotos} />
-            </div>
-          ) : (
-            awardPhotos && <Contest info={awardPhotos} />
-          )}
+            ) : (
+              awardPhotos && <Contest info={awardPhotos} />
+            )}
+          </div>
         </div>
-      </div>
+      ) : (
+        <SearchExplore />
+      )}
     </>
   );
 }

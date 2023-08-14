@@ -1,12 +1,14 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 import styles from './bookmark.module.css';
 import LeftBtn from './LeftBtn';
 import { Row } from 'antd';
 import PhotoCard from '../PhotoCard/PhotoCard';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { SearchDispatchContext } from '../../../routes/HomePage/HomePage';
 
 function Bookmark() {
+  const searchDispatch = useContext(SearchDispatchContext);
   const userState = useSelector((state) => state.user);
   //오른쪽 버튼 관리
   const hotphotoBtn = useRef();
@@ -120,7 +122,6 @@ function Bookmark() {
 
     if (updatedButtons[index].isClicked === true) {
       //이미 눌러져 있는 북마크를 클릭 했을 때
-      console.log('aaa');
       for (let i = 0; i < updatedButtons.length; i++) {
         updatedButtons[i].isClicked = false;
       }
@@ -158,6 +159,10 @@ function Bookmark() {
   //bookmark 사진 관리
 
   useEffect(() => {
+    //searchInput ->null로 바꾸기
+    searchDispatch({ type: 'MAKE_NULL' });
+
+    //bookmark 정보 들고오기
     const fetchBookmark = async () => {
       try {
         const bookmark = await axios.get(
