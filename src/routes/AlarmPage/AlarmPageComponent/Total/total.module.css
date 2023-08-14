@@ -1,0 +1,39 @@
+.alarm_contents {
+  max-height: 60vh;
+  border: 1px solid blue;
+  overflow: scroll;
+}
+
+.day {
+  font-family: Pretendard;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.msg:hover {
+  background-color: #ededed;
+}
+
+.msp_p {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.plus_p {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  margin-left: 8px;
+  color: #ff8b00;
+}
