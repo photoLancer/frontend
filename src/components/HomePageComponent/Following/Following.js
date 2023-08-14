@@ -10,6 +10,7 @@ function Following() {
   const [followingImg,setFollowingImg]=useState(null); */
   const [followingInfo,setFollowingInfo]=useState(null);
   const [followingPhoto,setFollowingPhoto]=useState([]);
+
   const userState =useSelector((state)=>state.user);
 
   useEffect(()=>{
@@ -32,6 +33,7 @@ function Following() {
     fetchFollowingInfo();
   },[userState.jwt]);
 
+
   useEffect(()=>{
     const fetchFollowingPhoto = async()=>{
       try{
@@ -42,8 +44,10 @@ function Following() {
       });
       console.log(response.data);
       
+     
       const userPosts = response.data.content[1].postList;
       setFollowingPhoto(userPosts);
+     
     }
     catch(error){
       console.error('Error fetching following photo',error);
