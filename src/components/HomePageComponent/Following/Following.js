@@ -6,9 +6,10 @@ import PhotoCard from '../PhotoCard/PhotoCard';
 import axios from 'axios';
 
 function Following() {
-  const [followingNickname,setFollowingNickname]=useState(null);
-  const [followingImg,setFollowingImg]=useState(null);
-  const [followingPhoto,setFollowingPhoto]=useState(null);
+  /*const [followingNickname,setFollowingNickname]=useState(null);
+  const [followingImg,setFollowingImg]=useState(null); */
+  const [followingInfo,setFollowingInfo]=useState(null);
+  const [followingPhoto,setFollowingPhoto]=useState([]);
   const userState =useSelector((state)=>state.user);
 
   useEffect(()=>{
@@ -19,9 +20,9 @@ function Following() {
             Authorization: userState.jwt,
           },
         });
-
-        setFollowingNickname(response.data.nickname);
-        setFollowingImg(response.data.profileUrl);
+        //console.log(response.data);
+        const users =response.data;
+        setFollowingInfo(users);
 
       }
       catch(error){
@@ -29,42 +30,53 @@ function Following() {
       }
     };
     fetchFollowingInfo();
-  },[]);
+  },[userState.jwt]);
 
   useEffect(()=>{
     const fetchFollowingPhoto = async()=>{
       try{
-      const response = axios.get('http://photolancer.shop/following/posts?page=0',{
+      const response = await axios.get('http://photolancer.shop/following/posts?page=0',{
         headers: {
           Authorization: userState.jwt,
         },
       });
-      setFollowingPhoto(response.data.content.postList);
+      //console.log(response.data);
+      const userPosts = response.data.content[0].postList.slice(0,3);
+      setFollowingPhoto(userPosts);
     }
     catch(error){
       console.error('Error fetching following photo',error);
     }
     };
     fetchFollowingPhoto();
-  },[]);
+  },[userState.jwt]);
 
   return(
     <>
-   <div>안녕</div>
    <div className={styles.headframe}>
-   <img className={styles.smallimg}></img>
-   <p className={styles.nickname}>nickname {'>'}</p>
-   </div>
-   
+   <Row>
+      {followingInfo&&
+      followingInfo.map((user, index) => (
+        <>
+        <div key={index} className={styles.headframe}>
+          <div className={styles.smallimg}>{user.profileUrl}</div>
+          <div className={styles.nickname}>{user.nickname}</div>
+        </div>
+        <div className={styles.contentsframe}>
         <Row gutter={[24, 24]}>
               {followingPhoto &&
-                followingPhoto.map((photo, index) => (
+                followingPhoto.map((user, index) => (
                   <React.Fragment key={index}>
-                    <PhotoCard id={photo.postId} image={photo.thumbNailUri} />
+                    <PhotoCard id={user.postId} image={user.thumbNailUri} />
                   </React.Fragment>
                 ))}
             </Row>
-          
+            </div> 
+            </>
+      ))}
+    </Row>
+    </div>
+  
     </>
   );
 }
