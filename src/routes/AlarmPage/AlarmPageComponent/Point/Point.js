@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import styles from './total.module.css';
+import styles from './point.module.css';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import Message from '../Msg/Message';
 
-function Total() {
+function Point() {
   const userState = useSelector((state) => state.user);
 
   const [messages, setMessages] = useState(null);
@@ -14,7 +14,7 @@ function Total() {
     const fetchNotification = async () => {
       try {
         const notification = await axios.get(
-          'http://photolancer.shop/api/v1/notification/list_all',
+          'http://photolancer.shop/api/v1/notification/list?type=point',
           {
             headers: {
               Authorization: userState.jwt,
@@ -84,4 +84,4 @@ function Total() {
   );
 }
 
-export default Total;
+export default Point;
