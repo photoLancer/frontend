@@ -7,6 +7,7 @@ import Total from './AlarmPageComponent/Total/Total';
 import Sell from './AlarmPageComponent/Sell/Sell';
 import Like from './AlarmPageComponent/Like/Like';
 import System from './AlarmPageComponent/System/System';
+import Point from './AlarmPageComponent/Point/Point';
 
 function AlarmPage() {
   const [selectedButton, setSelectedButton] = useState(1);
@@ -22,6 +23,10 @@ function AlarmPage() {
   const systemHandler = () => {
     setSelectedButton(4);
   };
+  const pointHandler = () => {
+    setSelectedButton(5);
+  };
+
   return (
     <>
       <div className={styles.viewport}>
@@ -69,6 +74,14 @@ function AlarmPage() {
                   >
                     시스템
                   </button>
+                  <button
+                    className={`${styles.navbar_button} ${
+                      selectedButton === 5 ? styles.selected : ''
+                    }`}
+                    onClick={pointHandler}
+                  >
+                    포인트
+                  </button>
                 </div>
                 <hr className={styles.navbar_hr} />
               </div>
@@ -77,6 +90,7 @@ function AlarmPage() {
                 {selectedButton === 2 ? <Sell /> : ''}
                 {selectedButton === 3 ? <Like /> : ''}
                 {selectedButton === 4 ? <System /> : ''}
+                {selectedButton === 5 ? <Point /> : ''}
               </div>
             </div>
           </div>
