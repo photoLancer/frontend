@@ -3,8 +3,10 @@ import styles from './uploadphoto.module.css';
 import { UploadDispatchContext } from '../../App';
 import Uploading from './Uploading';
 import Uploaded from './Uploaded';
+import { useSelector } from 'react-redux';
 
 function UploadPhoto() {
+  const userState=useSelector((state)=>state.user);
   const uploadDispatch = useContext(UploadDispatchContext);
   /*const screenClickHandler = () => {
     uploadDispatch({ type: 'SCREEN_CLICK' });
@@ -37,8 +39,26 @@ function UploadPhoto() {
     setUploadPhoto2(true);
     setUploadPhoto3(false);
   };
-  const finishHandler=()=>{
-
+  const finishHandler=async()=>{
+    console.log('upload');
+    try{
+      const response = await axios.post('http://photolancer.shop/post',
+      {
+       /* content:,
+        isSale:,
+        point:,
+        bookmark:, */
+      },
+      {
+        headers:{
+          Authorization:userState.jwt,
+        },
+      });
+      console.log('Photo uploaded:',response.data);
+    }
+    catch(error){
+      console.error('Error:',error);
+    }
   };
   
   const [agreeService,setAgreeService]=useState(false);

@@ -1,7 +1,21 @@
+import { useSelector } from 'react-redux';
 import styles from './uploading.module.css';
 import { useState } from 'react';
 
 const Uploading =()=>{
+    const userState=useSelector((state)=>state.user);
+    
+    const [inputComment,setInputComment]=useState('');
+    const [showIsSale,setShowIsSale]=useState(false);
+    const [inputPoint,setInputPoint]=useState('');
+
+    const handleCommentChange=(event)=>{
+        setInputComment(event.target.value);
+    };
+    const handlePointChange=(event)=>{
+        setInputPoint(event.target.value);
+    };
+    
     const checkboxes=document.querySelectorAll('input[name="choice"]');
 
     function handleCheckboxChange(event){
@@ -38,6 +52,7 @@ const Uploading =()=>{
     const [clickYes,setClickYes]=useState(false);
 
     const handleClickChange=()=>{
+        setShowIsSale(true);
         setClickYes(true);
     };
         return(
@@ -49,7 +64,7 @@ const Uploading =()=>{
             <div className={styles.infowrap}>
                 <div className={styles.commentwrap}>
                     <p className={styles.texthead}>코멘트</p>
-                    <input type='text' className={styles.commentbox} />
+                    <input type='text' className={styles.commentbox} value={inputComment} onChange={handleCommentChange}/>
                 </div>
                 
                 <div className={styles.bookmarkwrap}>
@@ -90,7 +105,7 @@ const Uploading =()=>{
             {clickYes?(
                 <>
                 <p className={styles.texthead}>판매 포인트 설정</p><br/>
-                <input type='text' placeholder='원하시는 판매 포인트를 입력하세요.' className={styles.inputpoint}/>
+                <input type='text' placeholder='원하시는 판매 포인트를 입력하세요.' className={styles.inputpoint} value={inputPoint} onChange={handlePointChange}/>
                 <div className={styles.pointfoot}>
                     <p className={styles.pointcheck}>판매가</p>
                     <p className={styles.pointcheck}>?? Point</p>
