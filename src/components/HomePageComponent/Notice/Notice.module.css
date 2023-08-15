@@ -9,19 +9,29 @@
   justify-content: space-between;
   flex-basis: auto;
 }
-.types button {
+.btn {
   border-radius: 18px;
   padding: 3px 25px 3px 25px;
+
+  /*  */
+  height: 36px;
+  border: 1px solid;
+  background-color: white;
+  color: rgba(194, 194, 194, 1);
+  margin-left: 16px;
 }
-.types :nth-child(1) {
-  /* width: 71px; */
+.selected {
+  border: none;
+  color: white;
+  background-color: rgba(255, 139, 0, 1);
+}
+/* .types :nth-child(1) {
   height: 36px;
   border: none;
   color: white;
   background-color: rgba(255, 139, 0, 1);
 }
 .types :nth-child(2) {
-  /* width: 112px; */
   height: 36px;
   border: 1px solid;
   background-color: white;
@@ -30,7 +40,6 @@
 }
 
 .types :nth-child(3) {
-  /* width: 97px; */
   height: 36px;
   border: 1px solid;
   background-color: white;
@@ -38,13 +47,13 @@
   margin-left: 16px;
 }
 .types :nth-child(4) {
-  /* width: 112px; */
   height: 36px;
   border: 1px solid;
   background-color: white;
   color: rgba(194, 194, 194, 1);
   margin-left: 16px;
-}
+} */
+
 .btn:hover {
   background-color: rgba(255, 139, 0, 1);
   color: white;

@@ -1,0 +1,31 @@
+.contents {
+  display: flex;
+  flex-direction: row;
+  margin-left: 33px;
+  width: 95%;
+  /* margin-top: 21px; */
+  justify-content: space-between;
+}
+.contents:hover {
+  cursor: pointer;
+  background-color: #ededed;
+}
+.contents1 {
+  opacity: 70%;
+}
+
+.contents2 {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.contents3 {
+  opacity: 30%;
+}
+.hr2 {
+  /* margin-top: 21px; */
+  opacity: 90%;
+}
