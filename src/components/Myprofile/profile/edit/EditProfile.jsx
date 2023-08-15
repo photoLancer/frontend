@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './editprofile.module.css';
 import Profile from '../Profile';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,12 +9,19 @@ const EditProfile=()=>{
 
     const [inputName, setInputName] = useState('');
     const [inputExplane, setInputExplane] = useState('');
+    const [inputPurpose,setInputPurpose]=useState('');
 
     const HandleNameChange=(event)=>{
         setInputName(event.target.value);
     };
     const HandleExplaneChange=(event)=>{
         setInputExplane(event.target.value);
+    };
+    const HandlePurposeChange=(event)=>{
+        setInputPurpose(event.target.value);
+    };
+    const HandleBookmarkChange=(event)=>{
+        setInputBookmark(event.target.value);
     };
 
     const [applyData,setApplyData]=useState(false);
@@ -23,11 +30,17 @@ const EditProfile=()=>{
     const applyHandler=async()=>{
         console.log('apply');
         try {
-            const response=await axios.put(
+            const response=await axios.post(
             `http://photolancer.shop/api/v1/users/update`,  
             {
-                nickname:inputName,
-                explane:inputExplane,
+                userUpdateRequest:{
+                    nickname:inputName,
+                    explane:inputExplane,
+                    purpose:inputPurpose,
+                },
+                bookmarkDto:{
+                    content:tags,
+                },
             },
             {
                 headers:{
@@ -36,6 +49,14 @@ const EditProfile=()=>{
             }
             );
             console.log('Profile updated:',response.data);
+            /*console.log('name,explane,purpose updated:',response.data.userUpdateRequest);
+            console.log('bookmark updated:',response.data.bookmarkDto);*/
+            setInputName(response.data.userUpdateRequest.nickname);
+            setInputExplane(response.data.userUpdateRequest.explane);
+            setInputPurpose(response.data.userUpdateRequest.purpose);
+            setTags(response.data.bookmarkDto.content.join(','));
+            setApplyData(true);
+            setCancelData(false);
 
         } catch(error){
             console.error('Error:',error);
@@ -44,6 +65,8 @@ const EditProfile=()=>{
     const cancelHandler=()=>{
         setInputName('');
         setInputExplane('');
+        setInputPurpose('');
+        setInputBookmark('');
         setApplyData(false);
         setCancelData(true);
     };
@@ -78,7 +101,7 @@ const EditProfile=()=>{
                 <img 
                 src={userState.userProfileImg}
                 alt='#'
-                className={styles.imgage}
+                className={styles.image}
                 />
                 <button className={styles.editbtn}>사진 변경</button>
             </div>
@@ -107,8 +130,8 @@ const EditProfile=()=>{
                 />
                 <button className={styles.add} onClick={handleAddTag}>+</button></div>
             <div className={styles.tagbox}>
-                <div className={styles.tagwrap}>
-                {tags.map((tag, index) => (<span className={styles.tag} key={index}>
+                <div className={styles.tagwrap} onChange={HandleBookmarkChange}>
+                {tags.map((tag, index) => (<span className={styles.tag} key={index} >
                     {tag}
                     <button
                         className={styles.delete}
@@ -122,9 +145,9 @@ const EditProfile=()=>{
             <div className={styles.purpose}>
                 <p className={styles.texthead}>이용 목적</p>
                 <form className={styles.selection}>
-                    <select name='purpse' className={styles.selectbox}>
-                        <option className={styles.optionvalue}>취미</option>
-                        <option className={styles.optionvalue}>비즈니스</option>
+                    <select name='purpse' className={styles.selectbox} value={inputPurpose} onChange={HandlePurposeChange}>
+                        <option className={styles.optionvalue}>hobby</option>
+                        <option className={styles.optionvalue}>business</option>
                     </select>
                 </form>
             </div>
