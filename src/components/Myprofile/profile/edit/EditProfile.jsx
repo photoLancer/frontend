@@ -20,9 +20,7 @@ const EditProfile=()=>{
     const HandlePurposeChange=(event)=>{
         setInputPurpose(event.target.value);
     };
-    const HandleBookmarkChange=(event)=>{
-        setInputBookmark(event.target.value);
-    };
+   
 
     const [applyData,setApplyData]=useState(false);
     const [cancelData,setCancelData]=useState(false);
@@ -30,7 +28,7 @@ const EditProfile=()=>{
     const applyHandler=async()=>{
         console.log('apply');
         try {
-            const response=await axios.post(
+            const response=await axios.put(
             `http://photolancer.shop/api/v1/users/update`,  
             {
                 userUpdateRequest:{
@@ -49,12 +47,12 @@ const EditProfile=()=>{
             }
             );
             console.log('Profile updated:',response.data);
-            /*console.log('name,explane,purpose updated:',response.data.userUpdateRequest);
-            console.log('bookmark updated:',response.data.bookmarkDto);*/
-            setInputName(response.data.userUpdateRequest.nickname);
+            console.log('name,explane,purpose updated:',response.data.userUpdateRequest);
+            console.log('bookmark updated:',response.data.bookmarkDto);
+            /*setInputName(response.data.userUpdateRequest.nickname);
             setInputExplane(response.data.userUpdateRequest.explane);
             setInputPurpose(response.data.userUpdateRequest.purpose);
-            setTags(response.data.bookmarkDto.content.join(','));
+            setTags(response.data.bookmarkDto.content.join(','));*/ 
             setApplyData(true);
             setCancelData(false);
 
@@ -66,7 +64,7 @@ const EditProfile=()=>{
         setInputName('');
         setInputExplane('');
         setInputPurpose('');
-        setInputBookmark('');
+        setTags('');
         setApplyData(false);
         setCancelData(true);
     };
@@ -130,7 +128,7 @@ const EditProfile=()=>{
                 />
                 <button className={styles.add} onClick={handleAddTag}>+</button></div>
             <div className={styles.tagbox}>
-                <div className={styles.tagwrap} onChange={HandleBookmarkChange}>
+                <div className={styles.tagwrap}>
                 {tags.map((tag, index) => (<span className={styles.tag} key={index} >
                     {tag}
                     <button
