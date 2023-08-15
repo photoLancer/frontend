@@ -1,14 +1,11 @@
 import axios from 'axios';
 
 export const login = async (jwt) => {
-  const user_info = await axios.get(
-    'http://photolancer.shop/api/v1/users/info',
-    {
-      headers: {
-        Authorization: `${jwt}`,
-      },
-    }
-  );
+  const user_info = await axios.get('http://photolancer.shop/api/v1/users/info', {
+    headers: {
+      Authorization: `${jwt}`,
+    },
+  });
   console.log(user_info);
   return {
     type: 'LOGIN',

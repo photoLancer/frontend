@@ -26,8 +26,6 @@ function Follower(navigation) {
         <p>Mason</p>
       </div>
       <article className={styles.chat_content}>
-        <div className={styles.chat_time}>2023. 07. 01. 오전 12:04</div>
-
         <div className={styles.chat_interact}>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function () {
             return (
@@ -52,12 +50,19 @@ function Follower(navigation) {
           })}
         </div>
       </article>
-      <div className={styles.input_submit}>
-        <input className={styles.user_input} type="text" name="chatting" placeholder="     메시지를 입력하세요"></input>
-        <input type="submit" value="전송" className={styles.chat_submit}></input>
-      </div>
+      <input className={styles.user_input} type="text" name="chatting" placeholder="     메시지를 입력하세요"></input>
+      <input type="submit" value="전송" className={styles.chat_submit}></input>
     </>
   );
 }
 
 export default Follower;
+/*<div className={styles.input_submit}>
+          <input
+            className={styles.user_input}
+            type="text"
+            name="chatting"
+            placeholder="     메시지를 입력하세요"
+          ></input>
+          
+        </div>*/

@@ -57,11 +57,11 @@ function ChatPage() {
                   팔로워
                 </button>
                 <div className={styles.num_chat}>50</div>
-                <button className={styles.ask_chat} onClick={askHandler}>
+                {/*<button className={styles.ask_chat} onClick={askHandler}>
                   요청
                 </button>
                 <div className={styles.num_chat}>100</div>
-                {isHtmlVisible && <div dangerouslySetInnerHTML={{ __html: htmlString }} />}
+  {isHtmlVisible && <div dangerouslySetInnerHTML={{ __html: htmlString }} />}*/}
               </div>
               {/* 채팅방 부분 */}
               <main className={styles.main_chat}>
@@ -96,10 +96,7 @@ function ChatPage() {
                     })}
                   </article>
                 </section>
-                <aside className={styles.chat_room}>
-                  {homeContent === 1 ? <Follower /> : ''}
-                  {homeContent === 2 ? <Ask /> : ''}
-                </aside>
+                <aside className={styles.chat_room}>{homeContent === 1 ? <Follower /> : ''}</aside>
               </main>
             </div>
           </div>

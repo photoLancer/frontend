@@ -21,10 +21,32 @@ function Ask() {
   });
   return (
     <>
-      <div className={styles.chat_room_p}>
-        <p>Mason</p>
-      </div>
-      <article className={styles.chat_content2}>
+      <p>Mason</p>
+      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function () {
+        return (
+          <>
+            <div className={styles.chat_profile2}>
+              <img src={차은우}></img>
+            </div>
+            <div className={styles.bubble}>
+              <div className={styles.chat_word}>안녕하세요</div>
+            </div>
+            <span className={styles.chat_hm}>오후 00:00</span>
+            <div className={styles.chat_me}>
+              <div className={styles.bubble2}>
+                <div className={styles.chat_word2}>안녕하세요 반갑습니다:</div>
+              </div>
+              <span className={styles.chat_hm2}>오후 00:00</span>
+            </div>
+          </>
+        );
+      })}
+    </>
+  );
+}
+
+export default Ask;
+/*<article className={styles.chat_content2}>
         <div className={styles.footer_box}>
           <div className={styles.footer_box2}>
             <div className={styles.footer1}>Mason님이 메시지를 보내고 싶어 합니다.</div>
@@ -46,9 +68,4 @@ function Ask() {
             </div>
           </div>
         </div>
-      </article>
-    </>
-  );
-}
-
-export default Ask;
+      </article>*/
