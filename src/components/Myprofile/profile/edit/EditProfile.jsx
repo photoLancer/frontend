@@ -44,7 +44,7 @@ const EditProfile=()=>{
             },
             {
                 headers:{
-                    Authorization:`Bearer ${userState.jwt}`,
+                    Authorization:userState.jwt,
                 },
             }
             );
@@ -146,8 +146,8 @@ const EditProfile=()=>{
                 <p className={styles.texthead}>이용 목적</p>
                 <form className={styles.selection}>
                     <select name='purpse' className={styles.selectbox} value={inputPurpose} onChange={HandlePurposeChange}>
-                        <option className={styles.optionvalue}>취미</option>
-                        <option className={styles.optionvalue}>비즈니스</option>
+                        <option className={styles.optionvalue}>hobby</option>
+                        <option className={styles.optionvalue}>business</option>
                     </select>
                 </form>
             </div>
