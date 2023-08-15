@@ -19,7 +19,6 @@
   font-weight: 500;
   line-height: 30px;
   letter-spacing: 0em;
-
   margin-top: 10px;
   width: 130px;
   height: 40px;
@@ -219,7 +218,7 @@
 .chat_room_p {
   border-bottom: 1px rgba(237, 237, 237, 1) solid;
   height: 17%;
-  /*width: 100%;*/
+  width: 100%;
   display: flex;
   align-items: center;
 }
@@ -231,11 +230,13 @@
 }
 
 .chat_content {
-  /*width: 100%;*/
+  width: 100%;
   height: 75%;
   overflow-y: scroll;
+  display: flex;
 }
 .chat_time {
+  width: 100%;
   height: 47px;
   font-family: Pretendard;
   font-size: 12px;
@@ -330,6 +331,8 @@
 }
 .input_submit {
   position: relative;
+  /*width: 100%;
+  height: 20%;*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -337,14 +340,15 @@
 }
 .user_input {
   border: 1px rgba(237, 237, 237, 1) solid;
-  bottom: 0;
-  width: 803px;
+  position: absolute;
+  width: 600px;
   height: 50px;
+  /*margin-top: 540px;*/
   border-radius: 12px;
 }
 .chat_submit {
   position: absolute;
-  right: 50px;
+  right: 100px;
   background-color: rgba(237, 237, 237, 1);
   width: 58px;
   height: 30px;
