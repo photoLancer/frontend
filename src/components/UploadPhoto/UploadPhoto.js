@@ -67,6 +67,38 @@ function UploadPhoto() {
     const handleAgreeChange=()=>{
         setAgreeService(true);
     };
+
+    const [mainImg,setMainImg]=useState('');
+
+    
+    const handleDrop = (event) => {
+      event.preventDefault();
+      const file = event.dataTransfer.files[0]; // 드롭한 파일 가져오기
+      
+      if (file) {
+        const reader = new FileReader();
+      
+        reader.onload = function (event) {
+          setMainImg(event.target.result);
+        };
+      
+        reader.readAsDataURL(file);
+      }
+    };
+  
+    const handleDragOver = (event) => {
+      event.preventDefault();
+    };
+    const setPreviewImg=(event)=>{
+      const reader = new FileReader();
+      
+      reader.onload = function (event) {
+        setMainImg(event.target.result);
+      };
+    
+      reader.readAsDataURL(event.dataTransfer.files[0]);
+    }
+    
   return (   
     <>
       
@@ -76,11 +108,21 @@ function UploadPhoto() {
       <div className={styles.uploadScreen}>
           <div className={styles.uploadwrap}>
           <p className={styles.head}>사진 올리기</p>
-          <form action='/target' className={styles.dropzone} id='myDropzone'>
+          <form action='/target' className={styles.dropzone} id='myDropzone' onDrop={handleDrop}
+  onDragOver={handleDragOver} >
             <div className={styles.innerwrap}>
+            {mainImg?(
+              <>
+              <img alt='메인사진' src={mainImg} className={styles.previewimg} />
+              
+              </>
+            ):(
+            <>
             <p className={styles.text1}>파일을 이곳에 끌어 놓아주세요</p><br />
             <p className={styles.text2}>한 번에 1장까지만 업로드 가능</p><br/>
-            <button className={styles.selectbtn}>컴퓨터에서 선택</button>
+            <input type="file" className={styles.selectbtn} accept='image/*' onChange={setPreviewImg}/>
+           </>
+           )}
             </div>
           </form>
           <button className={styles.nextbtn1} onClick={nextStepHandler1}>다음</button>
