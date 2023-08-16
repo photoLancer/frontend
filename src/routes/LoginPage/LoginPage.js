@@ -16,6 +16,7 @@ import { login } from '../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
+  const userState = useSelector((state) => state.user);
   const JoinHandler = () => {
     navigate('../Membership');
   };
@@ -45,13 +46,18 @@ function LoginPage() {
       password: pwValue,
     };
     try {
-      const response = await axios.post('http://photolancer.shop/api/v1/users/login', body);
+      const response = await axios.post(
+        'http://photolancer.shop/api/v1/users/login',
+        body
+      );
       // console.log(response);
       // console.log(response.data.jwt);
       // console.log(response.data.errorMessage);
       if (response.data.errorMessage === null) {
         //로그인이 성공적으로 된 경우
         dispatch(login(response.data.jwt));
+        // console.log(response.data.jwt);
+        // console.log(userState);
         navigate('/home');
         return;
       } else {
@@ -66,8 +72,8 @@ function LoginPage() {
   };
   return (
     <div className={styles.LoginPage}>
-      <img className={styles.L_img} src={Login} alt="login_camera" />
-      <Container component="main">
+      <img className={styles.L_img} src={Login} alt='login_camera' />
+      <Container component='main'>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Box
             className
@@ -80,8 +86,8 @@ function LoginPage() {
             }}
           >
             <Typography
-              component="h1"
-              variant="h5"
+              component='h1'
+              variant='h5'
               selected
               sx={{
                 fontFamily: 'neurimbo Gothic',
@@ -94,34 +100,37 @@ function LoginPage() {
             </Typography>
             <input
               className={styles.input_user}
-              label="id"
-              name="id"
-              margin="normal"
+              label='id'
+              name='id'
+              margin='normal'
               autoFocus
-              placeholder="   ID"
+              placeholder='   ID'
               {...register('id', { required: true })}
               value={idValue}
               onChange={handleIdChange}
             ></input>
             <input
               className={styles.input_user}
-              label="Password"
-              name="pwd"
+              label='Password'
+              name='pwd'
               {...register('pwd', { required: true })}
-              margin="normal"
-              placeholder="   Password"
+              margin='normal'
+              placeholder='   Password'
               value={pwValue}
               onChange={handlePwChange}
             ></input>
-            {(errors.id || errors.pwd) && (errors.id.type === 'required' || errors.pwd.type === 'required') && (
-              <span className={styles.errors1}>
-                아이디 또는 비밀번호<span className={styles.errors2}>를 입력해주세요</span>
-              </span>
-            )}
+            {(errors.id || errors.pwd) &&
+              (errors.id.type === 'required' ||
+                errors.pwd.type === 'required') && (
+                <span className={styles.errors1}>
+                  아이디 또는 비밀번호
+                  <span className={styles.errors2}>를 입력해주세요</span>
+                </span>
+              )}
 
             <Button
-              type="submit"
-              variant="contained"
+              type='submit'
+              variant='contained'
               sx={{
                 mt: 2,
                 mb: 2,
@@ -144,9 +153,9 @@ function LoginPage() {
             <Grid
               container
               spacing={2}
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
+              direction='row'
+              justifyContent='center'
+              alignItems='center'
               sx={{
                 mt: 2,
                 width: '554px',
@@ -158,7 +167,7 @@ function LoginPage() {
               <Grid item>|</Grid>
               <Grid item>
                 <Link
-                  to="../Membership"
+                  to='../Membership'
                   onClick={JoinHandler}
                   className={styles.link_join}
                   style={{ textDecoration: 'none', color: 'black' }}
@@ -167,7 +176,9 @@ function LoginPage() {
                 </Link>
               </Grid>
             </Grid>
-            <p className={styles.mobile_message}>Using Photo Lancer on mobile</p>
+            <p className={styles.mobile_message}>
+              Using Photo Lancer on mobile
+            </p>
           </Box>
         </form>
       </Container>
