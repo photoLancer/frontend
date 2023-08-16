@@ -28,13 +28,17 @@ function MyprofilePage() {
               <div className='navbar mb-8'>
                 <div className='flex flex-row'>
                   <button
-                    className={styles.navbar_button}
+                    className={`${styles.navbar_button} ${
+                      profileContent === 1 ? styles.selected : ''
+                    }`}
                     onClick={profileHandler}
                   >
                     Profile
                   </button>
                   <button
-                    className={styles.navbar_button}
+                    className={`${styles.navbar_button} ${
+                      profileContent === 2 ? styles.selected : ''
+                    }`}
                     onClick={albumHandler}
                   >
                     Album
