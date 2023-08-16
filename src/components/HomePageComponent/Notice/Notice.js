@@ -86,7 +86,7 @@ function Notice() {
     };
     fetchNotice();
   }, []);
-  console.log(notices);
+  // console.log(notices);
 
   const noticeClick = (id) => {
     console.log('postId:', id);

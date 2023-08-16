@@ -6,12 +6,12 @@ import styles from './myprofile.module.css';
 import Album from '../../components/Myprofile/album/Album';
 
 function MyprofilePage() {
-  const [profileContent,setProfileContent]=useState(1);
+  const [profileContent, setProfileContent] = useState(1);
 
-  const profileHandler=()=>{
+  const profileHandler = () => {
     setProfileContent(1);
   };
-  const albumHandler=()=>{
+  const albumHandler = () => {
     setProfileContent(2);
   };
 
@@ -21,10 +21,10 @@ function MyprofilePage() {
         <div class={styles.contents}>
           <Header />
           <div className='flex flex-row'>
-            <div className='sidebar basis-1/4 flex flex-row justify-center border border-solid border-black'>
+            <div className='sidebar basis-1/4 flex flex-row justify-center '>
               <Sidebar current_page={2} />
             </div>
-            <div className='main basis-3/4 border border-solid border-black'>
+            <div className='main basis-3/4 '>
               <div className='navbar mb-8'>
                 <div className='flex flex-row'>
                   <button
@@ -42,7 +42,7 @@ function MyprofilePage() {
                 </div>
                 <hr className={styles.navbar_hr} />
               </div>
-              <div className='maincontents border border-solid border-red-500'>
+              <div className='maincontents '>
                 {profileContent === 1 ? <Profile /> : ''}
                 {profileContent === 2 ? <Album /> : ''}
               </div>

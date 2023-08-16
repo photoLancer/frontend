@@ -147,7 +147,7 @@ function FeedContent() {
         ) : (
           <>
             <div
-              className={`w-11/12 h-full border border-solid border-black ${
+              className={`w-11/12 h-full  ${
                 commentActive ? 'w-7/12 mr-4' : 'w-11/12'
               }`}
             >
@@ -157,7 +157,11 @@ function FeedContent() {
               >
                 <div className='uploader_info flex flex-row w-full items-center'>
                   <div className={styles.uploader_profile_img}>
-                    <img src={feedInfo.user.profileUrl} alt='' />
+                    <img
+                      src={feedInfo.user.profileUrl}
+                      alt=''
+                      className={styles.uploader_profile_img_img}
+                    />
                   </div>
                   <div className={styles.uploader_level}>
                     Lv.{feedInfo.user.level}

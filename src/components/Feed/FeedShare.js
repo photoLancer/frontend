@@ -135,9 +135,7 @@ function FeedShare() {
           {loading ? (
             <p>loading...</p>
           ) : (
-            <div
-              className={`w-10/12 border border-solid border-black ${styles.a}`}
-            >
+            <div className={`w-10/12 ${styles.a}`}>
               <div>
                 <div className='flex flex-row justify-end'>
                   <button onClick={closeShareScreen}>X</button>

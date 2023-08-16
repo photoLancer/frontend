@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 function Header(props) {
   const navigate = useNavigate();
   const userState = useSelector((state) => state.user); // 전체 상태 가져옴
-  console.log(userState);
+  // console.log(userState);
   const dispatch = useDispatch();
   const onLogoutHandle = (e) => {
     e.preventDefault();

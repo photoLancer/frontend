@@ -47,13 +47,16 @@ function ChatPage() {
       <div className={styles.viewport}>
         <div className={styles.contents}>
           <Header />
-          <div className="flex flex-row">
-            <div className="sidebar basis-1/4 flex flex-row justify-center border border-solid border-black">
+          <div className='flex flex-row'>
+            <div className='sidebar basis-1/4 flex flex-row justify-center '>
               <Sidebar current_page={4} />
             </div>
-            <div className="main basis-3/4 border border-solid border-black">
+            <div className='main basis-3/4 '>
               <div className={styles.chat_button}>
-                <button className={styles.general_chat} onClick={follwerHandler}>
+                <button
+                  className={styles.general_chat}
+                  onClick={follwerHandler}
+                >
                   팔로워
                 </button>
                 <div className={styles.num_chat}>50</div>
@@ -68,7 +71,11 @@ function ChatPage() {
                 <section>
                   <div className={styles.messages}>
                     <p>Messages</p>
-                    <input className={styles.search_user} type="text" name="search_chat"></input>
+                    <input
+                      className={styles.search_user}
+                      type='text'
+                      name='search_chat'
+                    ></input>
                   </div>
                   <article className={styles.chat_list}>
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function () {
@@ -96,7 +103,9 @@ function ChatPage() {
                     })}
                   </article>
                 </section>
-                <aside className={styles.chat_room}>{homeContent === 1 ? <Follower /> : ''}</aside>
+                <aside className={styles.chat_room}>
+                  {homeContent === 1 ? <Follower /> : ''}
+                </aside>
               </main>
             </div>
           </div>
