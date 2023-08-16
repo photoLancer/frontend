@@ -67,10 +67,15 @@ const UserInfo=()=>{
                 <div className={styles.taghead}>관심 키워드</div>
                     
                 
-                        <div className={styles.tagging}>
-                        <span className={styles.tag}>{userState.bookmark[1]}</span>
-                        <span className={styles.tag}>{userState.bookmark[5]}</span>
-                        </div>
+                            <div className={styles.tagging}>
+                {userState.bookmark.map((item, index) => (
+                    index < 4 && (
+                        <span className={styles.tag} key={index}>
+                            {item}
+                        </span>
+                    )
+                ))}
+            </div>
          
                 
                 </div>

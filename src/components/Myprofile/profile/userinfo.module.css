@@ -85,11 +85,15 @@
     font-size: large;
 }
 .tagging{
-    width:100%;
+    width:75%;
+
+    overflow:auto;
+    max-height: 200px;
+
 }
 .tag{
-   border: 1px solid black;
-    margin-left: 20px;
+
+    margin-right: 20px;
 }
 .userinfo1wrap{
     margin-top: 60px;
@@ -104,6 +108,8 @@
 .footer{
     display: flex;
     flex-direction: row;
+
+    height: 100px;
 }
 .taghead{
     color: #FF8B00;
