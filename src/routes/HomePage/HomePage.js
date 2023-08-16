@@ -101,10 +101,10 @@ function HomePage() {
             <div class={styles.contents}>
               <Header />
               <div className='flex flex-row'>
-                <div className='sidebar basis-1/4 flex flex-row justify-center border border-solid border-black'>
+                <div className='sidebar basis-1/4 flex flex-row justify-center '>
                   <Sidebar current_page={1} />
                 </div>
-                <div className='main basis-3/4 border border-solid border-black'>
+                <div className='main basis-3/4 '>
                   <div className='searchbar'>
                     <Searchbar />
                   </div>
@@ -147,7 +147,7 @@ function HomePage() {
                   </div>
 
                   <PhotoDispatchContext.Provider value={photoDispatch}>
-                    <div className='maincontents border border-solid border-red-500'>
+                    <div className='maincontents'>
                       {homeContent === 1 ? <Explore /> : ''}
                       {homeContent === 2 ? <Bookmark /> : ''}
                       {homeContent === 3 ? <Following /> : ''}

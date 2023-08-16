@@ -47,7 +47,7 @@ function Like() {
           sortedGroupedMessages[key] = dayMessages[key];
         });
 
-        console.log(dayMessages);
+        // console.log(dayMessages);
 
         setMessages(dayMessages);
       } catch (error) {
@@ -58,7 +58,7 @@ function Like() {
     };
     fetchNotification();
   }, []);
-  console.log(messages);
+  // console.log(messages);
   return (
     <>
       <div className={styles.alarm_contents}>

@@ -33,10 +33,10 @@ function AlarmPage() {
         <div className={styles.contents}>
           <Header />
           <div className='flex flex-row'>
-            <div className='sidebar basis-1/4 flex flex-row justify-center border border-solid border-black'>
+            <div className='sidebar basis-1/4 flex flex-row justify-center'>
               <Sidebar current_page={3} />
             </div>
-            <div className='main basis-3/4 border border-solid border-black'>
+            <div className='main basis-3/4'>
               <div className='searchbar'>
                 <Searchbar />
               </div>
@@ -85,7 +85,7 @@ function AlarmPage() {
                 </div>
                 <hr className={styles.navbar_hr} />
               </div>
-              <div className='maincontents border border-solid border-red-500'>
+              <div className='maincontents '>
                 {selectedButton === 1 ? <Total /> : ''}
                 {selectedButton === 2 ? <Sell /> : ''}
                 {selectedButton === 3 ? <Like /> : ''}

@@ -187,7 +187,7 @@ function Bookmark() {
     );
     setButtons(bookmarkButtons);
   }, []);
-  console.log(bookmarka);
+  // console.log(bookmarka);
 
   return (
     <>

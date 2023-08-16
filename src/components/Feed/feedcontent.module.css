@@ -4,11 +4,20 @@
   border-radius: 24px;
 }
 .uploader_profile_img {
-  width: 8%;
-  padding-bottom: 8%;
+  width: 10%;
+  padding-bottom: 10%;
   background-color: #000;
   border-radius: 50%;
   margin-right: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.uploader_profile_img_img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .uploader_level {
   margin-right: 8px;
@@ -56,7 +65,7 @@
   height: 45vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   overflow: hidden;
   border-radius: 16px;
   margin-bottom: 8px;

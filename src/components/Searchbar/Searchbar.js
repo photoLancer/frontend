@@ -80,7 +80,7 @@ function Searchbar() {
   }, []);
   return (
     <>
-      <div className='border border-solid border-black w-full mb-10'>
+      <div className=' w-full mb-10'>
         <div className={styles.search_bar} onClick={onFocus}>
           <div className='w-11/12 flex flex-row justify-between items-center'>
             <input

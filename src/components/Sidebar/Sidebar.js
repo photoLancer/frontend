@@ -26,7 +26,7 @@ function Sidebar(props) {
 
   return (
     <>
-      <div className='flex flex-col items-center border border-solid border-black  w-9/12'>
+      <div className='flex flex-col items-center  w-9/12'>
         <div className='user flex flex-col items-center mb-4 w-full'>
           <div className={styles.user_image}>
             <img
