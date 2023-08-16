@@ -52,6 +52,13 @@ function userReducer(state = initialState, action) {
       };
     case 'PHOTO_PURCHASE':
       return { ...state, userPoint: action.payload.userPoint };
+    case 'UPDATE_USER_INFO':
+      return {
+          ...state,
+          userName:action.payload.nickname,
+          explane:action.payload.explane,
+          bookmark:action.payload.bookmark,
+        };  
     default:
       return state;
   }
