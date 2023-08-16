@@ -1,5 +1,5 @@
-import React, { createContext, useReducer } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { createContext, useReducer, useState } from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import styles from './app.module.css';
 
 import HomePage from './routes/HomePage/HomePage';
@@ -12,6 +12,7 @@ import SettingPage from './routes/SettingPage/SettingPage';
 import ChatPage from './routes/ChatPage/ChatPage';
 import UploadPhoto from './components/UploadPhoto/UploadPhoto';
 import AlarmPage from './routes/AlarmPage/AlarmPage';
+import { useSelector } from 'react-redux';
 
 export const UploadContext = createContext();
 export const UploadDispatchContext = createContext();
@@ -38,8 +39,13 @@ const uploadReducer = (state, action) => {
 };
 
 function App() {
-  const [uploadingState, uploadingDispatch] = useReducer(uploadReducer, initialUploadState);
-
+  const userState = useSelector((state) => state.user);
+  const [uploadingState, uploadingDispatch] = useReducer(
+    uploadReducer,
+    initialUploadState
+  );
+  let isLoggedIn = userState.isLoggedIn;
+  console.log('a: ', isLoggedIn);
   return (
     <div>
       <div className={styles.appScreen}>
@@ -52,15 +58,62 @@ function App() {
         )}
         <UploadDispatchContext.Provider value={uploadingDispatch}>
           <Routes>
-            <Route exact path="/home" element={HomePage()} />
-            <Route exact path="/login" element={LoginPage()} />
-            <Route exact path="/Membership" element={MembershipPage()} />
-            <Route exact path="/CreateAccount" element={CreateAccountPage()} />
-            <Route exact path="/" element={OnboardingPage()} />
-            <Route exact path="/profile" element={MyprofilePage()} />
-            <Route exact path="/chat" element={ChatPage()} />
-            <Route exact path="/setting" element={SettingPage()} />
-            <Route exact path="/alarm" element={AlarmPage()} />
+            {/* 로그인 X 일 때 접근 가능한 페이지 */}
+            <Route
+              exact
+              path='/login'
+              element={isLoggedIn ? <Navigate to='/home' /> : <LoginPage />}
+            />
+            <Route
+              exact
+              path='/Membership'
+              element={
+                isLoggedIn ? <Navigate to='/home' /> : <MembershipPage />
+              }
+            />
+            <Route
+              exact
+              path='/CreateAccount'
+              element={
+                isLoggedIn ? <Navigate to='/home' /> : <CreateAccountPage />
+              }
+            />
+
+            <Route
+              exact
+              path='/'
+              element={
+                isLoggedIn ? <Navigate to='/home' /> : <OnboardingPage />
+              }
+            />
+
+            <Route
+              exact
+              path='/home'
+              element={isLoggedIn ? <HomePage /> : <Navigate to='/login' />}
+            />
+            <Route
+              exact
+              path='/profile'
+              element={
+                isLoggedIn ? <MyprofilePage /> : <Navigate to='/login' />
+              }
+            />
+            <Route
+              exact
+              path='/chat'
+              element={isLoggedIn ? <ChatPage /> : <Navigate to='/login' />}
+            />
+            <Route
+              exact
+              path='/setting'
+              element={isLoggedIn ? <SettingPage /> : <Navigate to='/login' />}
+            />
+            <Route
+              exact
+              path='/alarm'
+              element={isLoggedIn ? <AlarmPage /> : <Navigate to='/login' />}
+            />
           </Routes>
         </UploadDispatchContext.Provider>
       </div>
