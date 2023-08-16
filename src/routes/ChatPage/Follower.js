@@ -57,12 +57,3 @@ function Follower(navigation) {
 }
 
 export default Follower;
-/*<div className={styles.input_submit}>
-          <input
-            className={styles.user_input}
-            type="text"
-            name="chatting"
-            placeholder="     메시지를 입력하세요"
-          ></input>
-          
-        </div>*/
