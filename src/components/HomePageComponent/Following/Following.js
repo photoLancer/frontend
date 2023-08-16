@@ -8,10 +8,11 @@ import { SearchDispatchContext } from '../../../routes/HomePage/HomePage';
 
 function Following() {
   const searchDispatch = useContext(SearchDispatchContext);
-  /*const [followingNickname,setFollowingNickname]=useState(null);
-  const [followingImg,setFollowingImg]=useState(null); */
-  const [followingInfo, setFollowingInfo] = useState(null);
-  const [followingPhoto, setFollowingPhoto] = useState([]);
+
+  const [followingData, setFollowingData] = useState({
+    users: [],
+    posts: [],
+  });
 
   const userState = useSelector((state) => state.user);
 
@@ -19,9 +20,9 @@ function Following() {
     //searchInput ->null로 바꾸기
     searchDispatch({ type: 'MAKE_NULL' });
 
-    const fetchFollowingInfo = async () => {
+    const fetchFollowingData = async () => {
       try {
-        const response = await axios.get(
+        const infoResponse = await axios.get(
           'http://photolancer.shop/following/users',
           {
             headers: {
@@ -29,20 +30,7 @@ function Following() {
             },
           }
         );
-        //console.log(response.data);
-        const users = response.data;
-        setFollowingInfo(users);
-      } catch (error) {
-        console.error('Error fetching following info', error);
-      }
-    };
-    fetchFollowingInfo();
-  }, [userState.jwt]);
-
-  useEffect(() => {
-    const fetchFollowingPhoto = async () => {
-      try {
-        const response = await axios.get(
+        const photoResponse = await axios.get(
           'http://photolancer.shop/following/posts?page=0',
           {
             headers: {
@@ -50,43 +38,45 @@ function Following() {
             },
           }
         );
-        console.log(response.data);
-
-        const userPosts = response.data.content[1].postList;
-        setFollowingPhoto(userPosts);
+        const users = infoResponse.data;
+        const postsByUserId = {};
+  
+        // Group posts by userId for efficient retrieval
+        photoResponse.data.content.forEach((contentItem) => {
+          const userId = contentItem.id;
+          const postList = contentItem.postList;
+          postsByUserId[userId] = postList;
+        });
+  
+        setFollowingData({ users, postsByUserId });
       } catch (error) {
-        console.error('Error fetching following photo', error);
-      }
+      console.error('Error fetching following data', error);
+    }
     };
-    fetchFollowingPhoto();
+    fetchFollowingData();
   }, [userState.jwt]);
 
   return (
     <>
-      <Row>
-        {followingInfo &&
-          followingInfo.map((user, index) => (
-            <>
-              <div key={index} className={styles.headframe}>
-                <div className={styles.smallimg}>{user.profileUrl}</div>
-                <div className={styles.nickname}>{user.nickname}</div>
-              </div>
-              <Row className={styles.contentsframe}>
-                {followingPhoto && //content[1] - postList 배열 map
-                  followingPhoto.map((userPost, index) => (
-                    <>
-                      <React.Fragment key={index}>
-                        <PhotoCard
-                          id={userPost.postId}
-                          image={userPost.thumbNailUri}
-                        />
-                      </React.Fragment>
-                    </>
-                  ))}
-              </Row>
-            </>
-          ))}
-      </Row>
+        <Row>
+  {followingData.users.map((user) => (
+    <>
+    <div key={user.id} className={styles.headframe}>
+      <div className={styles.smallimg}>{user.profileUrl}</div>
+      <div className={styles.nickname}>{user.nickname}</div>
+    </div>
+    <Row className={styles.contentsframe}>
+      {followingData.postsByUserId[user.id] && (
+        followingData.postsByUserId[user.id].map((userPost) => (
+          <React.Fragment key={userPost.postId}>
+            <PhotoCard id={userPost.postId} image={userPost.thumbNailUri} />
+          </React.Fragment>
+        ))
+      )}
+    </Row>
+    </>
+  ))}
+</Row>
     </>
   );
 }
