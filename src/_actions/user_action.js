@@ -33,6 +33,14 @@ export const login = async (jwt) => {
     },
   };
 };
+export const updateUserInfo = (updatedData) => ({
+  type: 'UPDATE_USER_INFO',
+  payload: {
+    nickname: updatedData.nickname,
+    explane: updatedData.explane,
+    bookmark: updatedData.bookmark,
+  },
+});
 
 export const logout = () => ({
   type: 'LOGOUT',

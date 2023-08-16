@@ -21,7 +21,7 @@ const EditProfile=()=>{
         setInputPurpose(event.target.value);
     };
    
-
+    const dispatch = useDispatch();
     const [applyData,setApplyData]=useState(false);
     const [cancelData,setCancelData]=useState(false);
 
@@ -46,13 +46,24 @@ const EditProfile=()=>{
                 },
             }
             );
-            console.log('Profile updated:',response.data);
+            
+            dispatch({
+                type: 'UPDATE_USER_INFO',
+                payload: {
+                    explane: response.data.userUpdateRequest.explane,
+                    nickname: response.data.userUpdateRequest.nickname,
+                    purpose: response.data.userUpdateRequest.purpose,
+                    bookmark: response.data.bookmarkDto.content,
+                },
+            });
+            
+            console.log(response.data);
             console.log('name,explane,purpose updated:',response.data.userUpdateRequest);
             console.log('bookmark updated:',response.data.bookmarkDto);
-            /*setInputName(response.data.userUpdateRequest.nickname);
+            setInputName(response.data.userUpdateRequest.nickname);
             setInputExplane(response.data.userUpdateRequest.explane);
             setInputPurpose(response.data.userUpdateRequest.purpose);
-            setTags(response.data.bookmarkDto.content.join(','));*/ 
+            setTags(response.data.bookmarkDto.content.join(','));
             setApplyData(true);
             setCancelData(false);
 

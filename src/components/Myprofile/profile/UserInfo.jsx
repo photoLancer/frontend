@@ -67,15 +67,13 @@ const UserInfo=()=>{
                 <div className={styles.taghead}>관심 키워드</div>
                     
                 
-                            <div className={styles.tagging}>
-                {userState.bookmark.map((item, index) => (
-                    index < 4 && (
-                        <span className={styles.tag} key={index}>
-                            {item}
-                        </span>
-                    )
+                 <div className={styles.tagging}>
+                {userState.bookmark.slice(-4).reverse().map((item, index) => (
+                    <span className={styles.tag} key={index}>
+                    {item}
+                    </span>
                 ))}
-            </div>
+                </div>
          
                 
                 </div>
