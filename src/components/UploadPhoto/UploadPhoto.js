@@ -4,6 +4,7 @@ import { UploadDispatchContext } from '../../App';
 import Uploading from './Uploading';
 import Uploaded from './Uploaded';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 function UploadPhoto() {
   const userState=useSelector((state)=>state.user);
