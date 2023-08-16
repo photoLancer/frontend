@@ -15,11 +15,11 @@ const Profile = () => {
   return (
     <>
       {isEditing ? (
-        <div className='main basis-3/4 border border-solid border-black'>
+        <div className='main basis-3/4'>
           <EditProfile />
         </div>
       ) : (
-        <div className='main basis-3/4 border border-solid border-black'>
+        <div className='main basis-3/4'>
           <button
             className={styles.editprofilebtn}
             onClick={editprofileHandler}
