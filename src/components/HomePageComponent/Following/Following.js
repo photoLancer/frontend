@@ -65,7 +65,7 @@ function Following() {
       <div className={styles.smallimg}>{user.profileUrl}</div>
       <div className={styles.nickname}>{user.nickname}</div>
     </div>
-    <Row className={styles.contentsframe}>
+    <Row gutter={[24, 24]} className={styles.contentsframe}>
       {followingData.postsByUserId[user.id] && (
         followingData.postsByUserId[user.id].map((userPost) => (
           <React.Fragment key={userPost.postId}>
