@@ -70,33 +70,35 @@ function UploadPhoto() {
 
     const [mainImg,setMainImg]=useState('');
 
-    
-    const handleDrop = (event) => {
-      event.preventDefault();
-      const file = event.dataTransfer.files[0]; // 드롭한 파일 가져오기
-      
-      if (file) {
-        const reader = new FileReader();
+    const displayPreview = (file)=>{
+      const reader = new FileReader();
       
         reader.onload = function (event) {
           setMainImg(event.target.result);
         };
       
         reader.readAsDataURL(file);
+    };
+
+    const handleDrop = (event) => {
+      event.preventDefault();
+      const file = event.dataTransfer.files[0]; // 드롭한 파일 가져오기
+      
+      if (file) {
+        displayPreview(file);
       }
     };
   
     const handleDragOver = (event) => {
       event.preventDefault();
     };
+
     const setPreviewImg=(event)=>{
-      const reader = new FileReader();
+      const file = event.target.files[0]; // 선택한 파일 가져오기
       
-      reader.onload = function (event) {
-        setMainImg(event.target.result);
-      };
-    
-      reader.readAsDataURL(event.dataTransfer.files[0]);
+      if (file) {
+        displayPreview(file);
+      }
     }
     
   return (   
@@ -108,7 +110,7 @@ function UploadPhoto() {
       <div className={styles.uploadScreen}>
           <div className={styles.uploadwrap}>
           <p className={styles.head}>사진 올리기</p>
-          <form action='/target' className={styles.dropzone} id='myDropzone' onDrop={handleDrop}
+          <form className={styles.dropzone} id='myDropzone' onDrop={handleDrop}
   onDragOver={handleDragOver} >
             <div className={styles.innerwrap}>
             {mainImg?(
@@ -125,7 +127,13 @@ function UploadPhoto() {
            )}
             </div>
           </form>
-          <button className={styles.nextbtn1} onClick={nextStepHandler1}>다음</button>
+          {mainImg?(
+            <>
+             <button className={styles.nextbtn1_1} onClick={nextStepHandler1}>다음</button>
+            </>
+          ):(
+          <button className={styles.nextbtn1} >다음</button>
+          )}
           </div>
           </div>
           </div>

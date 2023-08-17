@@ -13,7 +13,8 @@ const Uploading =()=>{
         setInputComment(event.target.value);
     };
     const handlePointChange=(event)=>{
-        setInputPoint(event.target.value);
+        const value = event.target.value.replace(/\D/g, '');
+        setInputPoint(value);
     };
     
     const checkboxes=document.querySelectorAll('input[name="choice"]');
@@ -50,11 +51,16 @@ const Uploading =()=>{
     };
 
     const [clickYes,setClickYes]=useState(false);
+    const [clickNo,setClickNo]=useState(false);
 
-    const handleClickChange=()=>{
+    const handleYesClick=()=>{
         setShowIsSale(true);
         setClickYes(true);
     };
+    const handleNoClick=()=>{
+        setShowIsSale(false);
+        setClickNo(true);
+    }
         return(
         <>
         <div className={styles.uploadwrap}>
@@ -97,18 +103,18 @@ const Uploading =()=>{
             <div className={styles.selecthead}>
             <p className={styles.texthead}>판매 여부 설정</p>
             <div className={styles.checkboxwrap}>
-            <input type='checkbox' name='choice' value='yes' onChange={handleClickChange}/><p className={styles.answer}>예</p>
-            <input type='checkbox' name='choice' value='no' checked/><p className={styles.answer}>아니요</p>
+            <input type='checkbox' name='choice' value='yes' onChange={handleYesClick} checked={clickYes}/><p className={styles.answer}>예</p>
+            <input type='checkbox' name='choice' value='no' onChange={handleNoClick} checked={clickNo}/><p className={styles.answer}>아니요</p>
             </div>
             </div>
             <div className={styles.selectcontent}>
             {clickYes?(
                 <>
                 <p className={styles.texthead}>판매 포인트 설정</p><br/>
-                <input type='text' placeholder='원하시는 판매 포인트를 입력하세요.' className={styles.inputpoint} value={inputPoint} onChange={handlePointChange}/>
+                <input type='number' placeholder='원하시는 판매 포인트를 입력하세요.' className={styles.inputpoint} value={inputPoint} onChange={handlePointChange} />
                 <div className={styles.pointfoot}>
                     <p className={styles.pointcheck}>판매가</p>
-                    <p className={styles.pointcheck}>?? Point</p>
+                    <p className={styles.pointcheck}>{inputPoint ? `${inputPoint} Point` : '?? Point'}</p>
                 </div>
                 </>
             ):(
@@ -117,6 +123,7 @@ const Uploading =()=>{
                 <h1>판매 설정 시, 해당 사진에 대한 저작권에 대한 책임은 본인에게 있다.</h1>
                 </>
             )}
+
             </div>
             <div className={styles.selectfoot}>
                 <button className={styles.servicebtn}>서비스 약관</button>

@@ -185,10 +185,9 @@
     margin-top: 10px;
     border-radius: 10px;
     padding-left: 10px;
-
 }
 .pointfoot{
-    width: 60%;
+    width: 65%;
     position: absolute;
     right: 0;
     display: flex;
