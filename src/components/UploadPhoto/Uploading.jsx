@@ -2,7 +2,8 @@ import { useSelector } from 'react-redux';
 import styles from './uploading.module.css';
 import { useState } from 'react';
 
-const Uploading =()=>{
+const Uploading =(props)=>{ 
+    const {mainImg}=props //mainImg props 사용
     const userState=useSelector((state)=>state.user);
     
     const [inputComment,setInputComment]=useState('');
@@ -66,7 +67,8 @@ const Uploading =()=>{
         <div className={styles.uploadwrap}>
           <p className={styles.head}>사진 올리기</p>
           <div className={styles.uploadbox}>
-            <img className={styles.photo}></img>
+          {mainImg && <img src={mainImg} alt="미리보기" className={styles.photo} />}
+            
             <div className={styles.infowrap}>
                 <div className={styles.commentwrap}>
                     <p className={styles.texthead}>코멘트</p>

@@ -143,7 +143,7 @@ function UploadPhoto() {
           <>
           <div className={styles.screen}>
       <div className={styles.uploadScreen}>
-            <Uploading />
+            <Uploading mainImg={mainImg}/>
             <div className={styles.agreebtn}>
                     <p className={styles.agreetext}>서비스 약관을 읽고 동의합니다.</p>
                     <input type='checkbox' onChange={handleAgreeChange}/>
