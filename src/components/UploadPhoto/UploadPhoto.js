@@ -64,7 +64,7 @@ function UploadPhoto() {
       };
   
       const responseContent = await axios.post(
-        'http://photolancer.shop/postContent',
+        'http://photolancer.shop/post',
         postContent,
         { headers }
       );
@@ -74,7 +74,7 @@ function UploadPhoto() {
       formData.append('imgFile', mainImg);
   
       const responseImage = await axios.post(
-        'http://photolancer.shop/imgFile',
+        'http://photolancer.shop/post',
         formData,
         { headers: { Authorization: headers.Authorization, ...formData.getHeaders() } }
       );
