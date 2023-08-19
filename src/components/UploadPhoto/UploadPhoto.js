@@ -40,25 +40,57 @@ function UploadPhoto() {
     setUploadPhoto2(true);
     setUploadPhoto3(false);
   };
+
+  const [comment,setComment]=useState('');
+  const [point,setPoint]=useState('');
+  const [bookmark,setBookmark]=useState('');
+
+    const handleValue=(inputComment,inputPoint,tagText)=>{
+      setComment(inputComment);
+      setPoint(inputPoint);
+      setBookmark(tagText);
+
+    }
+  
   const finishHandler=async()=>{
     console.log('upload');
     try{
       const response = await axios.post('http://photolancer.shop/post',
       {
-       /* content:,
-        isSale:,
-        point:,
-        bookmark:, */
+       content:inputComment,
+        isSale:inputSale,
+        point:inputPoint,
+        bookmark:tagText, 
       },
       {
         headers:{
           Authorization:userState.jwt,
+          "Content-type": "application/json",	
         },
       });
-      console.log('Photo uploaded:',response.data);
+      console.log('photo info uploaded:',response.data);
     }
     catch(error){
       console.error('Error:',error);
+    }
+    try {
+      const formData = new FormData();
+      formData.append('mainImg', mainImg);
+    
+      const response = await axios.post(
+        'http://photolancer.shop/post',
+        formData,
+        {
+          headers: {
+            Authorization: userState.jwt,
+            "Content-type": "multipart/form-data",
+          },
+        }
+      );
+      console.log('photo uploaded:', response.data);
+    } 
+    catch (error) {
+      console.error('Error:', error);
     }
   };
   
@@ -143,7 +175,7 @@ function UploadPhoto() {
           <>
           <div className={styles.screen}>
       <div className={styles.uploadScreen}>
-            <Uploading mainImg={mainImg}/>
+            <Uploading mainImg={mainImg} onValueChange={handleValue}/>
             <div className={styles.agreebtn}>
                     <p className={styles.agreetext}>서비스 약관을 읽고 동의합니다.</p>
                     <input type='checkbox' onChange={handleAgreeChange}/>
@@ -165,7 +197,7 @@ function UploadPhoto() {
           <>
           <div className={styles.screen}>
       <div className={styles.uploadScreen}>
-            <Uploaded />
+            <Uploaded mainImg={mainImg}/>
             <div className={styles.btnwrap}>
             <button className={styles.cancelbtn} onClick={cancelHandler}>취소</button>
             <button className={styles.backbtn} onClick={backHandler}>뒤로 가기</button>
