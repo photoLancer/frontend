@@ -1,51 +1,54 @@
 import styles from './payment.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
-const Payment=()=>{
+const Payment = () => {
+  const userState = useSelector((state) => state.user);
+  const [accounts, setAccounts] = useState([]);
 
-    const [isMainAccountVisible, setMainAccountVisible] = useState(true);
-    const [isSubAccountVisible, setSubAccountVisible] = useState(true);
-
-    const handleDeleteMainAccount = () => {
-        setMainAccountVisible(false);
+  useEffect(() => {
+    const fetchMyAccount = async () => {
+      try {
+        const response = await axios.get('http://photolancer.shop/GET/setting/account', {
+          headers: {
+            Authorization: userState.jwt,
+          },
+        });
+        console.log('Response data:', response.data.data);
+        setAccounts(response.data);
+      } catch (error) {
+        console.error('Error fetching my accounts:', error);
+      }
     };
 
-    const handleDeleteSubAccount = () => {
-        setSubAccountVisible(false);
-    };
+    fetchMyAccount();
+  }, []);
 
-    return(
-        <>
-        <p className={styles.header}>결제 관리</p>
-        <div className={styles.bigbox}>
-            <div className={styles.mediumbox}>
-            {isMainAccountVisible && (
-                <div className={styles.smallbox1}>
-                    <p className={styles.text1}>메인계좌</p>
-                    <div className={styles.tinybox}>
-                        <p className={styles.bankname}>농협</p><br/>
-                        <p className={styles.number}>34782939</p>
-                    </div>
-                    <button className={styles.deletebtn1} onClick={handleDeleteMainAccount}>삭제</button>
-                </div>
-                 )}
-                  {isSubAccountVisible && (
-                <div className={styles.smallbox2}>
-                    <p className={styles.text2}>서브계좌</p>
-                    <div className={styles.tinybox}>
-                        <p className={styles.bankname}>국민</p><br/>
-                        <p className={styles.number}>34782939</p>
-                    </div>
-                    <button className={styles.deletebtn2} onClick={handleDeleteSubAccount}>삭제</button>
-                </div>
-                 )}
+  return (
+    <>
+      <p className={styles.header}>결제 관리</p>
+      <div className={styles.bigbox}>
+        <div className={styles.mediumbox}>
+          {accounts.map((account) => (
+            <div className={styles.smallbox1} key={account.id}>
+              <p className={styles.text1}>메인계좌</p>
+              <div className={styles.tinybox}>
+               
+                <p className={styles.bankname}>{account.bank}</p><br />
+                <p className={styles.number}>{account.accountNumber}</p>
+              </div>
+              <button className={styles.deletebtn1}>삭제</button>
             </div>
-            <div className={styles.footer}>
-                <button className={styles.set}>메인 계좌로 설정</button>
-                <button className={styles.add}>계좌 추가하기</button>
-            </div>
+          ))}
         </div>
-        </>
-    );
+        <div className={styles.footer}>
+          <button className={styles.set}>메인 계좌로 설정</button>
+          <button className={styles.add}>계좌 추가하기</button>
+        </div>
+      </div>
+    </>
+  );
 }
+
 export default Payment;
