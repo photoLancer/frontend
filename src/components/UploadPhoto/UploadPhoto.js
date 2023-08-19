@@ -29,6 +29,7 @@ function UploadPhoto() {
     setUploadPhoto1(false);
     setUploadPhoto2(false);
     setUploadPhoto3(true);
+
   };
   const cancelHandler=()=>{
     setUploadPhoto1(false);
@@ -40,25 +41,47 @@ function UploadPhoto() {
     setUploadPhoto2(true);
     setUploadPhoto3(false);
   };
+  const [inputValueFromUploading,setInputValueFromUploading]=useState({});
+  
+    const onValueChange=(inputValue)=>{
+      setInputValueFromUploading(inputValue);
+
+    };
+  
   const finishHandler=async()=>{
     console.log('upload');
-    try{
-      const response = await axios.post('http://photolancer.shop/post',
-      {
-       /* content:,
-        isSale:,
-        point:,
-        bookmark:, */
-      },
-      {
-        headers:{
-          Authorization:userState.jwt,
-        },
-      });
-      console.log('Photo uploaded:',response.data);
-    }
-    catch(error){
-      console.error('Error:',error);
+    try {
+      const postContent = {
+        content: inputValueFromUploading.content,
+        isSale: inputValueFromUploading.isSale,
+        point: inputValueFromUploading.point,
+        bookmark: inputValueFromUploading.bookmark,
+      };
+  
+      const headers = {
+        Authorization: userState.jwt,
+        "Content-type": "application/json",
+      };
+  
+      const responseContent = await axios.post(
+        'http://photolancer.shop/postContent',
+        postContent,
+        { headers }
+      );
+      console.log('포스트 내용 업로드 완료:', responseContent.data);
+  
+      const formData = new FormData();
+      formData.append('imgFile', mainImg);
+  
+      const responseImage = await axios.post(
+        'http://photolancer.shop/imgFile',
+        formData,
+        { headers: { Authorization: headers.Authorization, ...formData.getHeaders() } }
+      );
+      console.log('이미지 파일 업로드 완료:', responseImage.data);
+  
+    } catch (error) {
+      console.error('오류:', error);
     }
   };
   
@@ -67,6 +90,40 @@ function UploadPhoto() {
     const handleAgreeChange=()=>{
         setAgreeService(true);
     };
+
+    const [mainImg,setMainImg]=useState('');
+
+    const displayPreview = (file)=>{
+      const reader = new FileReader();
+      
+        reader.onload = function (event) {
+          setMainImg(event.target.result);
+        };
+      
+        reader.readAsDataURL(file);
+    };
+
+    const handleDrop = (event) => {
+      event.preventDefault();
+      const file = event.dataTransfer.files[0]; // 드롭한 파일 가져오기
+      
+      if (file) {
+        displayPreview(file);
+      }
+    };
+  
+    const handleDragOver = (event) => {
+      event.preventDefault();
+    };
+
+    const setPreviewImg=(event)=>{
+      const file = event.target.files[0]; // 선택한 파일 가져오기
+      
+      if (file) {
+        displayPreview(file);
+      }
+    }
+    
   return (   
     <>
       
@@ -76,14 +133,30 @@ function UploadPhoto() {
       <div className={styles.uploadScreen}>
           <div className={styles.uploadwrap}>
           <p className={styles.head}>사진 올리기</p>
-          <form action='/target' className={styles.dropzone} id='myDropzone'>
+          <form className={styles.dropzone} id='myDropzone' onDrop={handleDrop}
+  onDragOver={handleDragOver} >
             <div className={styles.innerwrap}>
+            {mainImg?(
+              <>
+              <img alt='메인사진' src={mainImg} className={styles.previewimg} />
+              
+              </>
+            ):(
+            <>
             <p className={styles.text1}>파일을 이곳에 끌어 놓아주세요</p><br />
             <p className={styles.text2}>한 번에 1장까지만 업로드 가능</p><br/>
-            <button className={styles.selectbtn}>컴퓨터에서 선택</button>
+            <input type="file" className={styles.selectbtn} accept='image/*' onChange={setPreviewImg}/>
+           </>
+           )}
             </div>
           </form>
-          <button className={styles.nextbtn1} onClick={nextStepHandler1}>다음</button>
+          {mainImg?(
+            <>
+             <button className={styles.nextbtn1_1} onClick={nextStepHandler1}>다음</button>
+            </>
+          ):(
+          <button className={styles.nextbtn1} >다음</button>
+          )}
           </div>
           </div>
           </div>
@@ -93,7 +166,7 @@ function UploadPhoto() {
           <>
           <div className={styles.screen}>
       <div className={styles.uploadScreen}>
-            <Uploading />
+            <Uploading mainImg={mainImg} handleValue={onValueChange}/>  {/*함수 전달로 자식컴포에서 정보 불러옴*/}
             <div className={styles.agreebtn}>
                     <p className={styles.agreetext}>서비스 약관을 읽고 동의합니다.</p>
                     <input type='checkbox' onChange={handleAgreeChange}/>
@@ -115,7 +188,7 @@ function UploadPhoto() {
           <>
           <div className={styles.screen}>
       <div className={styles.uploadScreen}>
-            <Uploaded />
+            <Uploaded mainImg={mainImg}/>
             <div className={styles.btnwrap}>
             <button className={styles.cancelbtn} onClick={cancelHandler}>취소</button>
             <button className={styles.backbtn} onClick={backHandler}>뒤로 가기</button>

@@ -144,15 +144,18 @@
     margin-right: 10px;
 }
 .selectcontent{
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: small;
     position: relative;
     
 }
+.wrapping{
+    
+    height: 140px;
+}
 .selectfoot{
     display: flex;
     flex-direction: row;
-    margin-top: 40px;
     position: relative;
     width: 100%;
     height: 30px;
@@ -185,10 +188,9 @@
     margin-top: 10px;
     border-radius: 10px;
     padding-left: 10px;
-
 }
 .pointfoot{
-    width: 60%;
+    width: 65%;
     position: absolute;
     right: 0;
     display: flex;

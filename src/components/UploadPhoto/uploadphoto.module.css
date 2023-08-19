@@ -45,21 +45,31 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  margin-top: 150px;
+  margin-top: 70px;
+ 
+  position: relative;
+}
+.previewimg{
+margin-left: 250px;
 }
 .text1{
   font-size: x-large;
   color: black;
-  margin-bottom: 30px;
+  
+}
+.text1,.text2{
+  margin-top: 60px;
 }
 .selectbtn{
-  width: 17%;
+  width: 20%;
   height: 30px;
   background-color: gray;
   color: white;
   border-radius: 10px;
-  margin-top: 90px;
+  margin-left: -70px;
   font-size: smaller;
+  position: absolute;
+  bottom: 0;
 }
 .nextbtn1{
   width: 20%;
@@ -69,6 +79,15 @@
   position: absolute;
   right: 0;
   color: #ff8b00;
+}
+.nextbtn1_1{
+  width: 20%;
+  height: 30px;
+  background-color: #ff8b00;
+  border-radius: 15px;
+  position: absolute;
+  right: 0;
+  color: white;
 }
 .nextbtn2{
   width: 15%;
