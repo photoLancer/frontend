@@ -1,29 +1,42 @@
 import { useSelector } from 'react-redux';
 import styles from './uploading.module.css';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 const Uploading =(props)=>{ 
-    const {mainImg,onValueChange}=props //mainImg props 사용
+    const {mainImg,handleValue}=props //mainImg props 사용
     const userState=useSelector((state)=>state.user);
-    
+   
     const [inputComment,setInputComment]=useState('');
-    const [showIsSale,setShowIsSale]=useState(false);
+    const [clickYes,setClickYes]=useState(false);
     const [inputPoint,setInputPoint]=useState('');
     const [tagText, setTagText] = useState('');
 
+    useEffect(() => {
+        const inputValue = {
+            content: inputComment,
+            isSale: clickYes,
+            point: inputPoint,
+            bookmark: tagText,
+        };
+        handleValue(inputValue);
+    }, [inputComment, clickYes, inputPoint, tagText]);
+
+    
     const handleCommentChange=(event)=>{
         setInputComment(event.target.value);
-        props.onValueChange(event.target.value,inputComment);  //코멘트 값 전달
+          //코멘트 값 전달
     };
     const handlePointChange=(event)=>{
         const value = event.target.value.replace(/\D/g, '');
         setInputPoint(event.target.value);
-        props.onValueChange(event.target.value,inputPoint);  //포인트 값 전달
+         //포인트 값 전달
     };
     const handleInputChange = (event) => {
         setTagText(event.target.value);
-        props.onValueChange(event.target.value,tagText);  //북마크 값 전달
+         //북마크 값 전달
     };
+    
     
     const checkboxes=document.querySelectorAll('input[name="choice"]');
 
@@ -55,18 +68,19 @@ const Uploading =(props)=>{
       setTags(tags.filter((t) => t !== tag));
     };
 
-    const [clickYes,setClickYes]=useState(false);
     const [clickNo,setClickNo]=useState(false);
 
     const handleYesClick=()=>{
-        setShowIsSale(true);
+        
         setClickYes(true);
         setClickNo(false);
+
     };
     const handleNoClick=()=>{
-        setShowIsSale(false);
+        
         setClickNo(true);
         setClickYes(false);
+        
     }
     const checkOnlyOne=(checkThis)=>{
         const checkboxes=document.getElementsByName('checking');

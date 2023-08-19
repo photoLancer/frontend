@@ -29,6 +29,7 @@ function UploadPhoto() {
     setUploadPhoto1(false);
     setUploadPhoto2(false);
     setUploadPhoto3(true);
+
   };
   const cancelHandler=()=>{
     setUploadPhoto1(false);
@@ -40,57 +41,47 @@ function UploadPhoto() {
     setUploadPhoto2(true);
     setUploadPhoto3(false);
   };
+  const [inputValueFromUploading,setInputValueFromUploading]=useState({});
+  
+    const onValueChange=(inputValue)=>{
+      setInputValueFromUploading(inputValue);
 
-  const [comment,setComment]=useState('');
-  const [point,setPoint]=useState('');
-  const [bookmark,setBookmark]=useState('');
-
-    const handleValue=(inputComment,inputPoint,tagText)=>{
-      setComment(inputComment);
-      setPoint(inputPoint);
-      setBookmark(tagText);
-
-    }
+    };
   
   const finishHandler=async()=>{
     console.log('upload');
-    try{
-      const response = await axios.post('http://photolancer.shop/post',
-      {
-       content:inputComment,
-        isSale:inputSale,
-        point:inputPoint,
-        bookmark:tagText, 
-      },
-      {
-        headers:{
-          Authorization:userState.jwt,
-          "Content-type": "application/json",	
-        },
-      });
-      console.log('photo info uploaded:',response.data);
-    }
-    catch(error){
-      console.error('Error:',error);
-    }
     try {
-      const formData = new FormData();
-      formData.append('mainImg', mainImg);
-    
-      const response = await axios.post(
-        'http://photolancer.shop/post',
-        formData,
-        {
-          headers: {
-            Authorization: userState.jwt,
-            "Content-type": "multipart/form-data",
-          },
-        }
+      const postContent = {
+        content: inputValueFromUploading.content,
+        isSale: inputValueFromUploading.isSale,
+        point: inputValueFromUploading.point,
+        bookmark: inputValueFromUploading.bookmark,
+      };
+  
+      const headers = {
+        Authorization: userState.jwt,
+        "Content-type": "application/json",
+      };
+  
+      const responseContent = await axios.post(
+        'http://photolancer.shop/postContent',
+        postContent,
+        { headers }
       );
-      console.log('photo uploaded:', response.data);
-    } 
-    catch (error) {
-      console.error('Error:', error);
+      console.log('포스트 내용 업로드 완료:', responseContent.data);
+  
+      const formData = new FormData();
+      formData.append('imgFile', mainImg);
+  
+      const responseImage = await axios.post(
+        'http://photolancer.shop/imgFile',
+        formData,
+        { headers: { Authorization: headers.Authorization, ...formData.getHeaders() } }
+      );
+      console.log('이미지 파일 업로드 완료:', responseImage.data);
+  
+    } catch (error) {
+      console.error('오류:', error);
     }
   };
   
@@ -175,7 +166,7 @@ function UploadPhoto() {
           <>
           <div className={styles.screen}>
       <div className={styles.uploadScreen}>
-            <Uploading mainImg={mainImg} onValueChange={handleValue}/>
+            <Uploading mainImg={mainImg} handleValue={onValueChange}/>  {/*함수 전달로 자식컴포에서 정보 불러옴*/}
             <div className={styles.agreebtn}>
                     <p className={styles.agreetext}>서비스 약관을 읽고 동의합니다.</p>
                     <input type='checkbox' onChange={handleAgreeChange}/>
