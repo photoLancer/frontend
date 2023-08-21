@@ -51,7 +51,6 @@
     align-items: center;
 }
 .snslogo{
-    border: 1px solid black;
     border-radius: 50px;
     width: 30%;
     height: 45%;
@@ -110,7 +109,7 @@
     margin-top: 15px;
     border-radius: 10px;
     margin-left: 50px;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 .inputdiv{
     width: 70%;

@@ -4,6 +4,10 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { TextField, Button, FormControl, FormHelperText } from '@mui/material';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import kakao from '../../img/kakao.png';
+import goggle from '../../img/goggle.png';
+import naver from '../../img/naver.png';
+
 
 const Account=()=>{
     const userState = useSelector((state) => state.user);
@@ -126,18 +130,27 @@ const Account=()=>{
             <div className={styles.content1}>
                 <div className={styles.smallbox1}>
                     <div className={styles.boxwrap}>
-                    <img className={styles.snslogo}></img>
-                    <p className={styles.snsname}>카카오</p>
+                    <img className={styles.snslogo} src={goggle}></img>
+                    <p className={styles.snsname}>구글</p>
                     </div>
                     <div className={styles.btnwrap}>
-                    <button className={styles.connectbtn} id='toggleButton' onClick={toggleConnection}>연결</button>
+                    <button className={styles.connectbtn} id='toggleButton' onClick={toggleConnection}>연결해제</button>
                     
                     </div>
                 </div>
                 
                 <div className={styles.smallbox1}>
                 <div className={styles.boxwrap}>
-                    <img className={styles.snslogo}></img>
+                    <img className={styles.snslogo} src={kakao}></img>
+                    <p className={styles.snsname}>카카오</p>
+                </div>
+                <div className={styles.btnwrap}>
+                    <button className={styles.connectbtn}>연결해제</button>
+                    </div>   
+                </div>
+                <div className={styles.smallbox1}>
+                <div className={styles.boxwrap}>
+                    <img className={styles.snslogo} src={naver}></img>
                     <p className={styles.snsname}>Naver</p>
                 </div>
                 <div className={styles.btnwrap}>
@@ -181,7 +194,7 @@ const Account=()=>{
                     <>
                     <div className={styles.smallbox2}>
                     <p className={styles.pwtext}>현재 이용 비밀번호</p>
-                    <div className={styles.pwbox}>~~~</div>
+                    <div className={styles.pwbox}>*******</div>
                 </div>
                 <div className={styles.changepw}><button className={styles.changepwbtn} onClick={changepwHandler}>변경하기</button></div>
                     </>
