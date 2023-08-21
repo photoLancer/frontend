@@ -6,7 +6,6 @@ import { useRef } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../../_actions/user_action';
 function CreateAccountPage() {
   //유효성검사
   const {
@@ -29,7 +28,7 @@ function CreateAccountPage() {
   const [again_pwValue, setAgain_pwValue] = useState('');
   const [nameValue, setNameValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
-  const [purposeValue, setPurpValue] = useState('');
+  //const [ischeckedValue, setIsCheckedValue] = useState(false);
   //const [replace] = useHistory;
   const handleIdChange = (event) => {
     setIdValue(event.target.value);
@@ -46,9 +45,9 @@ function CreateAccountPage() {
   const handleEmailChange = (e) => {
     setEmailValue(e.target.value);
   };
-  const handlePurpChange = (e) => {
-    setPurpValue(e.target.value);
-  };
+  /*const handleCheckedChange = (e) => {
+  setIsCheckedValue(!ischeckedValue);
+  };*/
 
   const onSigninHandler = async () => {
     const body = {
@@ -57,19 +56,17 @@ function CreateAccountPage() {
       again_password: again_pwValue,
       name: nameValue,
       email: emailValue,
-      purpose: purposeValue,
+      //purpose: ischeckedValue,
     };
     try {
       const response = await axios.post('http://photolancer.shop/api/v1/users/join', body);
-      if (response.data.errorMessage === null) {
-        //회원가입이 성공적으로 된 경우
-        dispatch(login(response.data.jwt));
-        navigate('/home');
-        return;
-      }
       console.log('회원가입성공', response.data.jwt);
+      alert('회원가입 성공!!');
+
+      navigate('/');
     } catch (error) {
       console.log('Error:', error.message);
+      alert('회원가입 실패');
     }
     //localStorage.setItem('token', response.data.jwt);
     //replace('/');
@@ -138,14 +135,14 @@ function CreateAccountPage() {
                 placeholder="비밀번호를 입력하세요"
                 {...register('pwd', {
                   required: true,
-                  pattern: /^[A-z]{8,15}$/,
+                  pattern: /^(?=.*[!@#$%^&*])(?=.*[0-9])(?=.*[A-z]).{4,}$/,
                 })}
                 value={pwValue}
                 onChange={handlePwChange}
               ></input>
               {errors.pwd && (
                 <span className={styles.account_error1}>
-                  <span className={styles.account_error2}>비밀번호</span>는 8~15자의 영문만을 사용해주세요.
+                  <span className={styles.account_error2}>비밀번호</span>는 영문, 숫자, 특수문자를 사용해주세요.
                 </span>
               )}
             </div>
@@ -198,7 +195,13 @@ function CreateAccountPage() {
             <div className={styles.agree2}>
               <label>
                 서비스 약관을 읽고 동의합니다
-                <input type="checkbox" name="purpose" value={purposeValue} onChange={handlePurpChange}></input>
+                <input
+                  type="checkbox"
+                  name="purpose"
+
+                  //onChange={handleCheckedChange}
+                  //checked={ischeckedValue}
+                ></input>
               </label>
             </div>
           </div>
