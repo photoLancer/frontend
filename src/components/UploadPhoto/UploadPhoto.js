@@ -133,6 +133,7 @@ function UploadPhoto() {
       <div className={styles.uploadScreen}>
           <div className={styles.uploadwrap}>
           <p className={styles.head}>사진 올리기</p>
+          <button className={styles.cancel} onClick={cancelHandler}>X</button>
           <form className={styles.dropzone} id='myDropzone' onDrop={handleDrop}
   onDragOver={handleDragOver} >
             <div className={styles.innerwrap}>
@@ -166,6 +167,7 @@ function UploadPhoto() {
           <>
           <div className={styles.screen}>
       <div className={styles.uploadScreen}>
+      <button className={styles.cancel2} onClick={cancelHandler}>X</button>
             <Uploading mainImg={mainImg} handleValue={onValueChange}/>  {/*함수 전달로 자식컴포에서 정보 불러옴*/}
             <div className={styles.agreebtn}>
                     <p className={styles.agreetext}>서비스 약관을 읽고 동의합니다.</p>
