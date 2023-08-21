@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import styles from './setting.module.css';
 import Header from '../../components/Header/Header';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -15,6 +15,22 @@ const SettingPage = () => {
     setSettingContent(2);
   };
 
+  const accountbtn=useRef();
+  const paybtn=useRef();
+
+  useEffect(()=>{
+    if(settingContent===1){
+      accountbtn.current.style='color:#111111';
+    }else{
+      accountbtn.current.style='';
+    }
+    if(settingContent===2){
+      paybtn.current.style='color:#111111';
+    }else{
+      paybtn.current.style='';
+    }
+  })
+
   return (
     <>
       <div className={styles.viewport}>
@@ -29,12 +45,14 @@ const SettingPage = () => {
               <div className='flex flex-row'>
                 <button
                   className={styles.navbar_button}
+                  ref={accountbtn}
                   onClick={accountHandler}
                 >
                   계정 정보
                 </button>
                 <button
                   className={styles.navbar_button}
+                  ref={paybtn}
                   onClick={paymentHandler}
                 >
                   결제 정보
