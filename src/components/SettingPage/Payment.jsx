@@ -9,6 +9,7 @@ const Payment = () => {
   const [addBank,setAddBank]=useState(false);
   const [inputBank,setInputBank]=useState('');
   const [inputAccountNum,setInputAccountNum]=useState('');
+  const [mainAccount,setMainAccount]=useState(false);
 
   useEffect(() => {
     const fetchMyAccount = async () => {
@@ -32,8 +33,8 @@ const Payment = () => {
     fetchMyAccount();
   }, []);
 
-  const handleMainAccount=async()=>{
-    console.log('main success');
+  const handleMainAccount=()=>{
+    setMainAccount(true);
 
   }
 
@@ -62,17 +63,18 @@ const Payment = () => {
     }
   }
  
-  const handleDeleteAccount=async()=>{
+  const handleDeleteAccount=async(accountId)=>{
     console.log('delete');
     try{
         const response=await axios.delete(
-            `http://photolancer.shop/setting/account/${account-id}`,
+            `http://photolancer.shop/setting/account/{account-id}`,
             {
                 headers:{
                     Authorization:userState.jwt,
                 },
             }
         );
+        setAccounts(prevAccounts => prevAccounts.filter(account => account.id !== accountId));
     } 
     catch(error){
         console.error('Error:',error);
@@ -111,12 +113,12 @@ const Payment = () => {
            
           {accounts.map(account => (
                             <div className={styles.smallbox1} key={account.id}>
-                                <p className={styles.text1}>서브 계좌</p>
+                                <p className={styles.text1}>계좌 정보</p>
                                 <div className={styles.tinybox}>
                                     <p className={styles.bankname}>{account.bank}</p><br />
                                     <p className={styles.number}>{account.accountNumber}</p>
                                 </div>
-                                <button className={styles.deletebtn1} onClick={handleDeleteAccount}>삭제</button>
+                                <button className={styles.deletebtn1} onClick={() => handleDeleteAccount(account.id)}>삭제</button>
                             </div>
                         ))}
            
