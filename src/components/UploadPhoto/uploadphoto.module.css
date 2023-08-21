@@ -28,7 +28,7 @@
   position: relative;
 }
 .cancel{
-  border: 1px solid black;
+
   border-radius: 8px;
   position: absolute;
   right: 0;
@@ -37,7 +37,7 @@
   margin-right: -60px;
 }
 .cancel2{
-  border: 1px solid black;
+
   border-radius: 8px;
   padding: 3px;
   position: absolute;
