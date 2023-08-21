@@ -6,12 +6,10 @@ import { useSelector } from 'react-redux';
 const Payment = () => {
   const userState = useSelector((state) => state.user);
   const [accounts, setAccounts] = useState([]);
-  const [id,setId]=useState('');
-  const [bank,setBank]=useState('');
-  const [accountNumber,setAccountNumber]=useState('');
   const [addBank,setAddBank]=useState(false);
   const [inputBank,setInputBank]=useState('');
-  const [inputAccountNum,setInputAccount]=useState('');
+  const [inputAccountNum,setInputAccountNum]=useState('');
+  const [mainAccount,setMainAccount]=useState(false);
 
   useEffect(() => {
     const fetchMyAccount = async () => {
@@ -22,9 +20,9 @@ const Payment = () => {
           },
         });
         console.log('Response data:', response.data);
-        setId(response.data.id);
-        setBank(response.data.bank);
-        setAccountNumber(response.data.accountNumber);
+        console.log(response.data.responseMessage);
+        console.log(response.data.data);
+        setAccounts(response.data.data);
         
 
       } catch (error) {
@@ -35,8 +33,8 @@ const Payment = () => {
     fetchMyAccount();
   }, []);
 
-  const handleMainAccount=async()=>{
-    console.log('main success');
+  const handleMainAccount=()=>{
+    setMainAccount(true);
 
   }
 
@@ -64,17 +62,8 @@ const Payment = () => {
         console.error('Error:',error);
     }
   }
- const handleInputAccountNum=(event)=>{
-    setAccountNumber(event.target.value);
- }
- const handleInputBank=(event)=>{
-    setAddBank(event.target.value);
- }
-  const handleAddAccount=()=>{
-    setAddBank(true);
-   
-  };
-  const handleDeleteAccount=async()=>{
+ 
+  const handleDeleteAccount=async(accountId)=>{
     console.log('delete');
     try{
         const response=await axios.delete(
@@ -85,6 +74,7 @@ const Payment = () => {
                 },
             }
         );
+        setAccounts(prevAccounts => prevAccounts.filter(account => account.id !== accountId));
     } 
     catch(error){
         console.error('Error:',error);
@@ -110,7 +100,7 @@ const Payment = () => {
             className={styles.accountnum}
             placeholder='계좌번호'
             value={inputAccountNum}
-            onChange={(event) => setInputAccount(event.target.value)}
+            onChange={(event) => setInputAccountNum(event.target.value)}
           />
           <div>
             <button className={styles.cancelbtn} onClick={handleCancel}>취소</button>
@@ -121,14 +111,16 @@ const Payment = () => {
         <div className={styles.wrapbox}>
           <div className={styles.mediumbox}>
            
-              <div className={styles.smallbox1} key={id}>
-                <p className={styles.text1}>메인계좌</p>
-                <div className={styles.tinybox}>
-                  <p className={styles.bankname}>{bank}</p><br />
-                  <p className={styles.number}>{accountNumber}</p>
-                </div>
-                <button className={styles.deletebtn1} onClick={handleDeleteAccount}>삭제</button>
-              </div>
+          {accounts.map(account => (
+                            <div className={styles.smallbox1} key={account.id}>
+                                <p className={styles.text1}>계좌 정보</p>
+                                <div className={styles.tinybox}>
+                                    <p className={styles.bankname}>{account.bank}</p><br />
+                                    <p className={styles.number}>{account.accountNumber}</p>
+                                </div>
+                                <button className={styles.deletebtn1} onClick={() => handleDeleteAccount(account.id)}>삭제</button>
+                            </div>
+                        ))}
            
           </div>
           <div className={styles.footer}>

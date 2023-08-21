@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import styles from './account.module.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { TextField, Button, FormControl, FormHelperText } from '@mui/material';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const Account=()=>{
+    const userState = useSelector((state) => state.user);
     const [isChanging,setIsChanging]=useState(false);
 
     const changepwHandler=()=>{
@@ -58,6 +61,62 @@ const Account=()=>{
         }
     };
 
+    useEffect(() => {
+        const fetchMySocialLogin_google = async () => {
+          try {
+            const response = await axios.get('http://photolancer.shop/oauth2/authorization/google', {
+              headers: {
+                Authorization: userState.jwt,
+              },
+            });
+            console.log('Response data:', response.data);
+            
+    
+          } catch (error) {
+            console.error('Error fetching my social login:', error);
+          }
+        };
+    
+        fetchMySocialLogin_google();
+      }, []);
+
+      useEffect(() => {
+        const fetchMySocialLogin_kakao = async () => {
+          try {
+            const response = await axios.get('http://photolancer.shop/oauth2/authorization/kakao', {
+              headers: {
+                Authorization: userState.jwt,
+              },
+            });
+            console.log('Response data:', response.data);
+            
+    
+          } catch (error) {
+            console.error('Error fetching my social login:', error);
+          }
+        };
+    
+        fetchMySocialLogin_kakao();
+      }, []);
+
+      useEffect(() => {
+        const fetchMySocialLogin_naver = async () => {
+          try {
+            const response = await axios.get('http://photolaner.shop/oauth2/authorization/naver', {
+              headers: {
+                Authorization: userState.jwt,
+              },
+            });
+            console.log('Response data:', response.data);
+            
+    
+          } catch (error) {
+            console.error('Error fetching my social login:', error);
+          }
+        };
+    
+        fetchMySocialLogin_naver();
+      }, []);
 
     return(
     <>
