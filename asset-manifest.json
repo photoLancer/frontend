@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/frontend/static/css/main.5e4006ea.css",
+    "main.js": "/frontend/static/js/main.11c74cb1.js",
+    "static/js/787.1aeb6856.chunk.js": "/frontend/static/js/787.1aeb6856.chunk.js",
+    "static/media/차은우.jpg": "/frontend/static/media/차은우.abc85fb5b88f01005976.jpg",
+    "static/media/contents6.JPG": "/frontend/static/media/contents6.7449732844771e6294b7.JPG",
+    "static/media/contents3.JPG": "/frontend/static/media/contents3.2982c34484943f14b1c2.JPG",
+    "static/media/contents5.JPG": "/frontend/static/media/contents5.3cd6dc0897249a064aae.JPG",
+    "static/media/contents2.JPG": "/frontend/static/media/contents2.f2b5e58d7dc9ed73f5cc.JPG",
+    "static/media/Login.JPG": "/frontend/static/media/Login.ad21c27be0e7e0146f48.JPG",
+    "static/media/onboarding.JPG": "/frontend/static/media/onboarding.3966096ca9e73bad5009.JPG",
+    "static/media/contents8.JPG": "/frontend/static/media/contents8.0f8ca3862a6261c55112.JPG",
+    "static/media/contents7.JPG": "/frontend/static/media/contents7.56cd9eccf7004b613cd0.JPG",
+    "static/media/contents4.JPG": "/frontend/static/media/contents4.e5c8a0e866b52067ddf0.JPG",
+    "static/media/logo_symbol.png": "/frontend/static/media/logo_symbol.535e0f11b36e500bacf9.png",
+    "static/media/search.png": "/frontend/static/media/search.f2d70afd1ebdca42594e.png",
+    "static/media/select_arrow.png": "/frontend/static/media/select_arrow.510013d67b605dc51c23.png",
+    "index.html": "/frontend/index.html",
+    "main.5e4006ea.css.map": "/frontend/static/css/main.5e4006ea.css.map",
+    "main.11c74cb1.js.map": "/frontend/static/js/main.11c74cb1.js.map",
+    "787.1aeb6856.chunk.js.map": "/frontend/static/js/787.1aeb6856.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5e4006ea.css",
+    "static/js/main.11c74cb1.js"
+  ]
+}
